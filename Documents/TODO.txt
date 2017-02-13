@@ -1,0 +1,6 @@
+Close players eyes
+Ability to move players
+Add player teleportation
+Ability to limit player teleportation
+Make UI very intuitive
+Camera angles clear
