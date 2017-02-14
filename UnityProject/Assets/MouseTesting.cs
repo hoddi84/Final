@@ -5,11 +5,14 @@ using UnityEngine;
 
 /*
  * Makes it possible to move specific objects in the scene
- * through the map view, objects must be of tag "Pickable"
+ * through the map view, objects must be of tag "MovableObject"
  */
 public class MouseTesting : MonoBehaviour {
 
-    public GameObject pickableCube;
+    private Transform movableObject;
+    private bool movableObjectCanMove = false;
+    private bool movableObjectControlled = false;
+
     public Camera cam;
 
 	// Use this for initialization
@@ -25,18 +28,30 @@ public class MouseTesting : MonoBehaviour {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if (Physics.Raycast(ray, out hit, 100)) {
-                if (hit.transform.tag == "Pickable")
+            if (Physics.Raycast(ray, out hit, 10)) {
+                if (hit.transform.tag == "MovableObject" && !movableObjectControlled)
                 {
-
-                    Vector3 v3 = Input.mousePosition;
-                    v3.z = 10f;
-                    v3 = cam.ScreenToWorldPoint(v3);
-
-                    hit.transform.position = new Vector3(v3.x, hit.transform.position.y, v3.z);
+                    movableObject = hit.transform;
+                    movableObjectCanMove = true;
+                    movableObjectControlled = true;
                 }
+            }
+
+            if (movableObjectCanMove)
+            {
+                Vector3 v3 = Input.mousePosition;
+                v3.z = 15f;
+                v3 = cam.ScreenToWorldPoint(v3);
+
+                movableObject.transform.position = new Vector3(v3.x, movableObject.transform.position.y, v3.z);
             }
         } 
 
+        if (Input.GetMouseButtonUp(0))
+        {
+            movableObjectCanMove = false;
+            movableObjectControlled = false;
+            movableObject = null;
+        }
 	}
 }
