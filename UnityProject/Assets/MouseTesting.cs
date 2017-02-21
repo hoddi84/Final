@@ -26,10 +26,14 @@ public class MouseTesting : MonoBehaviour {
 
     private string activatedType;
 
+    private Vector3 originalDoorRotation;
+    private Vector3 maximumDoorRotation = new Vector3(0, 150, 0);
+
     enum TypeNames
     {
         StaticObject,
-        Light
+        Light,
+        Door
     };
 
 	void Start () {
@@ -98,6 +102,16 @@ public class MouseTesting : MonoBehaviour {
                 {
                     changeableObject = hit.transform.gameObject;
                     activatedType = TypeNames.Light.ToString();
+
+                }
+                else if (hit.transform.tag == "ChangeableDoor")
+                {
+                    changeableObject = hit.transform.gameObject;
+                    originalDoorRotation = hit.transform.localEulerAngles;
+
+                    print(originalDoorRotation);
+
+                    activatedType = TypeNames.Door.ToString();
                 }
             }
         }
@@ -119,6 +133,11 @@ public class MouseTesting : MonoBehaviour {
             else if (activatedType == TypeNames.Light.ToString())
             {
                 ChangeLight(selectedObj);
+                sliderLight.SetActive(true);
+            }
+            else if (activatedType == TypeNames.Door.ToString())
+            {
+                ChangeDoor(selectedObj);
                 sliderLight.SetActive(true);
             }
         }
@@ -171,13 +190,66 @@ public class MouseTesting : MonoBehaviour {
     }
 
     /*
+     * Available options for a door object.
+     * 
+     * We must also change the sliders position depending
+     * on wether the door is open or not.
+     */
+    void ChangeDoor(GameObject obj)
+    {
+        bool doorOpen;
+
+        if (obj.GetComponent<Transform>().localEulerAngles.y < 270)
+        {
+            doorOpen = true;
+        }
+        else
+        {
+            doorOpen = false;
+        }
+
+        if (doorOpen)
+        {
+            optionText.text = "Actions: \n" +
+                              "E: CLOSE door \n" +
+                              "Adjust door: ";
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                obj.GetComponent<Transform>().localEulerAngles = new Vector3(0, 270, 0);
+                LightSlider.value = 0;
+            }
+        }
+        else
+        {
+            optionText.text = "Actions: \n" +
+                              "E: OPEN door \n" +
+                              "Adjust door: ";
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                obj.GetComponent<Transform>().localEulerAngles = new Vector3(0, 170, 0);
+                LightSlider.value = 1;
+            }
+        }
+
+    }
+
+    /*
      * Slider for changing the intensity of a light.
      */
     public void ChangeLightSlider(float newIntensity)
     {
         if (changeableObject != null)
         {
-            changeableObject.GetComponent<Light>().intensity = newIntensity;
+            if (changeableObject.tag == "ChangeableLight")
+            {
+                changeableObject.GetComponent<Light>().intensity = newIntensity;
+            }
+            else if (changeableObject.tag == "ChangeableDoor")
+            {
+                changeableObject.GetComponent<Transform>().localEulerAngles = new Vector3(0, 270 - newIntensity*100, 0);
+            }   
         }
     }
 
