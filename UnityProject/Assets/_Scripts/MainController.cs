@@ -9,7 +9,7 @@ using System;
  * Makes it possible to move specific objects in the scene
  * through the map view, objects must be of tag "MovableObject"
  */
-public class MouseTesting : MonoBehaviour {
+public class MainController : MonoBehaviour {
 
     private Transform movableObject;
     private GameObject changeableObject;
@@ -24,8 +24,6 @@ public class MouseTesting : MonoBehaviour {
     private Slider LightSlider;
 
     private string activatedType;
-
-    private Vector3 originalDoorRotation;
 
     enum TypeNames
     {
@@ -70,7 +68,7 @@ public class MouseTesting : MonoBehaviour {
                 v3.z = 15f;
                 v3 = cam.ScreenToWorldPoint(v3);
 
-                movableObject.transform.position = new Vector3(v3.x, movableObject.transform.position.y, v3.z);
+                movableObject.position = new Vector3(v3.x, movableObject.position.y, v3.z);
             }
         } 
 
@@ -108,10 +106,6 @@ public class MouseTesting : MonoBehaviour {
                 else if (hit.transform.tag == "ChangeableDoor")
                 {
                     changeableObject = hit.transform.gameObject;
-                    originalDoorRotation = hit.transform.localEulerAngles;
-
-                    print(originalDoorRotation);
-
                     activatedType = TypeNames.Door.ToString();
                 }
             }
@@ -153,7 +147,7 @@ public class MouseTesting : MonoBehaviour {
      * We must also change the sliders position depending
      * on wether the light is turned off or on.
      */
-    void ChangeLight(GameObject obj)
+    public void ChangeLight(GameObject obj)
     {
         bool lightOn;
 
@@ -192,7 +186,7 @@ public class MouseTesting : MonoBehaviour {
                 LightSlider.value = 1;
             }
         }
-        
+
     }
 
     /*
@@ -267,7 +261,8 @@ public class MouseTesting : MonoBehaviour {
      * Available options for a static object.
      * 
      * Hides an object by changing it's layer to a 
-     * layer masked by the camera.
+     * layer masked by the camera, i.e. the UserHidden layer
+     * which is on layer 8.
      */
     void ChangeObject(GameObject obj)
     {
