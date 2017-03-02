@@ -944,6 +944,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 177471221}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &177603277 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 116412, guid: 9c25864566bc2a7489bef25ecb47dd6c, type: 2}
+  m_PrefabInternal: {fileID: 717609029}
+--- !u!114 &177603281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 177603277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d2589ada2eb6034aa8b79784d6f36b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &218820146
 Prefab:
   m_ObjectHideFlags: 0
@@ -7561,6 +7576,7 @@ GameObject:
   - component: {fileID: 1426797431}
   - component: {fileID: 1426797432}
   - component: {fileID: 1426797433}
+  - component: {fileID: 1426797434}
   m_Layer: 0
   m_Name: Point light
   m_TagString: ChangeableLight
@@ -7627,6 +7643,17 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1426797434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1426797430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d2589ada2eb6034aa8b79784d6f36b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1461385365
 GameObject:
   m_ObjectHideFlags: 0

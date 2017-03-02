@@ -122,6 +122,7 @@ public class MouseTesting : MonoBehaviour {
 
     /*
      * Displays the selected objects options.
+     * Remember the slider's value from previous selections through SliderValues script.
      */
     void ActivateOptions(GameObject selectedObj)
     {
@@ -134,11 +135,13 @@ public class MouseTesting : MonoBehaviour {
             else if (activatedType == TypeNames.Light.ToString())
             {
                 ChangeLight(selectedObj);
+                LightSlider.value = selectedObj.GetComponent<SliderValues>().GetSliderValue();
                 sliderLight.SetActive(true);
             }
             else if (activatedType == TypeNames.Door.ToString())
             {
                 ChangeDoor(selectedObj);
+                LightSlider.value = selectedObj.GetComponent<SliderValues>().GetSliderValue();
                 sliderLight.SetActive(true);
             }
         }
@@ -172,6 +175,7 @@ public class MouseTesting : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.E))
             {
                 obj.GetComponent<Light>().intensity = 0;
+                obj.GetComponent<InteractLight>().SetSliderValue(0f);
                 LightSlider.value = 0;
             }
         }
@@ -184,6 +188,7 @@ public class MouseTesting : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.E))
             {
                 obj.GetComponent<Light>().intensity = 1;
+                obj.GetComponent<InteractLight>().SetSliderValue(1f);
                 LightSlider.value = 1;
             }
         }
@@ -218,6 +223,7 @@ public class MouseTesting : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.E))
             {
                 obj.GetComponent<Transform>().localEulerAngles = new Vector3(0, 270, 0);
+                obj.GetComponent<SliderValues>().SetSliderValue(0f);
                 LightSlider.value = 0;
             }
         }
@@ -230,6 +236,7 @@ public class MouseTesting : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.E))
             {
                 obj.GetComponent<Transform>().localEulerAngles = new Vector3(0, 170, 0);
+                obj.GetComponent<SliderValues>().SetSliderValue(1f);
                 LightSlider.value = 1;
             }
         }
@@ -246,10 +253,12 @@ public class MouseTesting : MonoBehaviour {
             if (changeableObject.tag == "ChangeableLight")
             {
                 changeableObject.GetComponent<Light>().intensity = newIntensity;
+                changeableObject.GetComponent<SliderValues>().SetSliderValue(newIntensity);
             }
             else if (changeableObject.tag == "ChangeableDoor")
             {
                 changeableObject.GetComponent<Transform>().localEulerAngles = new Vector3(0, 270 - newIntensity*100, 0);
+                changeableObject.GetComponent<SliderValues>().SetSliderValue(newIntensity);
             }   
         }
     }
