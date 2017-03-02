@@ -16,7 +16,6 @@ public class MouseTesting : MonoBehaviour {
 
     private bool movableObjectCanMove = false;
     private bool movableObjectControlled = false;
-    private bool movableObjectChangeable = false;
 
     public Camera cam;
     public Text optionText;
@@ -27,7 +26,6 @@ public class MouseTesting : MonoBehaviour {
     private string activatedType;
 
     private Vector3 originalDoorRotation;
-    private Vector3 maximumDoorRotation = new Vector3(0, 150, 0);
 
     enum TypeNames
     {
@@ -93,6 +91,9 @@ public class MouseTesting : MonoBehaviour {
 
             if (Physics.Raycast(ray, out hit, 10))
             {
+                /*
+                 * What kind of object did the user hit. 
+                 */
                 if (hit.transform.tag == "ChangeableObject")
                 {
                     changeableObject = hit.transform.gameObject;
