@@ -148,7 +148,6 @@
      <Compile Include="Assets\SteamVR\Scripts\SteamVR_TrackedObject.cs" />
      <Compile Include="Assets\SteamVR\Scripts\SteamVR_UpdatePoses.cs" />
      <Compile Include="Assets\SteamVR\Scripts\SteamVR_Utils.cs" />
-     <Compile Include="Assets\_Scripts\InteractLight.cs" />
      <Compile Include="Assets\_Scripts\MapViewLight.cs" />
      <Compile Include="Assets\_Scripts\MouseTesting.cs" />
      <Compile Include="Assets\_Scripts\SliderValues.cs" />

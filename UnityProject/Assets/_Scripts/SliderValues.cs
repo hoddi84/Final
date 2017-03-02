@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractLight : MonoBehaviour {
+public class SliderValues : MonoBehaviour {
 
     float sliderValue = 0;
 

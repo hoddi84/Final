@@ -175,7 +175,7 @@ public class MouseTesting : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.E))
             {
                 obj.GetComponent<Light>().intensity = 0;
-                obj.GetComponent<InteractLight>().SetSliderValue(0f);
+                obj.GetComponent<SliderValues>().SetSliderValue(0f);
                 LightSlider.value = 0;
             }
         }
@@ -188,7 +188,7 @@ public class MouseTesting : MonoBehaviour {
             if (Input.GetKeyDown(KeyCode.E))
             {
                 obj.GetComponent<Light>().intensity = 1;
-                obj.GetComponent<InteractLight>().SetSliderValue(1f);
+                obj.GetComponent<SliderValues>().SetSliderValue(1f);
                 LightSlider.value = 1;
             }
         }
