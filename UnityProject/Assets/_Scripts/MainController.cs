@@ -14,8 +14,10 @@ public class MainController : MonoBehaviour {
     private Transform movableObject;
     private GameObject changeableObject;
 
-    private bool movableObjectCanMove = false;
+    // If you have selected a movable object.
     private bool movableObjectControlled = false;
+    // If you have selected a movable message.
+    private bool movableMessageControlled = false;
 
     public Camera cam;
     public Text optionText;
@@ -54,15 +56,23 @@ public class MainController : MonoBehaviour {
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, 10)) {
-                if (hit.transform.tag == "MovableObject" && !movableObjectControlled)
+                if (!movableObjectControlled)
                 {
-                    movableObject = hit.transform;
-                    movableObjectCanMove = true;
-                    movableObjectControlled = true;
+                    if (hit.transform.tag == "MovableObject")
+                    {
+                        movableObject = hit.transform;
+                        movableObjectControlled = true;
+                    }
+                    else if (hit.transform.tag == "ChangeableMessage")
+                    {
+                        movableObject = hit.transform;
+                        movableMessageControlled = true;
+                    }
                 }
             }
 
-            if (movableObjectCanMove)
+            // If true, selected object will completely follow mouse cursor.
+            if (movableObjectControlled)
             {
                 Vector3 v3 = Input.mousePosition;
                 v3.z = 15f;
@@ -70,12 +80,22 @@ public class MainController : MonoBehaviour {
 
                 movableObject.position = new Vector3(v3.x, movableObject.position.y, v3.z);
             }
+
+            // If true, can move the message controller around the z-axis.
+            if (movableMessageControlled)
+            {
+                Vector3 v3 = Input.mousePosition;
+                v3.z = 15f;
+                v3 = cam.ScreenToWorldPoint(v3);
+
+                movableObject.position = new Vector3(movableObject.position.x, movableObject.position.y, v3.z);
+            }
         } 
 
         if (Input.GetMouseButtonUp(0))
         {
-            movableObjectCanMove = false;
             movableObjectControlled = false;
+            movableMessageControlled = false;
             movableObject = null;
         }
 

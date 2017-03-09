@@ -9,6 +9,7 @@ TagManager:
   - ChangeableObject
   - ChangeableLight
   - ChangeableDoor
+  - ChangeableMessage
   layers:
   - Default
   - TransparentFX
