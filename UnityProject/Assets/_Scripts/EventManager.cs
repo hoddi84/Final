@@ -17,7 +17,6 @@ public class EventManager : MonoBehaviour {
     public static event ClickedEventHandler KeyE_Down;
     public static event ClickedEventHandler KeyE_Up;
 
-
     void Update()
     {
         // Left Mouse Button

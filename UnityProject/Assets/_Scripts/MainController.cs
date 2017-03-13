@@ -30,6 +30,12 @@ public class MainController : MonoBehaviour {
     private bool mouseLeftPressedDown = false;
     private bool mouseRightPressedDown = false;
 
+    // Sprites for the mapView.
+    public Sprite lightBulbOn;
+    public Sprite lightBulbOff;
+    public Sprite arrowSprite;
+    public GameObject selectedArrow;
+
     void OnEnable()
     {
         EventManager.MouseDownLeft += MouseDownLeftHandler;
@@ -74,6 +80,7 @@ public class MainController : MonoBehaviour {
         sliderObject.SetActive(false);
 
         SliderScript = sliderObject.GetComponent<Slider>();
+
     }
 
     // Update is called once per frame
@@ -153,7 +160,7 @@ public class MainController : MonoBehaviour {
                 {
                     changeableObject = hit.transform.gameObject;
                     activatedType = ControllableTypes.Light.ToString();
-
+                    selectedArrow.transform.position = new Vector3(hit.transform.position.x - 2.5f, selectedArrow.transform.position.y, hit.transform.position.z);
                 }
                 else if (hit.transform.tag == "ChangeableDoor")
                 {
@@ -203,13 +210,27 @@ public class MainController : MonoBehaviour {
     {
         bool lightOn;
 
-        if (obj.GetComponent<Light>().intensity > 0)
+        if (obj.GetComponentInChildren<Light>().intensity > 0)
         {
             lightOn = true;
         }
         else
         {
             lightOn = false;
+        }
+
+        /*
+         * When the slider is at full (which is 1), then the intensity of the light
+         * is also at 1, then we change the sprite to the corresponding lightBulbOn.
+         * Same goes for intensity when it equals 0.
+         */
+        if (obj.GetComponentInChildren<Light>().intensity == 1)
+        {
+            obj.GetComponentInChildren<SpriteRenderer>().sprite = lightBulbOn;
+        }
+        else if (obj.GetComponentInChildren<Light>().intensity == 0)
+        {
+            obj.GetComponentInChildren<SpriteRenderer>().sprite = lightBulbOff;
         }
 
         if (lightOn)
@@ -220,7 +241,8 @@ public class MainController : MonoBehaviour {
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                obj.GetComponent<Light>().intensity = 0;
+                obj.GetComponentInChildren<Light>().intensity = 0;
+                obj.GetComponentInChildren<SpriteRenderer>().sprite = lightBulbOff;
                 obj.GetComponent<SliderValues>().SetSliderValue(0f);
                 SliderScript.value = 0;
             }
@@ -233,7 +255,8 @@ public class MainController : MonoBehaviour {
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                obj.GetComponent<Light>().intensity = 1;
+                obj.GetComponentInChildren<Light>().intensity = 1;
+                obj.GetComponentInChildren<SpriteRenderer>().sprite = lightBulbOn;
                 obj.GetComponent<SliderValues>().SetSliderValue(1f);
                 SliderScript.value = 1;
             }
@@ -301,7 +324,7 @@ public class MainController : MonoBehaviour {
         {
             if (changeableObject.tag == "ChangeableLight")
             {
-                changeableObject.GetComponent<Light>().intensity = newIntensity;
+                changeableObject.GetComponentInChildren<Light>().intensity = newIntensity;
                 changeableObject.GetComponent<SliderValues>().SetSliderValue(newIntensity);
             }
             else if (changeableObject.tag == "ChangeableDoor")

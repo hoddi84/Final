@@ -10,7 +10,7 @@ public class SliderValues : MonoBehaviour {
      * the intensity of a light or the rotation of a door so that it doesn't
      * screw up when we change between controllable objects.
      */
-    float sliderValue = 0;
+    float sliderValue = 1;
 
     public void SetSliderValue(float value)
     {
