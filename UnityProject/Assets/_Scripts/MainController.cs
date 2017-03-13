@@ -36,6 +36,10 @@ public class MainController : MonoBehaviour {
     public Sprite arrowSprite;
     public GameObject selectedArrow;
 
+    // Sounds used.
+    public AudioClip lightSwitch;
+    public AudioClip lightAmbience;
+
     void OnEnable()
     {
         EventManager.MouseDownLeft += MouseDownLeftHandler;
@@ -223,13 +227,25 @@ public class MainController : MonoBehaviour {
          * When the slider is at full (which is 1), then the intensity of the light
          * is also at 1, then we change the sprite to the corresponding lightBulbOn.
          * Same goes for intensity when it equals 0.
+         * Also we must adjust for the audioclip being played, i.e. when the intensity 
+         * is equal to 0 there will be no ambience sound coming from the light.
          */
         if (obj.GetComponentInChildren<Light>().intensity == 1)
         {
+            // Show the light bulb on sprite.
             obj.GetComponentInChildren<SpriteRenderer>().sprite = lightBulbOn;
+            // Play the ambience of the lights, check first if something is already playing.
+            if (!obj.GetComponent<AudioSource>().isPlaying)
+            {
+                obj.GetComponent<AudioSource>().minDistance = 2.6f;
+                obj.GetComponent<AudioSource>().PlayOneShot(lightAmbience);
+                obj.GetComponent<AudioSource>().loop = true;
+            }
+            
         }
         else if (obj.GetComponentInChildren<Light>().intensity == 0)
         {
+            // Show the light bulb off sprite.
             obj.GetComponentInChildren<SpriteRenderer>().sprite = lightBulbOff;
         }
 
@@ -241,8 +257,20 @@ public class MainController : MonoBehaviour {
 
             if (Input.GetKeyDown(KeyCode.E))
             {
+                /*
+                 * We want to play the light switch sound when we turn off the lights.
+                 * Since we are turning off the lights, we check if something else is
+                 * playing and turn that off first.
+                 */
+                if (obj.GetComponent<AudioSource>().isPlaying)
+                {
+                    obj.GetComponent<AudioSource>().Stop();
+                    obj.GetComponent<AudioSource>().minDistance = 0.7f;
+                    obj.GetComponent<AudioSource>().PlayOneShot(lightSwitch);
+                    obj.GetComponent<AudioSource>().loop = false;
+
+                }
                 obj.GetComponentInChildren<Light>().intensity = 0;
-                obj.GetComponentInChildren<SpriteRenderer>().sprite = lightBulbOff;
                 obj.GetComponent<SliderValues>().SetSliderValue(0f);
                 SliderScript.value = 0;
             }
@@ -255,8 +283,26 @@ public class MainController : MonoBehaviour {
 
             if (Input.GetKeyDown(KeyCode.E))
             {
+                /*
+                * We want to play the light switch sound when we turn on the lights.
+                * Since we are turning on the lights, we check if something else is
+                * playing and turn that off first. If nothing is playing we just start
+                * to play the clip.
+                */
+                if (obj.GetComponent<AudioSource>().isPlaying)
+                {
+                    obj.GetComponent<AudioSource>().Stop();
+                    obj.GetComponent<AudioSource>().minDistance = 0.7f;
+                    obj.GetComponent<AudioSource>().PlayOneShot(lightSwitch);
+                    obj.GetComponent<AudioSource>().loop = false;
+                }
+                else
+                {
+                    obj.GetComponent<AudioSource>().minDistance = 0.7f;
+                    obj.GetComponent<AudioSource>().PlayOneShot(lightSwitch);
+                    obj.GetComponent<AudioSource>().loop = false;
+                }
                 obj.GetComponentInChildren<Light>().intensity = 1;
-                obj.GetComponentInChildren<SpriteRenderer>().sprite = lightBulbOn;
                 obj.GetComponent<SliderValues>().SetSliderValue(1f);
                 SliderScript.value = 1;
             }
