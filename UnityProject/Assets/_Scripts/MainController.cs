@@ -192,13 +192,21 @@ public class MainController : MonoBehaviour {
             else if (activatedType == ControllableTypes.Light.ToString())
             {
                 ChangeLight(selectedObj);
-                SliderScript.value = selectedObj.GetComponent<SliderValues>().GetSliderValue();
+                SliderScript.value = selectedObj.GetComponentInChildren<Light>().intensity;
                 sliderObject.SetActive(true);
             }
             else if (activatedType == ControllableTypes.Door.ToString())
             {
                 ChangeDoor(selectedObj);
-                SliderScript.value = selectedObj.GetComponent<SliderValues>().GetSliderValue();
+                //SliderScript.value = selectedObj.GetComponent<SliderValues>().GetSliderValue();
+                if (selectedObj.GetComponent<SliderValues>().DoorClosed())
+                {
+                    SliderScript.value = 0;
+                }
+                else
+                {
+                    SliderScript.value = 1;
+                }
                 sliderObject.SetActive(true);
             }
         }
@@ -319,14 +327,16 @@ public class MainController : MonoBehaviour {
     void ChangeDoor(GameObject obj)
     {
         bool doorOpen;
+        float frameRotY = obj.GetComponent<SliderValues>().frame.rotation.y;
+        float doorRotY = obj.GetComponent<SliderValues>().door.rotation.y;
 
-        if (obj.GetComponent<Transform>().localEulerAngles.y < 270)
+        if (obj.GetComponent<SliderValues>().DoorClosed())
         {
-            doorOpen = true;
+            doorOpen = false;
         }
         else
         {
-            doorOpen = false;
+            doorOpen = true;
         }
 
         if (doorOpen)
@@ -337,7 +347,7 @@ public class MainController : MonoBehaviour {
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                obj.GetComponent<Transform>().localEulerAngles = new Vector3(0, 270, 0);
+                obj.transform.Rotate(0, 60, 0);
                 obj.GetComponent<SliderValues>().SetSliderValue(0f);
                 SliderScript.value = 0;
             }
@@ -350,7 +360,7 @@ public class MainController : MonoBehaviour {
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                obj.GetComponent<Transform>().localEulerAngles = new Vector3(0, 170, 0);
+                obj.transform.Rotate(0, -60, 0);
                 obj.GetComponent<SliderValues>().SetSliderValue(1f);
                 SliderScript.value = 1;
             }
@@ -375,8 +385,9 @@ public class MainController : MonoBehaviour {
             }
             else if (changeableObject.tag == "ChangeableDoor")
             {
-                changeableObject.GetComponent<Transform>().localEulerAngles = new Vector3(0, 270 - newIntensity*100, 0);
-                changeableObject.GetComponent<SliderValues>().SetSliderValue(newIntensity);
+                // TODO fix the slider for the door.
+                //changeableObject.GetComponent<Transform>().Rotate(0, newIntensity, 0);
+                //changeableObject.GetComponent<SliderValues>().SetSliderValue(newIntensity);
             }   
         }
     }

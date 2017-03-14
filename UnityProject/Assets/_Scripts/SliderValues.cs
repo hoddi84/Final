@@ -10,7 +10,15 @@ public class SliderValues : MonoBehaviour {
      * the intensity of a light or the rotation of a door so that it doesn't
      * screw up when we change between controllable objects.
      */
-    float sliderValue = 1;
+    float sliderValue = 0;
+
+    /*
+     * We need to check if the doors are closed by comparing the frame's 
+     * rotation to the door's rotation. We must assign this script as well
+     * to all doors.
+     */
+    public Transform door;
+    public Transform frame;
 
     public void SetSliderValue(float value)
     {
@@ -20,5 +28,23 @@ public class SliderValues : MonoBehaviour {
     public float GetSliderValue()
     {
         return sliderValue;
+    }
+
+    public bool DoorClosed()
+    {
+        /*
+         * If the rotationDiff is 0, we know that the door and the frame
+         * are with the same rotation, hence the doors must be closed.
+         */
+        float rotationDiff;
+        rotationDiff = Mathf.Abs(door.rotation.y - frame.rotation.y);
+        if (rotationDiff < 0.05)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
