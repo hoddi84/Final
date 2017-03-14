@@ -138,6 +138,9 @@
     <None Include="Assets\SteamVR\Resources\SteamVR_Fade.shader" />
     <None Include="Assets\SteamVR\Resources\SteamVR_SphericalProjection.shader" />
     <None Include="Assets\SteamVR\readme.txt" />
+    <None Include="Assets\amanda\shaders\AmandaShader.shader" />
+    <None Include="Assets\amanda\shaders\gunsShader.shader" />
+    <None Include="Assets\amanda\shaders\specillum.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

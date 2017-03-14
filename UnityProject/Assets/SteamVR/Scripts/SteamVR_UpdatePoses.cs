@@ -7,18 +7,24 @@
 using UnityEngine;
 using Valve.VR;
 
+/*
+ * Put this on the Camera(eye) to fix the controllers being auto deactivated.
+ * Seemed to fix the problem. 
+ */
 [RequireComponent(typeof(Camera))]
 public class SteamVR_UpdatePoses : MonoBehaviour
 {
 #if !(UNITY_5_6)
 	void Awake()
 	{
+        /*
 		var camera = GetComponent<Camera>();
 		camera.stereoTargetEye = StereoTargetEyeMask.None;
 		camera.clearFlags = CameraClearFlags.Nothing;
 		camera.useOcclusionCulling = false;
 		camera.cullingMask = 0;
 		camera.depth = -9999;
+        */
 	}
 #endif
 	void OnPreCull()

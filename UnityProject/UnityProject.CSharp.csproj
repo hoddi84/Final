@@ -183,6 +183,7 @@
     <Compile Include="Assets\SteamVR\Scripts\SteamVR_TrackedObject.cs" />
     <Compile Include="Assets\SteamVR\Scripts\SteamVR_UpdatePoses.cs" />
     <Compile Include="Assets\SteamVR\Scripts\SteamVR_Utils.cs" />
+    <Compile Include="Assets\ViveController.cs" />
     <Compile Include="Assets\_Scripts\ControllableTypes.cs" />
     <Compile Include="Assets\_Scripts\EventManager.cs" />
     <Compile Include="Assets\_Scripts\FadeController.cs" />
@@ -190,8 +191,6 @@
     <Compile Include="Assets\_Scripts\MapViewLight.cs" />
     <Compile Include="Assets\_Scripts\SliderValues.cs" />
     <Compile Include="Assets\_ScriptsTest\EventTester.cs" />
-    <Compile Include="Assets\_ScriptsTest\ObjectCreater.cs" />
-    <Compile Include="Assets\_ScriptsTest\UserController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Kitten\Shaders\Alpha-Diffuse.shader" />
@@ -211,6 +210,9 @@
     <None Include="Assets\SteamVR\Resources\SteamVR_Fade.shader" />
     <None Include="Assets\SteamVR\Resources\SteamVR_SphericalProjection.shader" />
     <None Include="Assets\SteamVR\readme.txt" />
+    <None Include="Assets\amanda\shaders\AmandaShader.shader" />
+    <None Include="Assets\amanda\shaders\gunsShader.shader" />
+    <None Include="Assets\amanda\shaders\specillum.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
