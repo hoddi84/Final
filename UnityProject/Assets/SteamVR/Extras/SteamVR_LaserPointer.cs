@@ -28,6 +28,35 @@ public class SteamVR_LaserPointer : MonoBehaviour
 
     Transform previousContact = null;
 
+    /*
+     * The following is to disable the laser until the Pad is clicked.
+     */
+    private bool laserActivated = false;
+    private SteamVR_TrackedController controller;
+
+    void OnEnable()
+    {
+        controller = GetComponent<SteamVR_TrackedController>();
+        controller.PadClicked += HandlePadClicked;
+        controller.PadUnclicked += HandlePadUnclicked; 
+    }
+
+    void OnDisable()
+    {
+        controller.PadClicked -= HandlePadClicked;
+        controller.PadUnclicked -= HandlePadUnclicked;
+    }
+
+    void HandlePadClicked(object sender, ClickedEventArgs e)
+    {
+        laserActivated = true;
+    }
+
+    void HandlePadUnclicked(object sender, ClickedEventArgs e)
+    {
+        laserActivated = false;
+    }
+
 	// Use this for initialization
 	void Start ()
     {
@@ -79,6 +108,20 @@ public class SteamVR_LaserPointer : MonoBehaviour
     // Update is called once per frame
 	void Update ()
     {
+        /*
+         * The following is added to enable the laser pointer if the pad has been clicked,
+         * and disable it when the pad is unclicked.
+         */
+
+        if (laserActivated)
+        {
+            pointer.SetActive(true);
+        }
+        else
+        {
+            pointer.SetActive(false);
+        }
+
         if (!isActive)
         {
             isActive = true;

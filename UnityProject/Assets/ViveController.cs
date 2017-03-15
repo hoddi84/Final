@@ -31,6 +31,7 @@ public class ViveController : MonoBehaviour {
             if (objBeingHeld != null)
             {
                 objBeingHeld.transform.parent = transform;
+                //objBeingHeld.transform.localRotation = Quaternion.identity;
                 objBeingHeld.GetComponent<Rigidbody>().isKinematic = true;
                 objBeingHeld.GetComponent<Rigidbody>().useGravity = false;
             }

@@ -30,7 +30,12 @@ public class SteamVR_Teleporter : MonoBehaviour
 			trackedController = gameObject.AddComponent<SteamVR_TrackedController>();
 		}
 
-		trackedController.TriggerClicked += new ClickedEventHandler(DoClick);
+        /*
+         * Change to the Pad to teleport. E.g we want the "laser" to show when we click
+         * the Pad, and then we should teleport when we release the Pad.
+         */
+        //trackedController.TriggerClicked += new ClickedEventHandler(DoClick);
+        trackedController.PadUnclicked += new ClickedEventHandler(DoClick);
 
 		if (teleportType == TeleportType.TeleportTypeUseTerrain)
 		{
