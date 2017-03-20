@@ -4,28 +4,63 @@ using UnityEngine;
 
 public class Gaze : MonoBehaviour {
 
-    public GameObject start;
-    public GameObject end;
+    private Vector3 lookDir;
 
-    private Vector3 dir;
+    bool gazing = false;
+    float timeGazing = 0f;
+
+    bool shortGaze = false;
+    bool longGaze = false;
+
 	// Use this for initialization
 	void Start () {
         
 	}
-	
-	// Update is called once per frame
-	void Update () {
 
-        dir = start.transform.position - end.transform.position;
-        Debug.DrawLine(start.transform.position, end.transform.position, Color.green);
-	}
+    void Update()
+    {
+        if (gazing)
+        {
+            timeGazing += Time.deltaTime;
+
+            if (timeGazing <= 2 && timeGazing >= 1)
+            {
+                shortGaze = true;
+            }
+            if (timeGazing >= 4f)
+            {
+                longGaze = true;
+            }
+        }
+        else
+        {
+            timeGazing = 0f;
+            shortGaze = false;
+            longGaze = false;
+        }
+
+        if (shortGaze)
+        {
+            print("just a short gaze");
+        }
+        if (longGaze)
+        {
+            print("just a long gaze");
+        }
+    }
 
     void FixedUpdate()
     {
-        Vector3 fwd = transform.TransformDirection(Vector3.forward);
-        if (Physics.Raycast(start.transform.position, dir,100f))
+        RaycastHit hit;
+        Ray r = new Ray(transform.position, transform.forward);
+
+        if (Physics.Raycast(r, out hit, 5f))
         {
-            print("hit");
+            gazing = true;
+        }
+        else
+        {
+            gazing = false;
         }
     }
 }
