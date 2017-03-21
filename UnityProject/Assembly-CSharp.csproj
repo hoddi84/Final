@@ -46,6 +46,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Head Look Controller\Scripts\CursorHit.cs" />
+     <Compile Include="Assets\Head Look Controller\Scripts\HeadLookController.cs" />
+     <Compile Include="Assets\Head Look Controller\Scripts\HelpText.cs" />
+     <Compile Include="Assets\Head Look Controller\Scripts\OrbitCamera.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />
      <Compile Include="Assets\SteamVR\Extras\SteamVR_Teleporter.cs" />
@@ -148,23 +152,25 @@
      <Compile Include="Assets\SteamVR\Scripts\SteamVR_TrackedObject.cs" />
      <Compile Include="Assets\SteamVR\Scripts\SteamVR_UpdatePoses.cs" />
      <Compile Include="Assets\SteamVR\Scripts\SteamVR_Utils.cs" />
-     <Compile Include="Assets\ViveController.cs" />
      <Compile Include="Assets\_Scripts\ControllableTypes.cs" />
      <Compile Include="Assets\_Scripts\EventManager.cs" />
      <Compile Include="Assets\_Scripts\FadeController.cs" />
      <Compile Include="Assets\_Scripts\MainController.cs" />
      <Compile Include="Assets\_Scripts\MapViewLight.cs" />
      <Compile Include="Assets\_Scripts\SliderValues.cs" />
-     <Compile Include="Assets\_ScriptsTest\EventTester.cs" />
-     <None Include="Assets\Kitten\Shaders\Normal-Diffuse.shader" />
+     <Compile Include="Assets\_Scripts\ViveController.cs" />
+     <Compile Include="Assets\_ScriptsInProgress\DoorIcons.cs" />
+     <Compile Include="Assets\_ScriptsInProgress\EventTester.cs" />
+     <Compile Include="Assets\_ScriptsInProgress\Gaze.cs" />
+     <None Include="Assets\_Characters\Kitten\Shaders\Normal-Diffuse.shader" />
      <None Include="Assets\SteamVR\Resources\SteamVR_Fade.shader" />
-     <None Include="Assets\amanda\shaders\gunsShader.shader" />
-     <None Include="Assets\amanda\shaders\AmandaShader.shader" />
+     <None Include="Assets\_Characters\amanda\shaders\gunsShader.shader" />
+     <None Include="Assets\_Characters\amanda\shaders\AmandaShader.shader" />
      <None Include="Assets\SteamVR\Resources\SteamVR_ClearAll.shader" />
      <None Include="Assets\SteamVR\InteractionSystem\Hints\Shaders\ControllerButtonHints.shader" />
-     <None Include="Assets\Kitten\Shaders\Alpha-Diffuse.shader" />
+     <None Include="Assets\_Characters\Kitten\Shaders\Alpha-Diffuse.shader" />
      <None Include="Assets\SteamVR\InteractionSystem\Teleport\Shaders\Highlight.shader" />
-     <None Include="Assets\amanda\shaders\specillum.shader" />
+     <None Include="Assets\_Characters\amanda\shaders\specillum.shader" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
      <None Include="Assets\SteamVR\Resources\SteamVR_SphericalProjection.shader" />
@@ -176,9 +182,6 @@
      <None Include="Assets\SteamVR\InteractionSystem\Core\Shaders\SeeThru.shader" />
      <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
      <None Include="Assets\SteamVR\InteractionSystem\Readme_InteractionSystem.txt" />
- <Reference Include="UnityEngine.Advertisements">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Advertisements/UnityEngine.Advertisements.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -193,9 +196,6 @@
  </Reference>
  <Reference Include="UnityEngine.HoloLens">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityHoloLens/RuntimeEditor/UnityEngine.HoloLens.dll</HintPath>
- </Reference>
- <Reference Include="UnityEngine.Purchasing">
- <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityPurchasing/UnityEngine.Purchasing.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.VR">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityVR/RuntimeEditor/UnityEngine.VR.dll</HintPath>
