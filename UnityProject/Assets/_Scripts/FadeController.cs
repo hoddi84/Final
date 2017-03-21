@@ -2,6 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * The purpose of this script is to provide a fadeout and
+ * fade in effect for the camera rig camera. If the activeControllers
+ * boolean is true than you can control the fade effect with the vive 
+ * controllers, else you must press a button. 
+ */
 public class FadeController : MonoBehaviour {
 
     private SteamVR_TrackedController controller;

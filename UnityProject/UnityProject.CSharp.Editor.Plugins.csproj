@@ -130,8 +130,6 @@
     <Compile Include="Assets\Standard Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Assets\Kitten\Shaders\Alpha-Diffuse.shader" />
-    <None Include="Assets\Kitten\Shaders\Normal-Diffuse.shader" />
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
@@ -147,9 +145,11 @@
     <None Include="Assets\SteamVR\Resources\SteamVR_Fade.shader" />
     <None Include="Assets\SteamVR\Resources\SteamVR_SphericalProjection.shader" />
     <None Include="Assets\SteamVR\readme.txt" />
-    <None Include="Assets\amanda\shaders\AmandaShader.shader" />
-    <None Include="Assets\amanda\shaders\gunsShader.shader" />
-    <None Include="Assets\amanda\shaders\specillum.shader" />
+    <None Include="Assets\_Characters\Kitten\Shaders\Alpha-Diffuse.shader" />
+    <None Include="Assets\_Characters\Kitten\Shaders\Normal-Diffuse.shader" />
+    <None Include="Assets\_Characters\amanda\shaders\AmandaShader.shader" />
+    <None Include="Assets\_Characters\amanda\shaders\gunsShader.shader" />
+    <None Include="Assets\_Characters\amanda\shaders\specillum.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

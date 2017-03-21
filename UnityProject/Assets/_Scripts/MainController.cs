@@ -35,10 +35,13 @@ public class MainController : MonoBehaviour {
     public Sprite lightBulbOff;
     public Sprite arrowSprite;
     public GameObject selectedArrow;
+    public Sprite doorClosedSprite;
+    public Sprite doorOpenSprite;
 
     // Sounds used.
     public AudioClip lightSwitch;
     public AudioClip lightAmbience;
+    public AudioClip doorSlam;
 
     void OnEnable()
     {
@@ -170,6 +173,7 @@ public class MainController : MonoBehaviour {
                 {
                     changeableObject = hit.transform.gameObject;
                     activatedType = ControllableTypes.Door.ToString();
+                    selectedArrow.transform.position = new Vector3(hit.transform.position.x - .5f, selectedArrow.transform.position.y, hit.transform.position.z + 1.15f);
                 }
             }
         }
@@ -199,7 +203,7 @@ public class MainController : MonoBehaviour {
             {
                 ChangeDoor(selectedObj);
                 //SliderScript.value = selectedObj.GetComponent<SliderValues>().GetSliderValue();
-                if (selectedObj.GetComponent<SliderValues>().DoorClosed())
+                if (selectedObj.GetComponentInChildren<SliderValues>().DoorClosed())
                 {
                     SliderScript.value = 0;
                 }
@@ -326,17 +330,21 @@ public class MainController : MonoBehaviour {
      */
     void ChangeDoor(GameObject obj)
     {
+        Transform door = obj.transform.GetChild(1);
         bool doorOpen;
-        float frameRotY = obj.GetComponent<SliderValues>().frame.rotation.y;
-        float doorRotY = obj.GetComponent<SliderValues>().door.rotation.y;
 
-        if (obj.GetComponent<SliderValues>().DoorClosed())
+        float frameRotY = door.GetComponent<SliderValues>().frame.rotation.y;
+        float doorRotY = door.GetComponent<SliderValues>().door.rotation.y;
+
+        if (door.GetComponent<SliderValues>().DoorClosed())
         {
             doorOpen = false;
+            obj.GetComponentInChildren<SpriteRenderer>().sprite = doorClosedSprite;
         }
         else
         {
             doorOpen = true;
+            obj.GetComponentInChildren<SpriteRenderer>().sprite = doorOpenSprite;
         }
 
         if (doorOpen)
@@ -347,9 +355,21 @@ public class MainController : MonoBehaviour {
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                obj.transform.Rotate(0, 60, 0);
-                obj.GetComponent<SliderValues>().SetSliderValue(0f);
+                door.transform.Rotate(0, 60, 0);
+                door.GetComponent<SliderValues>().SetSliderValue(0f);
                 SliderScript.value = 0;
+
+                /*
+                 * Play the door slam sound when the door is closed.
+                 * Check if something is already playing and stop that.
+                 */
+                if (obj.GetComponent<AudioSource>().isPlaying)
+                {
+                    obj.GetComponent<AudioSource>().Stop();
+                }
+                obj.GetComponent<AudioSource>().clip = doorSlam;
+                obj.GetComponent<AudioSource>().Play();
+
             }
         }
         else
@@ -360,12 +380,11 @@ public class MainController : MonoBehaviour {
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                obj.transform.Rotate(0, -60, 0);
-                obj.GetComponent<SliderValues>().SetSliderValue(1f);
+                door.transform.Rotate(0, -60, 0);
+                door.GetComponent<SliderValues>().SetSliderValue(1f);
                 SliderScript.value = 1;
             }
         }
-
     }
 
     /*
