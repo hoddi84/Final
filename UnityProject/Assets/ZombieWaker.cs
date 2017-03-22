@@ -5,74 +5,79 @@ using UnityEngine;
 public class ZombieWaker : MonoBehaviour {
 
     private HeadLookController lookController;
-    public Transform zombieHeadDown;
-    public float degreeLookUp = 80;
-    public float rotationSpeed = 10f;
-    private float rotationTotal = 0f;
+    public ViveController controller;
 
-    private bool startLookingUp = false;
-    private bool startLookingDown = false;
-    private bool moveDown = false;
+    public Transform headDown;
+    public Transform headFollowRig;
 
-    private Quaternion rotationOriginal;
+    private AudioSource audio;
+
+    public AudioClip zombieBreathe;
+    public AudioClip zombieWakeUp;
+    public AudioClip zombieSleep;
+
+    private bool finishedWakeSound = false;
+    private bool finishedSleepSound = false;
 
 	// Use this for initialization
 	void Start () {
 
         lookController = GetComponent<HeadLookController>();
-        lookController.enabled = false;
+        lookController.target = headDown.position;
 
-        rotationOriginal = zombieHeadDown.transform.rotation;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
-        if (Input.GetKeyDown(KeyCode.R) && !moveDown)
-        {
-            moveDown = true;
-            startLookingUp = true;
-        }
-        else if (Input.GetKeyDown(KeyCode.R) && moveDown)
-        {
-            moveDown = false;
-            startLookingDown = true;
-        }
-
-        if (startLookingUp)
-        {
-            LookUp();
-        }
-
-        if (startLookingDown)
-        {
-            LookDown();
-        }
-        
+        audio = GetComponent<AudioSource>();
 	}
 
-    void LookUp()
+    // Update is called once per frame
+    void Update()
     {
-        rotationTotal += Time.deltaTime * rotationSpeed;
-        zombieHeadDown.Rotate(new Vector3(0, 0, 1) * Time.deltaTime * rotationSpeed);
-        if (rotationTotal > degreeLookUp)
+
+        if (controller.gripped)
         {
-            startLookingUp = false;
-            rotationTotal = 0f;
-            lookController.enabled = true;
+            lookController.target = headFollowRig.position;
+            if (!finishedWakeSound)
+            {
+                StartCoroutine(ZombieWakeUp());
+                finishedWakeSound = true;
+            }
+        }
+        else
+        {
+            lookController.target = headDown.position;
+            if (!finishedSleepSound)
+            {
+                StartCoroutine(ZombieSleep());
+                finishedSleepSound = true;
+            }
         }
     }
 
-    void LookDown()
+    IEnumerator ZombieWakeUp()
     {
-        lookController.effect = 0f;
-        lookController.enabled = false;
-        rotationTotal += Time.deltaTime * rotationSpeed;
-        zombieHeadDown.Rotate(new Vector3(0, 0, -1) * Time.deltaTime * rotationSpeed);
-        if (rotationTotal > 100)
+        if (audio.isPlaying)
         {
-            startLookingDown = false;
-            rotationTotal = 0f;
+            audio.Stop();
         }
+        audio.clip = zombieWakeUp;
+        audio.loop = false;
+        audio.Play();
+        yield return new WaitUntil(() => !audio.isPlaying);
+        audio.clip = zombieBreathe;
+        audio.loop = true;
+        audio.Play();
+        finishedSleepSound = false;
+    }
+
+    IEnumerator ZombieSleep()
+    {
+        if (audio.isPlaying)
+        {
+            audio.Stop();
+        }
+        audio.clip = zombieSleep;
+        audio.loop = false;
+        audio.Play();
+        finishedWakeSound = false;
+        yield return null;
     }
 }

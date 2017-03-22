@@ -38,15 +38,6 @@ public class Gaze : MonoBehaviour {
             shortGaze = false;
             longGaze = false;
         }
-
-        if (shortGaze)
-        {
-            print("just a short gaze");
-        }
-        if (longGaze)
-        {
-            print("just a long gaze");
-        }
     }
 
     void FixedUpdate()

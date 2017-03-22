@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33098695296830372}
   - component: {fileID: 23982883048526766}
   - component: {fileID: 114998303492586754}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Helmet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 4331716804777622}
   - component: {fileID: 33055105456560356}
   - component: {fileID: 23645888492851854}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Visor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
