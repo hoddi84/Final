@@ -191,7 +191,7 @@ GameObject:
   - component: {fileID: 611620725}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: RaycastHit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -795,6 +795,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1720435693}
   - component: {fileID: 1720435692}
+  - component: {fileID: 1720435694}
+  - component: {fileID: 1720435695}
   m_Layer: 0
   m_Name: MapViewController
   m_TagString: Untagged
@@ -843,6 +845,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1720435694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1720435691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff0aea33242540a4b9068c6d5248f35d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  overViewCam: {fileID: 1682712831}
+--- !u!114 &1720435695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1720435691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e40812cccc2c1e24394050a9c2e8bf07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2062842282
 GameObject:
   m_ObjectHideFlags: 0
