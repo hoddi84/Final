@@ -46,7 +46,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\ControlManager.cs" />
      <Compile Include="Assets\Head Look Controller\Scripts\CursorHit.cs" />
      <Compile Include="Assets\Head Look Controller\Scripts\HeadLookController.cs" />
      <Compile Include="Assets\Head Look Controller\Scripts\HelpText.cs" />
@@ -154,7 +153,6 @@
      <Compile Include="Assets\SteamVR\Scripts\SteamVR_TrackedObject.cs" />
      <Compile Include="Assets\SteamVR\Scripts\SteamVR_UpdatePoses.cs" />
      <Compile Include="Assets\SteamVR\Scripts\SteamVR_Utils.cs" />
-     <Compile Include="Assets\TestingEvents.cs" />
      <Compile Include="Assets\ZombieWaker.cs" />
      <Compile Include="Assets\_Scripts\ControllableTypes.cs" />
      <Compile Include="Assets\_Scripts\EventManager.cs" />
@@ -167,6 +165,8 @@
      <Compile Include="Assets\_ScriptsInProgress\EventTester.cs" />
      <Compile Include="Assets\_ScriptsInProgress\Gaze.cs" />
      <Compile Include="Assets\_ScriptsMain3\CullMainLight.cs" />
+     <Compile Include="Assets\_ScriptsMain3\InputHandler.cs" />
+     <Compile Include="Assets\_ScriptsMain3\InputManager.cs" />
      <Compile Include="Assets\_ScriptsMain3\ViewController.cs" />
      <None Include="Assets\_Characters\Kitten\Shaders\Normal-Diffuse.shader" />
      <None Include="Assets\SteamVR\Resources\SteamVR_Fade.shader" />
