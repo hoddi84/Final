@@ -22,7 +22,7 @@ public class InputHandler : MonoBehaviour {
     void Update()
     {
         /*
-         * Handler for the mouse input. 
+         * Mouse input. 
          */
         if (Input.GetMouseButtonDown(0))
         {
