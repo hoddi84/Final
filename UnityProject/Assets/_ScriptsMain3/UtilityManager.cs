@@ -1,19 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UtilityManager : MonoBehaviour {
 
-    public static void RotateObject(GameObject obj, float degrees)
+    public static void DisplayMessage(GameObject obj, Text textObject)
     {
-        obj.transform.Rotate(new Vector3(0, 1, 0), 30f);
-        print("rotated");
-    }
-
-    public static IEnumerator rot(GameObject obj, float degrees)
-    {
-        obj.transform.Rotate(new Vector3(0, 1, 0), degrees);
-        print("rotated");
-        yield return null;
+        textObject.text = "Name: " + obj.name + "\n" +
+                          "Tag: " + obj.tag + "\n";                  
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour {
 
@@ -8,6 +9,8 @@ public class InputManager : MonoBehaviour {
     public bool raycastHitLeft;
     public bool mouseDownRight;
     public bool mouseDownLeft;
+
+    public Text textObject;
 
     void OnEnable()
     {
@@ -37,6 +40,7 @@ public class InputManager : MonoBehaviour {
     {
         print("Hit Collider (left mouse), tag: " + obj.transform.tag);
         raycastHitLeft = true;
+        UtilityManager.DisplayMessage(obj, textObject);
     }
 
     void RaycastRight(GameObject obj)

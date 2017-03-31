@@ -168,7 +168,6 @@
      <Compile Include="Assets\_ScriptsMain3\InputHandler.cs" />
      <Compile Include="Assets\_ScriptsMain3\InputManager.cs" />
      <Compile Include="Assets\_ScriptsMain3\UtilityManager.cs" />
-     <Compile Include="Assets\_ScriptsMain3\UtilityTesting.cs" />
      <Compile Include="Assets\_ScriptsMain3\ViewController.cs" />
      <None Include="Assets\_Characters\Kitten\Shaders\Normal-Diffuse.shader" />
      <None Include="Assets\SteamVR\Resources\SteamVR_Fade.shader" />
