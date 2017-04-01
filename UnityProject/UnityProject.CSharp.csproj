@@ -86,6 +86,7 @@
     <Compile Include="Assets\Head Look Controller\Scripts\HelpText.cs" />
     <Compile Include="Assets\Head Look Controller\Scripts\OrbitCamera.cs" />
     <Compile Include="Assets\HeadFollow.cs" />
+    <Compile Include="Assets\ObjectActions.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_Teleporter.cs" />
@@ -199,7 +200,12 @@
     <Compile Include="Assets\_ScriptsInProgress\DoorIcons.cs" />
     <Compile Include="Assets\_ScriptsInProgress\EventTester.cs" />
     <Compile Include="Assets\_ScriptsInProgress\Gaze.cs" />
-    <Compile Include="Assets\_ScriptsMain3\MapViewController.cs" />
+    <Compile Include="Assets\_ScriptsMain3\Actions.cs" />
+    <Compile Include="Assets\_ScriptsMain3\CullMainLight.cs" />
+    <Compile Include="Assets\_ScriptsMain3\InputHandler.cs" />
+    <Compile Include="Assets\_ScriptsMain3\InputManager.cs" />
+    <Compile Include="Assets\_ScriptsMain3\UtilityManager.cs" />
+    <Compile Include="Assets\_ScriptsMain3\ViewController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />

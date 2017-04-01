@@ -40,7 +40,6 @@ public class InputManager : MonoBehaviour {
     {
         print("Hit Collider (left mouse), tag: " + obj.transform.tag);
         raycastHitLeft = true;
-        UtilityManager.DisplayMessage(obj, textObject);
     }
 
     void RaycastRight(GameObject obj)
