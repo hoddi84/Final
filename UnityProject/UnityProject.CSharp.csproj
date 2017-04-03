@@ -189,7 +189,6 @@
     <Compile Include="Assets\SteamVR\Scripts\SteamVR_TrackedObject.cs" />
     <Compile Include="Assets\SteamVR\Scripts\SteamVR_UpdatePoses.cs" />
     <Compile Include="Assets\SteamVR\Scripts\SteamVR_Utils.cs" />
-    <Compile Include="Assets\ZombieWaker.cs" />
     <Compile Include="Assets\_Scripts\ControllableTypes.cs" />
     <Compile Include="Assets\_Scripts\EventManager.cs" />
     <Compile Include="Assets\_Scripts\FadeController.cs" />
@@ -197,6 +196,7 @@
     <Compile Include="Assets\_Scripts\MapViewLight.cs" />
     <Compile Include="Assets\_Scripts\SliderValues.cs" />
     <Compile Include="Assets\_Scripts\ViveController.cs" />
+    <Compile Include="Assets\_Scripts\ZombieWaker.cs" />
     <Compile Include="Assets\_ScriptsInProgress\DoorIcons.cs" />
     <Compile Include="Assets\_ScriptsInProgress\EventTester.cs" />
     <Compile Include="Assets\_ScriptsInProgress\Gaze.cs" />
