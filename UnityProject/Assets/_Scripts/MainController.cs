@@ -44,6 +44,9 @@ public class MainController : MonoBehaviour {
     public AudioClip doorSlam;
     public AudioClip doorOpening;
 
+    // Controls for mapCamera.
+    public float mapCameraSpeed = .25f;
+
     void OnEnable()
     {
         EventManager.MouseDownLeft += MouseDownLeftHandler;
@@ -93,6 +96,38 @@ public class MainController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+
+        /*
+         * Controls for the mapCamera with bounds.
+         */
+        if (Input.GetKey(KeyCode.W))
+        {
+            if (mapCamera.transform.position.x > 2)
+            {
+                mapCamera.transform.Translate(0, mapCameraSpeed, 0);
+            }
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            if (mapCamera.transform.position.x < 13)
+            {
+                mapCamera.transform.Translate(0, -mapCameraSpeed, 0);
+            }
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            if (mapCamera.transform.position.z > -10)
+            {
+                mapCamera.transform.Translate(-mapCameraSpeed, 0, 0);
+            }
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            if (mapCamera.transform.position.z < -6.5f)
+            {
+                mapCamera.transform.Translate(mapCameraSpeed, 0, 0);
+            }
+        }
 
         /*
          * Left mouse button, move objects.
@@ -171,17 +206,14 @@ public class MainController : MonoBehaviour {
                     activatedType = ControllableTypes.Light.ToString();
                     selectedArrow.transform.position = new Vector3(hit.transform.position.x - 2.5f, selectedArrow.transform.position.y, hit.transform.position.z);
                 }
-                else if (hit.transform.tag == "ChangeableDoorX")
+                else if (hit.transform.tag == "ChangeableDoor")
                 {
+
                     changeableObject = hit.transform.gameObject;
                     activatedType = ControllableTypes.Door.ToString();
-                    selectedArrow.transform.position = new Vector3(hit.transform.position.x - .5f, selectedArrow.transform.position.y, hit.transform.position.z + 1.15f);
-                }
-                else if (hit.transform.tag == "ChangeableDoor-X")
-                {
-                    changeableObject = hit.transform.gameObject;
-                    activatedType = ControllableTypes.Door.ToString();
-                    selectedArrow.transform.position = new Vector3(hit.transform.position.x - 1.2f, selectedArrow.transform.position.y, hit.transform.position.z - 1.15f);
+
+                    Transform arr = hit.transform.gameObject.GetComponentInChildren<SpriteRenderer>().transform;
+                    selectedArrow.transform.position = new Vector3(arr.position.x - 1, arr.position.y, arr.position.z);
                 }
             }
         }
@@ -219,7 +251,7 @@ public class MainController : MonoBehaviour {
                 {
                     SliderScript.value = 1;
                 }
-                sliderObject.SetActive(true);
+                sliderObject.SetActive(false);
             }
         }
     }
@@ -422,13 +454,7 @@ public class MainController : MonoBehaviour {
             {
                 changeableObject.GetComponentInChildren<Light>().intensity = newIntensity;
                 changeableObject.GetComponent<SliderValues>().SetSliderValue(newIntensity);
-            }
-            else if (changeableObject.tag == "ChangeableDoor")
-            {
-                // TODO fix the slider for the door.
-                //changeableObject.GetComponent<Transform>().Rotate(0, newIntensity, 0);
-                //changeableObject.GetComponent<SliderValues>().SetSliderValue(newIntensity);
-            }   
+            }  
         }
     }
 
