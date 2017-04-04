@@ -11,6 +11,8 @@ TagManager:
   - ChangeableDoor
   - MovableMessage
   - RaycastHit
+  - ChangeableDoorX
+  - ChangeableDoor-X
   layers:
   - Default
   - TransparentFX

@@ -42,6 +42,7 @@ public class MainController : MonoBehaviour {
     public AudioClip lightSwitch;
     public AudioClip lightAmbience;
     public AudioClip doorSlam;
+    public AudioClip doorOpening;
 
     void OnEnable()
     {
@@ -157,6 +158,7 @@ public class MainController : MonoBehaviour {
             {
                 /*
                  * What kind of object did the user hit. 
+                 * We place an arrow above the object the user clicked on.
                  */
                 if (hit.transform.tag == "ChangeableObject")
                 {
@@ -169,11 +171,17 @@ public class MainController : MonoBehaviour {
                     activatedType = ControllableTypes.Light.ToString();
                     selectedArrow.transform.position = new Vector3(hit.transform.position.x - 2.5f, selectedArrow.transform.position.y, hit.transform.position.z);
                 }
-                else if (hit.transform.tag == "ChangeableDoor")
+                else if (hit.transform.tag == "ChangeableDoorX")
                 {
                     changeableObject = hit.transform.gameObject;
                     activatedType = ControllableTypes.Door.ToString();
                     selectedArrow.transform.position = new Vector3(hit.transform.position.x - .5f, selectedArrow.transform.position.y, hit.transform.position.z + 1.15f);
+                }
+                else if (hit.transform.tag == "ChangeableDoor-X")
+                {
+                    changeableObject = hit.transform.gameObject;
+                    activatedType = ControllableTypes.Door.ToString();
+                    selectedArrow.transform.position = new Vector3(hit.transform.position.x - 1.2f, selectedArrow.transform.position.y, hit.transform.position.z - 1.15f);
                 }
             }
         }
@@ -328,12 +336,11 @@ public class MainController : MonoBehaviour {
      * We must also change the sliders position depending
      * on wether the door is open or not.
      * 
-     * TODO:: Add an animator for each door for convienece
-     *        instead of having it done in code.
      */
     void ChangeDoor(GameObject obj)
     {
         Transform door = obj.transform.GetChild(1);
+        Animator anim = obj.GetComponentInChildren<Animator>();
         bool doorOpen;
 
         float frameRotY = door.GetComponent<SliderValues>().frame.rotation.y;
@@ -358,8 +365,7 @@ public class MainController : MonoBehaviour {
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                // TODO: call the animator instead of rotate.
-                door.transform.Rotate(0, 60, 0);
+                anim.SetBool("DoorOpening", false);
                 door.GetComponent<SliderValues>().SetSliderValue(0f);
                 SliderScript.value = 0;
 
@@ -384,11 +390,21 @@ public class MainController : MonoBehaviour {
 
             if (Input.GetKeyDown(KeyCode.E))
             {
-                // TODO: call the animator instead of rotate.
-                door.transform.Rotate(0, -60, 0);
+                anim.SetBool("DoorOpening", true);
                 door.GetComponent<SliderValues>().SetSliderValue(1f);
                 SliderScript.value = 1;
             }
+
+            /*
+             * Play the door opening sound when the door is being opened.
+             * Check if something is already playing and stop that.
+             */
+            if (obj.GetComponent<AudioSource>().isPlaying)
+            {
+                obj.GetComponent<AudioSource>().Stop();
+            }
+            obj.GetComponent<AudioSource>().clip = doorOpening;
+            obj.GetComponent<AudioSource>().Play();
         }
     }
 
