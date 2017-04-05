@@ -43,6 +43,9 @@ public class MainController : MonoBehaviour {
     public AudioClip lightAmbience;
     public AudioClip doorSlam;
     public AudioClip doorOpening;
+    public AudioClip chestOpening;
+    public AudioClip doorWoodenSlam;
+    public AudioClip doorWoodenOpening;
 
     // Controls for mapCamera.
     public float mapCameraSpeed = .25f;
@@ -206,7 +209,7 @@ public class MainController : MonoBehaviour {
                     activatedType = ControllableTypes.Light.ToString();
                     selectedArrow.transform.position = new Vector3(hit.transform.position.x - 2.5f, selectedArrow.transform.position.y, hit.transform.position.z);
                 }
-                else if (hit.transform.tag == "ChangeableDoor")
+                else if (hit.transform.tag == "ChangeableDoor" || hit.transform.tag == "ChangeableChest" || hit.transform.tag == "ChangeableWoodenDoor")
                 {
 
                     changeableObject = hit.transform.gameObject;
@@ -363,10 +366,10 @@ public class MainController : MonoBehaviour {
     }
 
     /*
-     * Available options for a door object.
+     * Available options for a door/chest object.
      * 
      * We must also change the sliders position depending
-     * on wether the door is open or not.
+     * on wether the door is open or not. (not using)
      * 
      */
     void ChangeDoor(GameObject obj)
@@ -409,7 +412,23 @@ public class MainController : MonoBehaviour {
                 {
                     obj.GetComponent<AudioSource>().Stop();
                 }
-                obj.GetComponent<AudioSource>().clip = doorSlam;
+
+                /*
+                 * Play a different sound depending on if this is a
+                 * metal door, wood door or a chest for example.
+                 */
+                if (obj.tag == "ChangeableDoor")
+                {
+                    obj.GetComponent<AudioSource>().clip = doorSlam;
+                }
+                else if (obj.tag == "ChangeableChest")
+                {
+                    obj.GetComponent<AudioSource>().clip = doorSlam;
+                }
+                else if (obj.tag == "ChangeableWoodenDoor")
+                {
+                    obj.GetComponent<AudioSource>().clip = doorWoodenSlam;
+                }
                 obj.GetComponent<AudioSource>().Play();
 
             }
@@ -425,18 +444,34 @@ public class MainController : MonoBehaviour {
                 anim.SetBool("DoorOpening", true);
                 door.GetComponent<SliderValues>().SetSliderValue(1f);
                 SliderScript.value = 1;
-            }
 
-            /*
-             * Play the door opening sound when the door is being opened.
-             * Check if something is already playing and stop that.
-             */
-            if (obj.GetComponent<AudioSource>().isPlaying)
-            {
-                obj.GetComponent<AudioSource>().Stop();
-            }
-            obj.GetComponent<AudioSource>().clip = doorOpening;
-            obj.GetComponent<AudioSource>().Play();
+                /*
+                 * Play the door opening sound when the door is being opened.
+                 * Check if something is already playing and stop that.
+                 */
+                if (obj.GetComponent<AudioSource>().isPlaying)
+                {
+                    obj.GetComponent<AudioSource>().Stop();
+                }
+
+                /*
+                 * Play a different sound depending on if this is a
+                 * metal door, wood door or a chest for example.
+                 */
+                if (obj.tag == "ChangeableDoor")
+                {
+                    obj.GetComponent<AudioSource>().clip = doorOpening;
+                }
+                else if (obj.tag == "ChangeableChest")
+                {
+                    obj.GetComponent<AudioSource>().clip = chestOpening;
+                }
+                else if (obj.tag == "ChangeableWoodenDoor")
+                {
+                    obj.GetComponent<AudioSource>().clip = doorWoodenOpening;
+                }
+                obj.GetComponent<AudioSource>().Play();
+            }      
         }
     }
 

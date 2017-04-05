@@ -13,6 +13,8 @@ TagManager:
   - RaycastHit
   - ChangeableDoorX
   - ChangeableDoor-X
+  - ChangeableChest
+  - ChangeableWoodenDoor
   layers:
   - Default
   - TransparentFX
