@@ -161,6 +161,7 @@
      <Compile Include="Assets\_Scripts\MapViewLight.cs" />
      <Compile Include="Assets\_Scripts\SliderValues.cs" />
      <Compile Include="Assets\_Scripts\TestingFunctionality.cs" />
+     <Compile Include="Assets\_Scripts\Utility.cs" />
      <Compile Include="Assets\_Scripts\ViveController.cs" />
      <Compile Include="Assets\_Scripts\ZombieWaker.cs" />
      <Compile Include="Assets\_ScriptsInProgress\DoorIcons.cs" />

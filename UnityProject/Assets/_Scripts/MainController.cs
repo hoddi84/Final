@@ -50,6 +50,10 @@ public class MainController : MonoBehaviour {
     // Controls for mapCamera.
     public float mapCameraSpeed = .25f;
 
+    // Interchangeable objects.
+    public GameObject toiletEntranceVisible;
+    public GameObject toiletEntranceBlocked;
+
     void OnEnable()
     {
         EventManager.MouseDownLeft += MouseDownLeftHandler;
@@ -94,11 +98,25 @@ public class MainController : MonoBehaviour {
         sliderObject.SetActive(false);
 
         SliderScript = sliderObject.GetComponent<Slider>();
-
     }
 
     // Update is called once per frame
     void Update () {
+
+        /*
+         * Controls for the hardcoded information text.
+         */
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            if (toiletEntranceVisible.activeInHierarchy)
+            {
+                Utility.HideEntrance(toiletEntranceVisible, toiletEntranceBlocked, true);
+            }
+            else
+            {
+                Utility.HideEntrance(toiletEntranceVisible, toiletEntranceBlocked, false);
+            }
+        }
 
         /*
          * Controls for the mapCamera with bounds.
