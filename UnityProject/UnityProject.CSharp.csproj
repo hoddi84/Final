@@ -195,8 +195,12 @@
     <Compile Include="Assets\_Scripts\MainController.cs" />
     <Compile Include="Assets\_Scripts\MapViewLight.cs" />
     <Compile Include="Assets\_Scripts\SliderValues.cs" />
+    <Compile Include="Assets\_Scripts\TestingFunctionality.cs" />
+    <Compile Include="Assets\_Scripts\Utility.cs" />
     <Compile Include="Assets\_Scripts\ViveController.cs" />
     <Compile Include="Assets\_Scripts\ZombieWaker.cs" />
+    <Compile Include="Assets\_ScriptsInProgress\ArcTeleport.cs" />
+    <Compile Include="Assets\_ScriptsInProgress\ArcTest.cs" />
     <Compile Include="Assets\_ScriptsInProgress\DoorIcons.cs" />
     <Compile Include="Assets\_ScriptsInProgress\EventTester.cs" />
     <Compile Include="Assets\_ScriptsInProgress\Gaze.cs" />
