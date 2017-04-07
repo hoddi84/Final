@@ -15,6 +15,7 @@ TagManager:
   - ChangeableDoor-X
   - ChangeableChest
   - ChangeableWoodenDoor
+  - ZombieScare
   layers:
   - Default
   - TransparentFX

@@ -20,4 +20,16 @@ public class Utility : MonoBehaviour {
             objToShow.SetActive(false);
         }
     }
+
+    public static IEnumerator ZombieScare(GameObject obj, AudioClip clip)
+    {
+        Animator anim = obj.GetComponentInChildren<Animator>();
+        AudioSource audio = obj.GetComponentInChildren<AudioSource>();
+
+        anim.SetBool("ZombieScare", true);
+        audio.clip = clip;
+        audio.Play();
+
+        yield return null;
+    }
 }

@@ -31,6 +31,7 @@ public class MainController : MonoBehaviour {
     private bool mouseRightPressedDown = false;
 
     // Sprites for the mapView.
+    [Header("Sprites")]
     public Sprite lightBulbOn;
     public Sprite lightBulbOff;
     public Sprite arrowSprite;
@@ -39,6 +40,7 @@ public class MainController : MonoBehaviour {
     public Sprite doorOpenSprite;
 
     // Sounds used.
+    [Header("Sounds")]
     public AudioClip lightSwitch;
     public AudioClip lightAmbience;
     public AudioClip doorSlam;
@@ -46,11 +48,14 @@ public class MainController : MonoBehaviour {
     public AudioClip chestOpening;
     public AudioClip doorWoodenSlam;
     public AudioClip doorWoodenOpening;
+    public AudioClip zombieScare;
 
     // Controls for mapCamera.
+    [Header("MapCamera Settings")]
     public float mapCameraSpeed = .25f;
 
     // Interchangeable objects.
+    [Header("Interchangeable Objects")]
     public GameObject toiletEntranceVisible;
     public GameObject toiletEntranceBlocked;
 
@@ -235,6 +240,10 @@ public class MainController : MonoBehaviour {
 
                     Transform arr = hit.transform.gameObject.GetComponentInChildren<SpriteRenderer>().transform;
                     selectedArrow.transform.position = new Vector3(arr.position.x - 1, arr.position.y, arr.position.z);
+                }
+                else if (hit.transform.tag == "ZombieScare")
+                {
+                    StartCoroutine(Utility.ZombieScare(hit.transform.gameObject, zombieScare));
                 }
             }
         }
