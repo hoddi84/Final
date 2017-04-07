@@ -49,6 +49,7 @@ public class MainController : MonoBehaviour {
     public AudioClip doorWoodenSlam;
     public AudioClip doorWoodenOpening;
     public AudioClip zombieScare;
+    public AudioClip demonicScream;
 
     // Controls for mapCamera.
     [Header("MapCamera Settings")]
@@ -244,6 +245,10 @@ public class MainController : MonoBehaviour {
                 else if (hit.transform.tag == "ZombieScare")
                 {
                     StartCoroutine(Utility.ZombieScare(hit.transform.gameObject, zombieScare));
+                }
+                else if (hit.transform.tag == "CrawlerFramed")
+                {
+                    StartCoroutine(Utility.CrawlerFramedScare(hit.transform.gameObject, demonicScream));
                 }
             }
         }

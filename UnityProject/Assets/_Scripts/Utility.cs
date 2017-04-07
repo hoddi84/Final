@@ -32,4 +32,20 @@ public class Utility : MonoBehaviour {
 
         yield return null;
     }
+
+    public static IEnumerator CrawlerFramedScare(GameObject obj, AudioClip clip) 
+    {
+        Animator anim = obj.GetComponentInChildren<Animator>();
+        AudioSource audio = obj.GetComponentInChildren<AudioSource>();
+
+        anim.SetBool("CrawlerFrameScare", true);
+        audio.clip = clip;
+        audio.Play();
+
+        yield return new WaitForSeconds(3.8f);
+
+        anim.SetBool("CrawlerFrameScare", false);
+
+        yield return null;
+    }
 }
