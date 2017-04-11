@@ -30,6 +30,8 @@ public class MainController : MonoBehaviour {
     private bool mouseLeftPressedDown = false;
     private bool mouseRightPressedDown = false;
 
+    private bool zombieAppearEnabled = false;
+
     // Sprites for the mapView.
     [Header("Sprites")]
     public Sprite lightBulbOn;
@@ -59,6 +61,10 @@ public class MainController : MonoBehaviour {
     [Header("Interchangeable Objects")]
     public GameObject toiletEntranceVisible;
     public GameObject toiletEntranceBlocked;
+
+    [Header("Spawnable Objects")]
+    public GameObject zombieSpawn;
+    public GameObject objToFace;
 
     void OnEnable()
     {
@@ -123,6 +129,10 @@ public class MainController : MonoBehaviour {
                 Utility.HideEntrance(toiletEntranceVisible, toiletEntranceBlocked, false);
             }
         }
+        if (Input.GetKeyDown(KeyCode.H) && !zombieAppearEnabled)
+        {
+            zombieAppearEnabled = true;
+        }
 
         /*
          * Controls for the mapCamera with bounds.
@@ -176,6 +186,12 @@ public class MainController : MonoBehaviour {
                     {
                         movableObject = hit.transform;
                         movableMessageControlled = true;
+                    }
+                    else if (hit.transform.tag == "ZombieAppearFloor" && zombieAppearEnabled)
+                    {
+                        print("enabled");
+                        StartCoroutine(Utility.ScaryCharacterSpawn(zombieSpawn, new Vector3(ray.origin.x, zombieSpawn.transform.position.y, ray.origin.z), objToFace, lightSwitch, lightAmbience));
+                        zombieAppearEnabled = false;
                     }
                 }
             }
