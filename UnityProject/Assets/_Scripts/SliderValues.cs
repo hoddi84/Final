@@ -13,6 +13,11 @@ public class SliderValues : MonoBehaviour {
     float sliderValue = 0;
 
     /*
+     * lightsOn = 1, means the lights are currently turned on.
+     */ 
+    float lightsOn = 1;
+
+    /*
      * We need to check if the doors are closed by comparing the frame's 
      * rotation to the door's rotation. We must assign this script as well
      * to all doors.
@@ -23,11 +28,17 @@ public class SliderValues : MonoBehaviour {
     public void SetSliderValue(float value)
     {
         sliderValue = value;
+        lightsOn = value;
     }
 
     public float GetSliderValue()
     {
         return sliderValue;
+    }
+
+    public float LightsOn()
+    {
+        return lightsOn;
     }
 
     public bool DoorClosed()

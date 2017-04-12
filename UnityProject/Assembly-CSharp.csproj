@@ -154,6 +154,7 @@
      <Compile Include="Assets\SteamVR\Scripts\SteamVR_TrackedObject.cs" />
      <Compile Include="Assets\SteamVR\Scripts\SteamVR_UpdatePoses.cs" />
      <Compile Include="Assets\SteamVR\Scripts\SteamVR_Utils.cs" />
+     <Compile Include="Assets\ZombieRunning.cs" />
      <Compile Include="Assets\_Scripts\ControllableTypes.cs" />
      <Compile Include="Assets\_Scripts\EventManager.cs" />
      <Compile Include="Assets\_Scripts\FadeController.cs" />

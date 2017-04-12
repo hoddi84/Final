@@ -20,7 +20,6 @@ public class MainController : MonoBehaviour {
     private bool movableMessageControlled = false;
 
     public Camera mapCamera;
-    public Text optionText;
     public GameObject sliderObject;
 
     private Slider SliderScript;
@@ -30,7 +29,11 @@ public class MainController : MonoBehaviour {
     private bool mouseLeftPressedDown = false;
     private bool mouseRightPressedDown = false;
 
-    private bool zombieAppearEnabled = false;
+    private bool characterSpawnEnabled = false;
+
+    [Header("Text")]
+    public Text optionText;
+    public Text spawnablesText;
 
     // Sprites for the mapView.
     [Header("Sprites")]
@@ -63,8 +66,11 @@ public class MainController : MonoBehaviour {
     public GameObject toiletEntranceBlocked;
 
     [Header("Spawnable Objects")]
-    public GameObject zombieSpawn;
+    public GameObject[] characterSpawn;
+
     public GameObject objToFace;
+
+    private int characterCounter = 0;
 
     void OnEnable()
     {
@@ -129,9 +135,21 @@ public class MainController : MonoBehaviour {
                 Utility.HideEntrance(toiletEntranceVisible, toiletEntranceBlocked, false);
             }
         }
-        if (Input.GetKeyDown(KeyCode.H) && !zombieAppearEnabled)
+        if (Input.GetKeyDown(KeyCode.H))
         {
-            zombieAppearEnabled = true;
+            if (!characterSpawnEnabled)
+            {
+                characterSpawnEnabled = true;
+            }
+            else
+            {
+                characterCounter++;
+                if (characterCounter == characterSpawn.Length)
+                {
+                    characterCounter = 0;
+                }
+            }
+            Utility.UpdateSpawnablesText(spawnablesText, characterCounter, true);
         }
 
         /*
@@ -187,11 +205,11 @@ public class MainController : MonoBehaviour {
                         movableObject = hit.transform;
                         movableMessageControlled = true;
                     }
-                    else if (hit.transform.tag == "ZombieAppearFloor" && zombieAppearEnabled)
+                    else if (hit.transform.tag == "ZombieAppearFloor" && characterSpawnEnabled)
                     {
-                        print("enabled");
-                        StartCoroutine(Utility.ScaryCharacterSpawn(zombieSpawn, new Vector3(ray.origin.x, zombieSpawn.transform.position.y, ray.origin.z), objToFace, lightSwitch, lightAmbience));
-                        zombieAppearEnabled = false;
+                        StartCoroutine(Utility.ScaryCharacterSpawn(characterSpawn[characterCounter], new Vector3(ray.origin.x, characterSpawn[characterCounter].transform.localPosition.y, ray.origin.z), objToFace, lightSwitch, lightAmbience));
+                        Utility.UpdateSpawnablesText(spawnablesText, characterCounter, false);
+                        characterSpawnEnabled = false;
                     }
                 }
             }

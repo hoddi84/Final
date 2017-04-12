@@ -1,8 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Utility : MonoBehaviour {
+
+    public static void UpdateSpawnablesText(Text spawnText, int counter, bool enabled)
+    {
+        if (counter == 0 && !enabled)
+        {
+            spawnText.text = "H : Current Spawnable (disabled) \n" +
+                             "Zombie Appears";
+        }
+        else if (counter == 0 && enabled)
+        {
+            spawnText.text = "H : Current Spawnable (enabled) \n" +
+                             "Zombie Appears";
+        }
+        else if (counter == 1 && !enabled)
+        {
+            spawnText.text = "H : Current Spawnable (disabled) \n" +
+                             "Scarecrow Appears";
+        }
+        else if (counter == 1 && enabled)
+        {
+            spawnText.text = "H : Current Spawnable (enabled) \n" +
+                             "Scarecrow Appears";
+        }
+    }
 
     /*
      * Make a zombie appear at selected position and
@@ -10,10 +35,6 @@ public class Utility : MonoBehaviour {
      * 
      * The selected position can only be objects tagged ZombieAppearFloor.
      * 
-     * TODO
-     * Make it more generic so that it will work correctly, e.g. if the lights were previously
-     * turn off, then there is no need to play the turn off sound and no need to have the light
-     * turned on after the event.
      */
     public static IEnumerator ScaryCharacterSpawn(GameObject characterToSpawn, Vector3 characterPos, GameObject cameraRig, AudioClip lightOffSound, AudioClip lightAmbienceSound)
     {
@@ -32,7 +53,7 @@ public class Utility : MonoBehaviour {
         float range = 5f;
         float flicker = .1f;
         float firstDelay = 1f;
-        float secondDelay = 2f;
+        float secondDelay = .1f;
 
         /*
          * Get the closest lights.
@@ -50,24 +71,37 @@ public class Utility : MonoBehaviour {
          */
         foreach (GameObject light in lightObjUsed)
         {
-            light.GetComponentInChildren<Light>().intensity = 0;
-            light.GetComponentInChildren<AudioSource>().Stop();
-            light.GetComponentInChildren<AudioSource>().loop = false;
-            light.GetComponentInChildren<AudioSource>().clip = lightOffSound;
-            light.GetComponentInChildren<AudioSource>().Play();
+            /*
+             * Only turn off the lights and play a sound if the lights
+             * are allready turned on.
+             */
+            if (light.GetComponent<SliderValues>().LightsOn() == 1)
+            {
+                light.GetComponentInChildren<Light>().intensity = 0;
+                light.GetComponentInChildren<AudioSource>().Stop();
+                light.GetComponentInChildren<AudioSource>().loop = false;
+                light.GetComponentInChildren<AudioSource>().clip = lightOffSound;
+                light.GetComponentInChildren<AudioSource>().Play();
+
+                yield return new WaitForSeconds(firstDelay);
+            }
         }
 
-        yield return new WaitForSeconds(firstDelay);
-
+        /*
+         * Turn on the lights again, with a character spawned. 
+         */
         foreach (GameObject light in lightObjUsed)
         {
             light.GetComponentInChildren<Light>().intensity = 1;
         }
 
-        GameObject spawnedCharacter = Instantiate(characterToSpawn, characterPos, Quaternion.LookRotation(directionToFace));
+        GameObject spawnedCharacter = Instantiate(characterToSpawn, characterPos, Quaternion.LookRotation(directionToFace,Vector3.up));
 
         yield return new WaitForSeconds(flicker);
 
+        /*
+         * Turn off the lights again, with character gone.
+         */
         foreach (GameObject light in lightObjUsed)
         {
             light.GetComponentInChildren<Light>().intensity = 0;
@@ -79,14 +113,22 @@ public class Utility : MonoBehaviour {
 
         /*
          * Turn on the lights again and play ambience.
+         * Event is now finished, return the lights to their original setting.
          */
         foreach (GameObject light in lightObjUsed)
         {
-            light.GetComponentInChildren<Light>().intensity = 1;
-            light.GetComponentInChildren<AudioSource>().Stop();
-            light.GetComponentInChildren<AudioSource>().loop = true;
-            light.GetComponentInChildren<AudioSource>().clip = lightAmbienceSound;
-            light.GetComponentInChildren<AudioSource>().Play();
+            /*
+             * Check whether the lights were previously turned on before
+             * the event started.
+             */
+            if (light.GetComponent<SliderValues>().LightsOn() == 1)
+            {
+                light.GetComponentInChildren<Light>().intensity = 1;
+                light.GetComponentInChildren<AudioSource>().Stop();
+                light.GetComponentInChildren<AudioSource>().loop = true;
+                light.GetComponentInChildren<AudioSource>().clip = lightAmbienceSound;
+                light.GetComponentInChildren<AudioSource>().Play();
+            }
         }
 
         yield return null;
