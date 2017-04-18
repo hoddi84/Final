@@ -4,31 +4,58 @@ using UnityEngine;
 
 public class MazeController : MonoBehaviour {
 
-    [Header("Transition Triggers")]
-    public GameObject TransitionFirst;
+    [Header("Available Places")]
+    public GameObject[] places;
 
-    private BoxCollider transitionFirstCollider;
+    [Header("States")]
+    public bool place1Active;
+    public bool place2Active;
+    public bool place3Active;
+    public bool place4Active;
 
 	// Use this for initialization
 	void Start () {
-
-        transitionFirstCollider = TransitionFirst.GetComponent<BoxCollider>();
-
-        /*
-         * We want to disable the collider until the player has
-         * moved into the VR area so the collider won't be accidentally
-         * triggered.
-         */
-        transitionFirstCollider.enabled = false;
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            transitionFirstCollider.enabled = true;
-            print("TransitionFirst enabled");
-        }
+
+        CheckCurrentState();
 	}
+
+    void CheckCurrentState()
+    {
+        foreach (GameObject obj in places)
+        {
+            if (obj.tag == "Place1" && obj.activeInHierarchy)
+            {
+                place1Active = true;
+                place2Active = false;
+                place3Active = false;
+                place4Active = false;
+            }
+            else if (obj.tag == "Place2" && obj.activeInHierarchy)
+            {
+                place1Active = false;
+                place2Active = true;
+                place3Active = false;
+                place4Active = false;
+            }
+            else if (obj.tag == "Place3" && obj.activeInHierarchy)
+            {
+                place1Active = false;
+                place2Active = false;
+                place3Active = true;
+                place4Active = false;
+            }
+            else if (obj.tag == "Place4" && obj.activeInHierarchy)
+            {
+                place1Active = false;
+                place2Active = false;
+                place3Active = false;
+                place4Active = true;
+            }
+        }
+    }
 }

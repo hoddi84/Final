@@ -6,7 +6,6 @@ public class MazeTransitions : MonoBehaviour {
 
     [Header("Transitions")]
     public GameObject transitionFrom;
-    public GameObject transitionBetween;
     public GameObject transitionTo;
 
 	// Use this for initialization

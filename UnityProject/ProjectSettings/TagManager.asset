@@ -18,6 +18,10 @@ TagManager:
   - ZombieScare
   - CrawlerFramed
   - ZombieAppearFloor
+  - Place1
+  - Place2
+  - Place3
+  - Place4
   layers:
   - Default
   - TransparentFX
