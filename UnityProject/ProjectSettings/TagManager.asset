@@ -22,6 +22,12 @@ TagManager:
   - Place2
   - Place3
   - Place4
+  - Place5
+  - Place6
+  - Place7
+  - Place8
+  - Place9
+  - Place10
   layers:
   - Default
   - TransparentFX
