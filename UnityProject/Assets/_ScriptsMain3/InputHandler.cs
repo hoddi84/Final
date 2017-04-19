@@ -16,7 +16,7 @@ public class InputHandler : MonoBehaviour {
     public static event MouseEventHandler MouseDownLeft;
     public static event MouseEventHandler MouseUpLeft;
 
-    public Camera overViewCam;
+    public Camera mapCamera;
 	
 	// Update is called once per frame
     void Update()
@@ -26,7 +26,7 @@ public class InputHandler : MonoBehaviour {
          */
         if (Input.GetMouseButtonDown(0))
         {
-            Ray ray = overViewCam.ScreenPointToRay(Input.mousePosition);
+            Ray ray = mapCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, 10))
@@ -46,7 +46,7 @@ public class InputHandler : MonoBehaviour {
         }
         if (Input.GetMouseButtonDown(1))
         {
-            Ray ray = overViewCam.ScreenPointToRay(Input.mousePosition);
+            Ray ray = mapCamera.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if (Physics.Raycast(ray, out hit, 10))

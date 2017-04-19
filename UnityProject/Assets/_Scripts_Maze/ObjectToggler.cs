@@ -2,9 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Executre in Edit mode so that we can hide the
+ * normalState directly from the inspector.
+ */
+[ExecuteInEditMode]
 public class ObjectToggler : MonoBehaviour {
 
     private bool switched = false;
+
+    [Header("Editor Only Changes")]
+    public bool hideOriginalState = false;
+    public bool showDoorState = false;
 
     [Header("Maze Controller")]
     public MazeController controller;
@@ -40,6 +49,36 @@ public class ObjectToggler : MonoBehaviour {
             }
             doorState.SetActive(false);
             switched = false;
+        }
+
+        /*
+         * Do not run this code while in play mode.
+         */
+        if (!Application.isPlaying)
+        {
+            if (hideOriginalState)
+            {
+                foreach (GameObject obj in normalState)
+                {
+                    obj.SetActive(false);
+                }
+            }
+            else
+            {
+                foreach (GameObject obj in normalState)
+                {
+                    obj.SetActive(true);
+                }
+            }
+
+            if (showDoorState)
+            {
+                doorState.SetActive(true);
+            }
+            else
+            {
+                doorState.SetActive(false);
+            }
         }
 	}
 }

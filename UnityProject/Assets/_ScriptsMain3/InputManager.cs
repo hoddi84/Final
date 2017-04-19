@@ -10,7 +10,9 @@ public class InputManager : MonoBehaviour {
     public bool mouseDownRight;
     public bool mouseDownLeft;
 
-    public Text textObject;
+    public Camera mapCamera;
+
+    private GameObject selectedObject;
 
     void OnEnable()
     {
@@ -36,41 +38,67 @@ public class InputManager : MonoBehaviour {
         InputHandler.MouseUpLeft -= MouseUpLeft;
     }
 
+    /*
+     * If we hit a collider with the left mouse button
+     * this is called. The object's collider we hit will
+     * be our selectedObject.
+     */
     void RaycastLeft(GameObject obj)
     {
-        print("Hit Collider (left mouse), tag: " + obj.transform.tag);
         raycastHitLeft = true;
+        selectedObject = obj;
     }
 
     void RaycastRight(GameObject obj)
     {
-        print("Hit Collider (right mouse), tag: " + obj.transform.tag);
         raycastHitRight = true;
     }
 
     void MouseDownRight()
     {
-        print("Mouse Down (right)");
         mouseDownRight = true;
     }
 
     void MouseDownLeft()
     {
-        print("Mouse Down (left");
         mouseDownLeft = true;
     }
 
     void MouseUpLeft()
     {
-        print("Mouse Up (left)");
         mouseDownLeft = false;
         raycastHitLeft = false;
     }
 
     void MouseUpRight()
     {
-        print("Mouse Up (right)");
         mouseDownRight = false;
         raycastHitRight = false;
+    }
+
+    void Update()
+    {
+        /*
+         * We hit a collider with the left mouse button. The
+         * object we hit is now our selectedObject.
+         */
+        if (raycastHitLeft)
+        {
+            if (selectedObject != null)
+            {
+                if (selectedObject.tag == "Player")
+                {
+                    Vector3 v3 = Input.mousePosition;
+                    v3.z = 15f;
+                    v3 = mapCamera.ScreenToWorldPoint(v3);
+
+                    selectedObject.transform.position = new Vector3(v3.x, selectedObject.transform.position.y, v3.z);
+                }
+            }
+        }
+        else
+        {
+            selectedObject = null;
+        }
     }
 }
