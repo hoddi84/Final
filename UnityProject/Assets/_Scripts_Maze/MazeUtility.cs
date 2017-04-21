@@ -47,16 +47,27 @@ public class MazeUtility : MonoBehaviour {
         objectToMove.transform.position = end;
     }
 
-    public static IEnumerator RotateOverSeconds(GameObject objectToMove, Quaternion end, float seconds)
+    public static IEnumerator RotateOverSeconds(GameObject objectToMove, float rotation, float seconds, bool openHandleOutwards)
     {
         float elapsedTime = 0;
-        Quaternion startingPos = objectToMove.transform.rotation;
+        Vector3 startingPos = objectToMove.transform.localEulerAngles;
+        Vector3 endPos = objectToMove.transform.localEulerAngles;
+
+        if (openHandleOutwards)
+        {
+            endPos.y += rotation;
+        }
+        else
+        {
+            endPos.y -= rotation;
+        }
+
         while (elapsedTime < seconds)
         {
-            objectToMove.transform.rotation = Quaternion.Lerp(startingPos, end, (elapsedTime / seconds));
+            objectToMove.transform.localEulerAngles = Vector3.Lerp(startingPos, endPos, (elapsedTime / seconds));
             elapsedTime += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
-        objectToMove.transform.rotation = end;
+        objectToMove.transform.localEulerAngles = endPos;
     }
 }

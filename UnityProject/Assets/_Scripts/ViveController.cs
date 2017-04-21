@@ -6,6 +6,7 @@ public class ViveController : MonoBehaviour {
 
     private bool canPickUp;
     private bool holding;
+    private bool triggerDoor;
 
     private GameObject objBeingHeld;
 
@@ -63,6 +64,18 @@ public class ViveController : MonoBehaviour {
         {
             objBeingHeld = other.gameObject;
             holding = true;
+        }
+        else if (other.gameObject.tag == "VIVEDoor")
+        {
+            if (canPickUp && !triggerDoor)
+            {
+                float rotation = other.gameObject.GetComponent<MazeDoorController>().rotateDegrees;
+                float time = other.gameObject.GetComponent<MazeDoorController>().rotateTime;
+                bool direction = other.gameObject.GetComponent<MazeDoorController>().openHandleOutwards;
+                bool doorOpen = other.gameObject.GetComponent<MazeDoorController>().doorOpen;
+                StartCoroutine(MazeUtility.RotateOverSeconds(other.gameObject, rotation, time, direction));
+                triggerDoor = true;
+            }
         }
     }
 }

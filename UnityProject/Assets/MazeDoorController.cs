@@ -4,19 +4,30 @@ using UnityEngine;
 
 public class MazeDoorController : MonoBehaviour {
 
-    public int degrees = 20;
+    [Header("Door Settings")]
+    public GameObject doorObject;
+    public int rotateDegrees = 20;
+    public float rotateTime = 5f;
+    public bool openHandleOutwards = true;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    public bool doorOpen = false;
 	
 	// Update is called once per frame
 	void Update () {
 		
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R) && !doorOpen)
         {
-            StartCoroutine(MazeUtility.RotateOverSeconds(transform.gameObject, new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.y + degrees, transform.rotation.z), 5f));
+            StartCoroutine(MazeUtility.RotateOverSeconds(doorObject, rotateDegrees, rotateTime, openHandleOutwards));
+            openHandleOutwards = false;
+            doorOpen = true;
+            print("first");
+        }
+        else if (Input.GetKeyDown(KeyCode.R) && doorOpen)
+        {
+            StartCoroutine(MazeUtility.RotateOverSeconds(doorObject, rotateDegrees, rotateTime, openHandleOutwards));
+            openHandleOutwards = true;
+            doorOpen = false;
+            print("second");
         }
 	}
 }
