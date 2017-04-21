@@ -19,8 +19,6 @@ public class ZombieWaker : MonoBehaviour {
     private bool finishedWakeSound = false;
     private bool finishedSleepSound = false;
 
-    public bool usingControllers = false;
-
     private bool gripped = false;
 
 	// Use this for initialization
@@ -35,28 +33,6 @@ public class ZombieWaker : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (usingControllers)
-        {
-            if (controller.gripped)
-            {
-                lookController.target = headFollowRig.position;
-                if (!finishedWakeSound)
-                {
-                    StartCoroutine(ZombieWakeUp());
-                    finishedWakeSound = true;
-                }
-            }
-            else
-            {
-                lookController.target = headDown.position;
-                if (!finishedSleepSound)
-                {
-                    StartCoroutine(ZombieSleep());
-                    finishedSleepSound = true;
-                }
-            }
-        }
-
         if (Input.GetKeyDown(KeyCode.T) && !gripped)
         {
             gripped = true;

@@ -14,6 +14,7 @@ public class ObjectToggler : MonoBehaviour {
     [Header("Editor Only Changes")]
     public bool hideOriginalState = false;
     public bool showDoorState = false;
+    public bool showDoor = false;
 
     [Header("Maze Controller")]
     public MazeController controller;
@@ -53,8 +54,9 @@ public class ObjectToggler : MonoBehaviour {
 
         /*
          * Do not run this code while in play mode.
+         * RUNNING IN PLAY MODE AND EDIT MODE
          */
-        if (!Application.isPlaying)
+        if (!Application.isPlaying || Application.isPlaying)
         {
             if (hideOriginalState)
             {
@@ -78,6 +80,23 @@ public class ObjectToggler : MonoBehaviour {
             else
             {
                 doorState.SetActive(false);
+            }
+
+            if (showDoor)
+            {
+                foreach (GameObject obj in normalState)
+                {
+                    obj.SetActive(false);
+                    doorState.SetActive(true);
+                }
+            }
+            else
+            {
+                foreach (GameObject obj in normalState)
+                {
+                    obj.SetActive(true);
+                    doorState.SetActive(false);
+                }
             }
         }
 	}
