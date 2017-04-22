@@ -49,6 +49,7 @@ public class MazeUtility : MonoBehaviour {
 
     public static IEnumerator RotateOverSeconds(GameObject objectToMove, float rotation, float seconds, bool openHandleOutwards)
     {
+        print("started routine");
         float elapsedTime = 0;
         Vector3 startingPos = objectToMove.transform.localEulerAngles;
         Vector3 endPos = objectToMove.transform.localEulerAngles;
@@ -69,5 +70,6 @@ public class MazeUtility : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
         objectToMove.transform.localEulerAngles = endPos;
+        print("finished routine");
     }
 }

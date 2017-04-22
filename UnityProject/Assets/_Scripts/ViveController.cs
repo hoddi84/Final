@@ -6,9 +6,14 @@ public class ViveController : MonoBehaviour {
 
     private bool canPickUp;
     private bool holding;
-    private bool triggerDoor;
+
+    private bool triggerDoor = false;
+    private bool once = false;
 
     private GameObject objBeingHeld;
+
+    private GameObject doorHandle;
+    private GameObject door;
 
     private SteamVR_TrackedController controller;
  
@@ -25,8 +30,12 @@ public class ViveController : MonoBehaviour {
         controller.TriggerUnclicked -= HandleTriggerUnclicked;
     }
 
+    /*
+     * Need to clean up here, fix the controller logic.
+     */
     void Update()
     {
+        /*
         if (holding)
         {
             if (objBeingHeld != null)
@@ -43,6 +52,23 @@ public class ViveController : MonoBehaviour {
                 objBeingHeld.transform.parent = null;
                 objBeingHeld.GetComponent<Rigidbody>().isKinematic = false;
                 objBeingHeld.GetComponent<Rigidbody>().useGravity = true;
+            }
+        }
+        */
+
+        if (triggerDoor)
+        {
+            if (doorHandle != null && door != null)
+            {
+                print("reached here too");
+                float rotation = doorHandle.gameObject.GetComponent<MazeDoorController>().rotateDegrees;
+                float time = doorHandle.gameObject.GetComponent<MazeDoorController>().rotateTime;
+                bool direction = doorHandle.gameObject.GetComponent<MazeDoorController>().openHandleOutwards;
+                bool doorOpen = doorHandle.gameObject.GetComponent<MazeDoorController>().doorOpen;
+                StartCoroutine(MazeUtility.RotateOverSeconds(door, rotation, time, direction));
+                triggerDoor = false;
+                doorHandle = null;
+                door = null;
             }
         }
     }
@@ -65,17 +91,18 @@ public class ViveController : MonoBehaviour {
             objBeingHeld = other.gameObject;
             holding = true;
         }
-        else if (other.gameObject.tag == "VIVEDoor")
+
+        else if (other.gameObject.tag == "VIVEDoor" && canPickUp)
         {
-            if (canPickUp && !triggerDoor)
+            if (!once)
             {
-                float rotation = other.gameObject.GetComponent<MazeDoorController>().rotateDegrees;
-                float time = other.gameObject.GetComponent<MazeDoorController>().rotateTime;
-                bool direction = other.gameObject.GetComponent<MazeDoorController>().openHandleOutwards;
-                bool doorOpen = other.gameObject.GetComponent<MazeDoorController>().doorOpen;
-                StartCoroutine(MazeUtility.RotateOverSeconds(other.gameObject, rotation, time, direction));
+                door = other.gameObject.GetComponent<MazeDoorController>().doorObject;
+                doorHandle = other.gameObject;
                 triggerDoor = true;
+                once = true;
+                print("reached here");
             }
+
         }
     }
 }
