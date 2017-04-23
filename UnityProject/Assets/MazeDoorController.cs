@@ -10,24 +10,23 @@ public class MazeDoorController : MonoBehaviour {
     public float rotateTime = 5f;
     public bool openHandleOutwards = true;
 
-    public bool doorOpen = false;
+    public bool canInteract = true;
 	
 	// Update is called once per frame
 	void Update () {
-		
-        if (Input.GetKeyDown(KeyCode.R) && !doorOpen)
+
+        if (Input.GetKeyDown(KeyCode.R) && canInteract)
         {
-            StartCoroutine(MazeUtility.RotateOverSeconds(doorObject, rotateDegrees, rotateTime, openHandleOutwards));
-            openHandleOutwards = false;
-            doorOpen = true;
-            print("first");
-        }
-        else if (Input.GetKeyDown(KeyCode.R) && doorOpen)
-        {
-            StartCoroutine(MazeUtility.RotateOverSeconds(doorObject, rotateDegrees, rotateTime, openHandleOutwards));
-            openHandleOutwards = true;
-            doorOpen = false;
-            print("second");
+            canInteract = false;
+            StartCoroutine(MazeUtility.RotateOverSeconds(this, doorObject, rotateDegrees, rotateTime, openHandleOutwards));
+            if (openHandleOutwards)
+            {
+                openHandleOutwards = false;
+            }
+            else
+            {
+                openHandleOutwards = true;
+            }
         }
 	}
 }

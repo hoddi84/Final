@@ -47,9 +47,11 @@ public class MazeUtility : MonoBehaviour {
         objectToMove.transform.position = end;
     }
 
-    public static IEnumerator RotateOverSeconds(GameObject objectToMove, float rotation, float seconds, bool openHandleOutwards)
+    /*
+     * Rotate an object a certain amount of degrees over a specific time.
+     */
+    public static IEnumerator RotateOverSeconds(MazeDoorController controller, GameObject objectToMove, float rotation, float seconds, bool openHandleOutwards)
     {
-        print("started routine");
         float elapsedTime = 0;
         Vector3 startingPos = objectToMove.transform.localEulerAngles;
         Vector3 endPos = objectToMove.transform.localEulerAngles;
@@ -70,6 +72,10 @@ public class MazeUtility : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
         objectToMove.transform.localEulerAngles = endPos;
-        print("finished routine");
+
+        /*
+         * Enable the door to be interacted with again. 
+         */
+        controller.canInteract = true;
     }
 }

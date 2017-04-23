@@ -61,12 +61,11 @@ public class ViveController : MonoBehaviour {
         {
             if (doorHandle != null && door != null)
             {
-                print("reached here too");
                 float rotation = doorHandle.gameObject.GetComponent<MazeDoorController>().rotateDegrees;
                 float time = doorHandle.gameObject.GetComponent<MazeDoorController>().rotateTime;
                 bool direction = doorHandle.gameObject.GetComponent<MazeDoorController>().openHandleOutwards;
-                bool doorOpen = doorHandle.gameObject.GetComponent<MazeDoorController>().doorOpen;
-                StartCoroutine(MazeUtility.RotateOverSeconds(door, rotation, time, direction));
+                MazeDoorController controller = doorHandle.gameObject.GetComponent<MazeDoorController>();
+                StartCoroutine(MazeUtility.RotateOverSeconds(controller, door, rotation, time, direction));
                 triggerDoor = false;
                 doorHandle = null;
                 door = null;
@@ -101,7 +100,6 @@ public class ViveController : MonoBehaviour {
                 doorHandle = other.gameObject;
                 triggerDoor = true;
                 once = true;
-                print("reached here");
             }
 
         }
