@@ -32,6 +32,7 @@ public class ViveController : MonoBehaviour {
 
     /*
      * Need to clean up here, fix the controller logic.
+     * Rename the variables accordingly.
      */
     void Update()
     {
