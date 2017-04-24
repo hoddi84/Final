@@ -29,6 +29,9 @@ TagManager:
   - Place9
   - Place10
   - VIVEDoor
+  - Place11
+  - Place13
+  - Place14
   layers:
   - Default
   - TransparentFX
