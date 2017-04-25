@@ -48,11 +48,16 @@ public class MazeUtility : MonoBehaviour {
     }
 
     /*
-     * Rotate an object a certain amount of degrees over a specific time.
+     * Rotate an door a certain amount of degrees over a specific time, depenging on whether the door
+     * was previously open or closed. Plays a handle sound when the door is being opened and plays a closing 
+     * sound when the door is closed.
      */
-    public static IEnumerator RotateOverSeconds(MazeDoorController controller, GameObject objectToMove, float rotation, float seconds, bool openHandleOutwards)
+    public static IEnumerator RotateOverSeconds(AudioClip handle, AudioClip close, MazeDoorController controller, GameObject objectToMove, float rotation, float openTime, float closeTime, bool openHandleOutwards)
     {
+        AudioSource audio = controller.gameObject.GetComponent<AudioSource>();
+
         float elapsedTime = 0;
+        float seconds;
         Vector3 startingPos = objectToMove.transform.localEulerAngles;
         Vector3 endPos = objectToMove.transform.localEulerAngles;
 
@@ -65,6 +70,30 @@ public class MazeUtility : MonoBehaviour {
             endPos.y -= rotation;
         }
 
+        /*
+         * If the door is closed before we start to move it,
+         * then play the handle sound.
+         */
+        if (!controller.DoorOpen())
+        {
+            audio.clip = handle;
+            audio.Play();
+        }
+
+        /*
+         * We want to be able to have a different opening/closing time.
+         * If the door is closed we use the openTime but if the door is
+         * open we use the closeTime.
+         */
+        if (!controller.DoorOpen())
+        {
+            seconds = openTime;
+        }
+        else
+        {
+            seconds = closeTime;
+        }
+
         while (elapsedTime < seconds)
         {
             objectToMove.transform.localEulerAngles = Vector3.Lerp(startingPos, endPos, (elapsedTime / seconds));
@@ -72,6 +101,16 @@ public class MazeUtility : MonoBehaviour {
             yield return new WaitForEndOfFrame();
         }
         objectToMove.transform.localEulerAngles = endPos;
+
+        /*
+         * If the door is closed after we have moved it, 
+         * we want to play the door close sound.
+         */
+        if (!controller.DoorOpen())
+        {
+            audio.clip = close;
+            audio.Play();
+        }
 
         /*
          * Enable the door to be interacted with again. 

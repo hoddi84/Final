@@ -16,6 +16,10 @@ public class ViveController : MonoBehaviour {
     private GameObject door;
 
     private SteamVR_TrackedController controller;
+
+    [Header("Interaction Sounds")]
+    public AudioClip doorHandleClip;
+    public AudioClip doorCloseClip;
  
     void OnEnable()
     {
@@ -31,6 +35,7 @@ public class ViveController : MonoBehaviour {
     }
 
     /*
+     * TODO::
      * Need to clean up here, fix the controller logic.
      * Rename the variables accordingly.
      */
@@ -62,10 +67,11 @@ public class ViveController : MonoBehaviour {
             if (doorHandle != null && door != null)
             {
                 float rotation = doorHandle.gameObject.GetComponent<MazeDoorController>().rotateDegrees;
-                float time = doorHandle.gameObject.GetComponent<MazeDoorController>().rotateTime;
+                float timeOpen = doorHandle.gameObject.GetComponent<MazeDoorController>().rotateTimeOpen;
+                float timeClose = doorHandle.gameObject.GetComponent<MazeDoorController>().rotateTimeClose;
                 bool direction = doorHandle.gameObject.GetComponent<MazeDoorController>().openHandleOutwards;
                 MazeDoorController controller = doorHandle.gameObject.GetComponent<MazeDoorController>();
-                StartCoroutine(MazeUtility.RotateOverSeconds(controller, door, rotation, time, direction));
+                StartCoroutine(MazeUtility.RotateOverSeconds(doorHandleClip, doorCloseClip, controller, door, rotation, timeOpen, timeClose, direction));
                 triggerDoor = false;
                 doorHandle = null;
                 door = null;
