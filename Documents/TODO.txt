@@ -4,3 +4,12 @@ Add player teleportation
 Ability to limit player teleportation
 Make UI very intuitive
 Camera angles clear
+
+
+Maze:
+
+VIVE Controller haptics.
+Clean VIVE Controller script logic.
+VIVE Controller turn on/off lights.
+GM turn on/off lights.
+
