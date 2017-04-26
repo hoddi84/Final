@@ -144,6 +144,6 @@ public class ViveController : MonoBehaviour {
         }
 
         // TODO: figure out the haptics better.
-        SteamVR_Controller.Input((int)controller.controllerIndex).TriggerHapticPulse(3999, Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad);
+        //SteamVR_Controller.Input((int)controller.controllerIndex).TriggerHapticPulse(3999, Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad);
     }
 }

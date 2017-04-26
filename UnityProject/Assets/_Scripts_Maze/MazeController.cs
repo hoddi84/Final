@@ -42,6 +42,8 @@ public class MazeController : MonoBehaviour {
     public Text stateText;
     public Text branchText;
 
+    public GameObject obj;
+
 	// Use this for initialization
 	void Start () {
 
@@ -51,6 +53,11 @@ public class MazeController : MonoBehaviour {
 	void Update () {
 
         CheckCurrentState();
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            obj.transform.localEulerAngles = new Vector3(0, 0, 0);
+        }
 	}
 
     void UpdateBranchingInformation(GameObject[] branchingPlaces, GameObject place)

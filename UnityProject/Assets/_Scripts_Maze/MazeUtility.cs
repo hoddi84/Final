@@ -112,6 +112,8 @@ public class MazeUtility : MonoBehaviour {
             audio.Play();
         }
 
+        controller.UpdateDoorRotation(objectToMove);
+
         /*
          * Enable the door to be interacted with again. 
          */
