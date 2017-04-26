@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Valve.VR;
 
 public class ViveController : MonoBehaviour {
 
@@ -20,6 +21,8 @@ public class ViveController : MonoBehaviour {
     [Header("Interaction Sounds")]
     public AudioClip doorHandleClip;
     public AudioClip doorCloseClip;
+
+    private uint counter = 0;
  
     void OnEnable()
     {
@@ -61,7 +64,7 @@ public class ViveController : MonoBehaviour {
             }
         }
         */
-
+        /*
         if (triggerDoor)
         {
             if (doorHandle != null && door != null)
@@ -77,6 +80,17 @@ public class ViveController : MonoBehaviour {
                 door = null;
             }
         }
+        */
+    }
+
+    IEnumerator test()
+    {
+        EVRButtonId buttonId = EVRButtonId.k_EButton_SteamVR_Touchpad;
+        var axisId = (uint)buttonId - (uint)EVRButtonId.k_EButton_Axis0;
+        var system = OpenVR.System;
+
+        system.TriggerHapticPulse(controller.controllerIndex, counter, (char)500);
+        yield return null;
     }
 
     void HandleTriggerClicked(object sender, ClickedEventArgs e) 
@@ -100,14 +114,36 @@ public class ViveController : MonoBehaviour {
 
         else if (other.gameObject.tag == "VIVEDoor" && canPickUp)
         {
-            if (!once)
-            {
-                door = other.gameObject.GetComponent<MazeDoorController>().doorObject;
-                doorHandle = other.gameObject;
-                triggerDoor = true;
-                once = true;
-            }
+            MazeDoorController controller = other.gameObject.GetComponent<MazeDoorController>();
 
+            if (controller.canInteract)
+            {
+                controller.canInteract = false;
+                door = controller.doorObject;
+                doorHandle = other.gameObject;
+
+                float rotation = doorHandle.gameObject.GetComponent<MazeDoorController>().rotateDegrees;
+                float timeOpen = doorHandle.gameObject.GetComponent<MazeDoorController>().rotateTimeOpen;
+                float timeClose = doorHandle.gameObject.GetComponent<MazeDoorController>().rotateTimeClose;
+                bool direction = doorHandle.gameObject.GetComponent<MazeDoorController>().openHandleOutwards;
+                
+                StartCoroutine(MazeUtility.RotateOverSeconds(doorHandleClip, doorCloseClip, controller, door, rotation, timeOpen, timeClose, direction));
+
+                if (direction)
+                {
+                    controller.openHandleOutwards = false;
+                }
+                else
+                {
+                    controller.openHandleOutwards = true;
+                }
+
+                doorHandle = null;
+                door = null;
+            }
         }
+
+        // TODO: figure out the haptics better.
+        SteamVR_Controller.Input((int)controller.controllerIndex).TriggerHapticPulse(3999, Valve.VR.EVRButtonId.k_EButton_SteamVR_Touchpad);
     }
 }
