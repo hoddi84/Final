@@ -1,28 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Valve.VR;
 
 public class ViveController : MonoBehaviour {
 
-    private bool canPickUp;
-    private bool holding;
+    private bool canInteract;
+    private bool holdingObject;
 
-    private bool triggerDoor = false;
-    private bool once = false;
-
-    private GameObject objBeingHeld;
-
-    private GameObject doorHandle;
-    private GameObject door;
+    private GameObject interactedObject;
 
     private SteamVR_TrackedController controller;
+    private MazeDoorController mazeDoorController;
 
     [Header("Interaction Sounds")]
     public AudioClip doorHandleClip;
     public AudioClip doorCloseClip;
-
-    private uint counter = 0;
  
     void OnEnable()
     {
@@ -37,109 +29,100 @@ public class ViveController : MonoBehaviour {
         controller.TriggerUnclicked -= HandleTriggerUnclicked;
     }
 
-    /*
-     * TODO::
-     * Need to clean up here, fix the controller logic.
-     * Rename the variables accordingly.
-     */
     void Update()
     {
-        /*
-        if (holding)
-        {
-            if (objBeingHeld != null)
-            {
-                objBeingHeld.transform.parent = transform;
-                objBeingHeld.GetComponent<Rigidbody>().isKinematic = true;
-                objBeingHeld.GetComponent<Rigidbody>().useGravity = false;
-            }
-        }
-        else
-        {
-            if (objBeingHeld != null)
-            {
-                objBeingHeld.transform.parent = null;
-                objBeingHeld.GetComponent<Rigidbody>().isKinematic = false;
-                objBeingHeld.GetComponent<Rigidbody>().useGravity = true;
-            }
-        }
-        */
-        /*
-        if (triggerDoor)
-        {
-            if (doorHandle != null && door != null)
-            {
-                float rotation = doorHandle.gameObject.GetComponent<MazeDoorController>().rotateDegrees;
-                float timeOpen = doorHandle.gameObject.GetComponent<MazeDoorController>().rotateTimeOpen;
-                float timeClose = doorHandle.gameObject.GetComponent<MazeDoorController>().rotateTimeClose;
-                bool direction = doorHandle.gameObject.GetComponent<MazeDoorController>().openHandleOutwards;
-                MazeDoorController controller = doorHandle.gameObject.GetComponent<MazeDoorController>();
-                StartCoroutine(MazeUtility.RotateOverSeconds(doorHandleClip, doorCloseClip, controller, door, rotation, timeOpen, timeClose, direction));
-                triggerDoor = false;
-                doorHandle = null;
-                door = null;
-            }
-        }
-        */
-    }
 
-    IEnumerator test()
-    {
-        EVRButtonId buttonId = EVRButtonId.k_EButton_SteamVR_Touchpad;
-        var axisId = (uint)buttonId - (uint)EVRButtonId.k_EButton_Axis0;
-        var system = OpenVR.System;
+        /*
+         * Logic for picking up pickable objects. 
+         */
+        if (interactedObject != null)
+        {
+            if (interactedObject.tag == "Pickable")
+            {
+                if (holdingObject)
+                {
+                    interactedObject.transform.parent = transform;
+                    interactedObject.GetComponent<Rigidbody>().isKinematic = true;
+                    interactedObject.GetComponent<Rigidbody>().useGravity = false;
+                }
+                else
+                {
+                    interactedObject.transform.parent = null;
+                    interactedObject.GetComponent<Rigidbody>().isKinematic = false;
+                    interactedObject.GetComponent<Rigidbody>().useGravity = true;
+                    interactedObject = null;
+                }
+            }
 
-        system.TriggerHapticPulse(controller.controllerIndex, counter, (char)500);
-        yield return null;
+            /*
+             * Logic for handling openable doors.
+             */
+            else if (interactedObject.tag == "VIVEDoor")
+            {
+                if (mazeDoorController != null)
+                {
+                    if (mazeDoorController.canInteract)
+                    {
+                        mazeDoorController.canInteract = false;
+                        GameObject door = mazeDoorController.doorObject;
+                        GameObject doorHandle = interactedObject.gameObject;
+
+                        float rotation = doorHandle.gameObject.GetComponent<MazeDoorController>().rotateDegrees;
+                        float timeOpen = doorHandle.gameObject.GetComponent<MazeDoorController>().rotateTimeOpen;
+                        float timeClose = doorHandle.gameObject.GetComponent<MazeDoorController>().rotateTimeClose;
+                        bool direction = doorHandle.gameObject.GetComponent<MazeDoorController>().openHandleOutwards;
+
+                        StartCoroutine(MazeUtility.RotateOverSeconds(doorHandleClip, doorCloseClip, mazeDoorController, door, rotation, timeOpen, timeClose, direction));
+
+                        if (direction)
+                        {
+                            mazeDoorController.openHandleOutwards = false;
+                        }
+                        else
+                        {
+                            mazeDoorController.openHandleOutwards = true;
+                        }
+
+                        doorHandle = null;
+                        door = null;
+                        interactedObject = null;
+                        mazeDoorController = null;
+                    }
+                }
+            }
+        }
     }
 
     void HandleTriggerClicked(object sender, ClickedEventArgs e) 
     {
-        canPickUp = true;
+        canInteract = true;
     }
 
     void HandleTriggerUnclicked(object sender, ClickedEventArgs e)
     {
-        canPickUp = false;
-        holding = false;
+        canInteract = false;
+        holdingObject = false;
     }
 
     void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Pickable" && canPickUp)
+        if (other.gameObject.tag == "Pickable")
         {
-            objBeingHeld = other.gameObject;
-            holding = true;
+            if (canInteract)
+            {
+                canInteract = false;
+                interactedObject = other.gameObject;
+                holdingObject = true;
+            }
         }
 
-        else if (other.gameObject.tag == "VIVEDoor" && canPickUp)
+        else if (other.gameObject.tag == "VIVEDoor")
         {
-            MazeDoorController controller = other.gameObject.GetComponent<MazeDoorController>();
-
-            if (controller.canInteract)
+            if (canInteract)
             {
-                controller.canInteract = false;
-                door = controller.doorObject;
-                doorHandle = other.gameObject;
-
-                float rotation = doorHandle.gameObject.GetComponent<MazeDoorController>().rotateDegrees;
-                float timeOpen = doorHandle.gameObject.GetComponent<MazeDoorController>().rotateTimeOpen;
-                float timeClose = doorHandle.gameObject.GetComponent<MazeDoorController>().rotateTimeClose;
-                bool direction = doorHandle.gameObject.GetComponent<MazeDoorController>().openHandleOutwards;
-                
-                StartCoroutine(MazeUtility.RotateOverSeconds(doorHandleClip, doorCloseClip, controller, door, rotation, timeOpen, timeClose, direction));
-
-                if (direction)
-                {
-                    controller.openHandleOutwards = false;
-                }
-                else
-                {
-                    controller.openHandleOutwards = true;
-                }
-
-                doorHandle = null;
-                door = null;
+                canInteract = false;
+                interactedObject = other.gameObject;
+                mazeDoorController = other.GetComponent<MazeDoorController>();
             }
         }
 
