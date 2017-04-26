@@ -36,6 +36,7 @@ TagManager:
   - Place16
   - Place12
   - Place17
+  - Wall
   layers:
   - Default
   - TransparentFX

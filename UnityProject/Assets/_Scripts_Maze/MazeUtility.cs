@@ -119,4 +119,25 @@ public class MazeUtility : MonoBehaviour {
          */
         controller.canInteract = true;
     }
+
+    /*
+     * Trigger the VIVE controller haptic pulse over a period of time.
+     */
+    public static IEnumerator TriggerVibration(SteamVR_TrackedController controller, float vibrationStrength, float vibrationLength)
+    {
+        for (float i = 0; i < vibrationLength; i += Time.deltaTime)
+        {
+            SteamVR_Controller.Input((int)controller.controllerIndex).TriggerHapticPulse((ushort)Mathf.Lerp(0, 3999, vibrationStrength));
+            yield return null;
+        }    
+    }
+
+    /*
+     * Trigger a continuous haptic pulse.
+     */
+    public static void TriggerContinuousVibration(SteamVR_TrackedController controller, float vibrationStrength)
+    {
+        SteamVR_Controller.Input((int)controller.controllerIndex).TriggerHapticPulse((ushort)Mathf.Lerp(0, 3999, vibrationStrength));
+    }
 }
+
