@@ -120,19 +120,16 @@ public class ViveController : MonoBehaviour {
         {
             if (canInteract)
             {
-                StartCoroutine(MazeUtility.TriggerVibration(controller, 1, 1));
+                StartCoroutine(MazeUtility.TriggerVibration(controller, 1, .5f));
                 canInteract = false;
                 interactedObject = other.gameObject;
                 mazeDoorController = other.GetComponent<MazeDoorController>();
             }
         }
 
-        // TODO: Get all the walls compatible.
         if (other.gameObject.tag == "Wall")
         {
-            MazeUtility.TriggerContinuousVibration(controller, 1);
+            MazeUtility.TriggerContinuousVibration(controller, .5f);
         }
-
-        //SteamVR_Controller.Input((int)controller.controllerIndex).TriggerHapticPulse(3999);
     }
 }
