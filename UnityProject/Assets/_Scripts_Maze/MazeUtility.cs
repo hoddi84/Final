@@ -5,11 +5,17 @@ using UnityEngine.UI;
 
 public class MazeUtility : MonoBehaviour {
 
+    /*
+     * Write the current state.
+     */
     public static void AnnounceState(Text textArea, string message)
     {
         textArea.text = message;
     }
 
+    /*
+     * Write possible branches, if any.
+     */
     public static void AnnounceBranch(Text textArea, string currentState, GameObject[] branches, int branchCounter)
     {
         switch (currentState)
@@ -34,6 +40,9 @@ public class MazeUtility : MonoBehaviour {
         }
     }
 
+    /*
+     * Move an object to a new position over a specified amount of time.
+     */
     public static IEnumerator MoveOverSeconds(GameObject objectToMove, Vector3 end, float seconds)
     {
         float elapsedTime = 0;

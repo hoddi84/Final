@@ -42,8 +42,6 @@ public class MazeController : MonoBehaviour {
     public Text stateText;
     public Text branchText;
 
-    public GameObject obj;
-
 	// Use this for initialization
 	void Start () {
 
@@ -53,13 +51,11 @@ public class MazeController : MonoBehaviour {
 	void Update () {
 
         CheckCurrentState();
-
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            obj.transform.localEulerAngles = new Vector3(0, 0, 0);
-        }
 	}
 
+    /*
+     * Displays available branching points depending on the state we are in.
+     */
     void UpdateBranchingInformation(GameObject[] branchingPlaces, GameObject place)
     {
         if (Input.GetKeyDown(KeyCode.E))
@@ -76,6 +72,10 @@ public class MazeController : MonoBehaviour {
         MazeUtility.AnnounceBranch(branchText, place.tag, branchingPlaces, branchingCounter);
     }
 
+    /*
+     * Check which state we are currently in and displaying relevant
+     * information.
+     */
     void CheckCurrentState()
     {
         foreach (GameObject obj in places)

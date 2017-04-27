@@ -120,7 +120,7 @@ public class ViveController : MonoBehaviour {
         {
             if (canInteract)
             {
-                StartCoroutine(MazeUtility.TriggerVibration(controller, 1, .5f));
+                StartCoroutine(MazeUtility.TriggerVibration(controller, 1, .1f));
                 canInteract = false;
                 interactedObject = other.gameObject;
                 mazeDoorController = other.GetComponent<MazeDoorController>();
