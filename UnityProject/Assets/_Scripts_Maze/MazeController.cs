@@ -36,6 +36,11 @@ public class MazeController : MonoBehaviour {
     public bool place15Active;
     public bool place16Active;
     public bool place17Active;
+    public bool place18Active;
+    public bool place19Active;
+    public bool place20Active;
+    public bool place21Active;
+    public bool place22Active;
 
 
     [Header("Announcers")]
@@ -101,6 +106,11 @@ public class MazeController : MonoBehaviour {
                 place15Active = false;
                 place16Active = false;
                 place17Active = false;
+                place18Active = false;
+                place19Active = false;
+                place20Active = false;
+                place21Active = false;
+                place22Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place1);
                 UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
@@ -125,6 +135,11 @@ public class MazeController : MonoBehaviour {
                 place15Active = false;
                 place16Active = false;
                 place17Active = false;
+                place18Active = false;
+                place19Active = false;
+                place20Active = false;
+                place21Active = false;
+                place22Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place2);
                 UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
@@ -149,6 +164,11 @@ public class MazeController : MonoBehaviour {
                 place15Active = false;
                 place16Active = false;
                 place17Active = false;
+                place18Active = false;
+                place19Active = false;
+                place20Active = false;
+                place21Active = false;
+                place22Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place3);
                 UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
@@ -173,6 +193,11 @@ public class MazeController : MonoBehaviour {
                 place15Active = false;
                 place16Active = false;
                 place17Active = false;
+                place18Active = false;
+                place19Active = false;
+                place20Active = false;
+                place21Active = false;
+                place22Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place4);
                 UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
@@ -197,6 +222,11 @@ public class MazeController : MonoBehaviour {
                 place15Active = false;
                 place16Active = false;
                 place17Active = false;
+                place18Active = false;
+                place19Active = false;
+                place20Active = false;
+                place21Active = false;
+                place22Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place5);
                 UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
@@ -221,6 +251,11 @@ public class MazeController : MonoBehaviour {
                 place15Active = false;
                 place16Active = false;
                 place17Active = false;
+                place18Active = false;
+                place19Active = false;
+                place20Active = false;
+                place21Active = false;
+                place22Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place6);
                 UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
@@ -245,6 +280,11 @@ public class MazeController : MonoBehaviour {
                 place15Active = false;
                 place16Active = false;
                 place17Active = false;
+                place18Active = false;
+                place19Active = false;
+                place20Active = false;
+                place21Active = false;
+                place22Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place7);
                 UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
@@ -269,6 +309,11 @@ public class MazeController : MonoBehaviour {
                 place15Active = false;
                 place16Active = false;
                 place17Active = false;
+                place18Active = false;
+                place19Active = false;
+                place20Active = false;
+                place21Active = false;
+                place22Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place8);
                 UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
@@ -293,6 +338,11 @@ public class MazeController : MonoBehaviour {
                 place15Active = false;
                 place16Active = false;
                 place17Active = false;
+                place18Active = false;
+                place19Active = false;
+                place20Active = false;
+                place21Active = false;
+                place22Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place9);
                 UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
@@ -317,6 +367,11 @@ public class MazeController : MonoBehaviour {
                 place15Active = false;
                 place16Active = false;
                 place17Active = false;
+                place18Active = false;
+                place19Active = false;
+                place20Active = false;
+                place21Active = false;
+                place22Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place10);
                 UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
@@ -341,6 +396,11 @@ public class MazeController : MonoBehaviour {
                 place15Active = false;
                 place16Active = false;
                 place17Active = false;
+                place18Active = false;
+                place19Active = false;
+                place20Active = false;
+                place21Active = false;
+                place22Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place11);
                 UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
@@ -365,6 +425,11 @@ public class MazeController : MonoBehaviour {
                 place15Active = false;
                 place16Active = false;
                 place17Active = false;
+                place18Active = false;
+                place19Active = false;
+                place20Active = false;
+                place21Active = false;
+                place22Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place12);
                 UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
@@ -389,6 +454,11 @@ public class MazeController : MonoBehaviour {
                 place15Active = false;
                 place16Active = false;
                 place17Active = false;
+                place18Active = false;
+                place19Active = false;
+                place20Active = false;
+                place21Active = false;
+                place22Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place13);
                 UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
@@ -413,6 +483,11 @@ public class MazeController : MonoBehaviour {
                 place15Active = false;
                 place16Active = false;
                 place17Active = false;
+                place18Active = false;
+                place19Active = false;
+                place20Active = false;
+                place21Active = false;
+                place22Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place14);
                 UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
@@ -437,6 +512,11 @@ public class MazeController : MonoBehaviour {
                 place15Active = true;
                 place16Active = false;
                 place17Active = false;
+                place18Active = false;
+                place19Active = false;
+                place20Active = false;
+                place21Active = false;
+                place22Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place15);
                 UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
@@ -461,6 +541,11 @@ public class MazeController : MonoBehaviour {
                 place15Active = false;
                 place16Active = true;
                 place17Active = false;
+                place18Active = false;
+                place19Active = false;
+                place20Active = false;
+                place21Active = false;
+                place22Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place16);
                 UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
@@ -485,7 +570,157 @@ public class MazeController : MonoBehaviour {
                 place15Active = false;
                 place16Active = false;
                 place17Active = true;
+                place18Active = false;
+                place19Active = false;
+                place20Active = false;
+                place21Active = false;
+                place22Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place17);
+                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
+            }
+            else if (obj.tag == "Place18" && obj.activeInHierarchy)
+            {
+                currentPlace = obj;
+                currentBranchingPlaces = null;
+                place1Active = false;
+                place2Active = false;
+                place3Active = false;
+                place4Active = false;
+                place5Active = false;
+                place6Active = false;
+                place7Active = false;
+                place8Active = false;
+                place9Active = false;
+                place10Active = false;
+                place11Active = false;
+                place12Active = false;
+                place13Active = false;
+                place14Active = false;
+                place15Active = false;
+                place16Active = false;
+                place17Active = false;
+                place18Active = true;
+                place19Active = false;
+                place20Active = false;
+                place21Active = false;
+                place22Active = false;
+                MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place18);
+                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
+            }
+            else if (obj.tag == "Place19" && obj.activeInHierarchy)
+            {
+                currentPlace = obj;
+                currentBranchingPlaces = null;
+                place1Active = false;
+                place2Active = false;
+                place3Active = false;
+                place4Active = false;
+                place5Active = false;
+                place6Active = false;
+                place7Active = false;
+                place8Active = false;
+                place9Active = false;
+                place10Active = false;
+                place11Active = false;
+                place12Active = false;
+                place13Active = false;
+                place14Active = false;
+                place15Active = false;
+                place16Active = false;
+                place17Active = false;
+                place18Active = false;
+                place19Active = true;
+                place20Active = false;
+                place21Active = false;
+                place22Active = false;
+                MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place19);
+                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
+            }
+            else if (obj.tag == "Place20" && obj.activeInHierarchy)
+            {
+                currentPlace = obj;
+                currentBranchingPlaces = null;
+                place1Active = false;
+                place2Active = false;
+                place3Active = false;
+                place4Active = false;
+                place5Active = false;
+                place6Active = false;
+                place7Active = false;
+                place8Active = false;
+                place9Active = false;
+                place10Active = false;
+                place11Active = false;
+                place12Active = false;
+                place13Active = false;
+                place14Active = false;
+                place15Active = false;
+                place16Active = false;
+                place17Active = false;
+                place18Active = false;
+                place19Active = false;
+                place20Active = true;
+                place21Active = false;
+                place22Active = false;
+                MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place20);
+                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
+            }
+            else if (obj.tag == "Place21" && obj.activeInHierarchy)
+            {
+                currentPlace = obj;
+                currentBranchingPlaces = null;
+                place1Active = false;
+                place2Active = false;
+                place3Active = false;
+                place4Active = false;
+                place5Active = false;
+                place6Active = false;
+                place7Active = false;
+                place8Active = false;
+                place9Active = false;
+                place10Active = false;
+                place11Active = false;
+                place12Active = false;
+                place13Active = false;
+                place14Active = false;
+                place15Active = false;
+                place16Active = false;
+                place17Active = false;
+                place18Active = false;
+                place19Active = false;
+                place20Active = false;
+                place21Active = true;
+                place22Active = false;
+                MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place21);
+                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
+            }
+            else if (obj.tag == "Place22" && obj.activeInHierarchy)
+            {
+                currentPlace = obj;
+                currentBranchingPlaces = null;
+                place1Active = false;
+                place2Active = false;
+                place3Active = false;
+                place4Active = false;
+                place5Active = false;
+                place6Active = false;
+                place7Active = false;
+                place8Active = false;
+                place9Active = false;
+                place10Active = false;
+                place11Active = false;
+                place12Active = false;
+                place13Active = false;
+                place14Active = false;
+                place15Active = false;
+                place16Active = false;
+                place17Active = false;
+                place18Active = false;
+                place19Active = false;
+                place20Active = false;
+                place21Active = false;
+                place22Active = true;
+                MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place22);
                 UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
         }

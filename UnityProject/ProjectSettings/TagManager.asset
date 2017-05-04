@@ -37,6 +37,11 @@ TagManager:
   - Place12
   - Place17
   - Wall
+  - Place18
+  - Place19
+  - Place20
+  - Place21
+  - Place22
   layers:
   - Default
   - TransparentFX
