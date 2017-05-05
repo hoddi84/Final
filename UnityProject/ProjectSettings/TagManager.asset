@@ -42,6 +42,7 @@ TagManager:
   - Place20
   - Place21
   - Place22
+  - DoorLock
   layers:
   - Default
   - TransparentFX

@@ -47,6 +47,11 @@ public class InputManager : MonoBehaviour {
     {
         raycastHitLeft = true;
         selectedObject = obj;
+
+        if (obj.tag == "DoorLock")
+        {
+            obj.GetComponent<MazeDoorMechanic>().ToggleMechanicState();
+        }
     }
 
     void RaycastRight(GameObject obj)

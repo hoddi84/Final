@@ -12,6 +12,7 @@ public class MazeDoorController : MonoBehaviour {
     public float rotateTimeClose = 5f;
     public bool openHandleOutwards = true;
     public bool canInteract = true;
+    public bool doorIsLocked = false;
 
     /*
      * The angle between the door and the frame, so we can
@@ -29,19 +30,22 @@ public class MazeDoorController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetKeyDown(KeyCode.R) && canInteract)
+        if (!doorIsLocked)
         {
-            canInteract = false;
-            StartCoroutine(MazeUtility.RotateOverSeconds(handle, close, this, doorObject, rotateDegrees, rotateTimeOpen, rotateTimeClose, openHandleOutwards));
-            if (openHandleOutwards)
+            if (Input.GetKeyDown(KeyCode.R) && canInteract)
             {
-                openHandleOutwards = false;
+                canInteract = false;
+                StartCoroutine(MazeUtility.RotateOverSeconds(handle, close, this, doorObject, rotateDegrees, rotateTimeOpen, rotateTimeClose, openHandleOutwards));
+                if (openHandleOutwards)
+                {
+                    openHandleOutwards = false;
+                }
+                else
+                {
+                    openHandleOutwards = true;
+                }
             }
-            else
-            {
-                openHandleOutwards = true;
-            }
-        }
+        }   
 	}
 
     /*
