@@ -10,6 +10,9 @@ public class MazeController : MonoBehaviour {
 
     private GameObject currentPlace = null;
 
+    [Header("Manual Triggers")]
+    public GameObject place2Triggers;
+
     [Header("Branching Places")]
     public GameObject[] place1;
 
@@ -42,7 +45,6 @@ public class MazeController : MonoBehaviour {
     public bool place21Active;
     public bool place22Active;
 
-
     [Header("Announcers")]
     public Text stateText;
     public Text branchText;
@@ -56,7 +58,25 @@ public class MazeController : MonoBehaviour {
 	void Update () {
 
         CheckCurrentState();
+
+        CheckForTriggerArea();
 	}
+
+    /*
+     * Check which area we are currently in and enable the triggers
+     * if applicable.
+     */
+     void CheckForTriggerArea()
+    {
+        if (place2Active)
+        {
+            place2Triggers.SetActive(true);
+        }
+        else
+        {
+            place2Triggers.SetActive(false);
+        }
+    }
 
     /*
      * Displays available branching points depending on the state we are in.

@@ -14,6 +14,18 @@ public class InputManager : MonoBehaviour {
 
     private GameObject selectedObject;
 
+    [Header("Sounds")]
+    public AudioClip lightSwitch;
+    public AudioClip lightAmbience;
+
+    [Header("Spawnables Settings")]
+    public GameObject[] characterSpawn;
+    public GameObject objToFace;
+    public Text spawnablesText;
+
+    private int characterCounter = 0;
+    private bool characterSpawnEnabled = false;
+
     void OnEnable()
     {
         InputHandler.MouseLeftRaycastHit += RaycastLeft;
@@ -43,7 +55,7 @@ public class InputManager : MonoBehaviour {
      * this is called. The object's collider we hit will
      * be our selectedObject.
      */
-    void RaycastLeft(GameObject obj)
+    void RaycastLeft(GameObject obj, Ray ray)
     {
         raycastHitLeft = true;
         selectedObject = obj;
@@ -56,9 +68,15 @@ public class InputManager : MonoBehaviour {
         {
             obj.GetComponent<GenericObjectToggler>().Toggle();
         }
+        else if (obj.tag == "ZombieAppearFloor" && characterSpawnEnabled)
+        {
+            StartCoroutine(Utility.ScaryCharacterSpawn(characterSpawn[characterCounter], new Vector3(ray.origin.x, characterSpawn[characterCounter].transform.localPosition.y, ray.origin.z), objToFace, lightSwitch, lightAmbience));
+            Utility.UpdateSpawnablesText(spawnablesText, characterCounter, false);
+            characterSpawnEnabled = false;
+        }
     }
 
-    void RaycastRight(GameObject obj)
+    void RaycastRight(GameObject obj, Ray ray)
     {
         raycastHitRight = true;
     }
@@ -87,6 +105,26 @@ public class InputManager : MonoBehaviour {
 
     void Update()
     {
+        /*
+         * Used for navigating the spawnables array.
+         */
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            if (!characterSpawnEnabled)
+            {
+                characterSpawnEnabled = true;
+            }
+            else
+            {
+                characterCounter++;
+                if (characterCounter == characterSpawn.Length)
+                {
+                    characterCounter = 0;
+                }
+            }
+            Utility.UpdateSpawnablesText(spawnablesText, characterCounter, true);
+        }
+
         /*
          * We hit a collider with the left mouse button. The
          * object we hit is now our selectedObject.

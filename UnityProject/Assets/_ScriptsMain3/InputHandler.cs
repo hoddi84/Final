@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InputHandler : MonoBehaviour {
 
-    public delegate void RaycastEventHandler(GameObject obj);
+    public delegate void RaycastEventHandler(GameObject obj, Ray ray);
     public delegate void MouseEventHandler();
 
     public static event RaycastEventHandler MouseRightRaycastHit;
@@ -33,7 +33,7 @@ public class InputHandler : MonoBehaviour {
             {
                 if (MouseLeftRaycastHit != null)
                 {
-                    MouseLeftRaycastHit(hit.transform.gameObject);
+                    MouseLeftRaycastHit(hit.transform.gameObject, ray);
                 }
             }
             else
@@ -53,7 +53,7 @@ public class InputHandler : MonoBehaviour {
             {
                 if (MouseRightRaycastHit != null)
                 {
-                    MouseRightRaycastHit(hit.transform.gameObject);
+                    MouseRightRaycastHit(hit.transform.gameObject, ray);
                 }
             }
             else
