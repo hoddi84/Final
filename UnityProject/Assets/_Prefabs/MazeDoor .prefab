@@ -32,7 +32,7 @@ GameObject:
   m_IsActive: 1
 --- !u!1 &1325618436830188
 GameObject:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
@@ -136,9 +136,8 @@ Transform:
   m_LocalScale: {x: 0.006916777, y: 0.0094719315, z: 0.0088}
   m_Children:
   - {fileID: 4362222756710446}
-  - {fileID: 4720906193834180}
   m_Father: {fileID: 4803317097384582}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
 --- !u!4 &4720906193834180
 Transform:
@@ -146,11 +145,11 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1325618436830188}
-  m_LocalRotation: {x: 0.7071068, y: -0.00000008940696, z: 0.000000059604638, w: 0.70710677}
-  m_LocalPosition: {x: 45.830715, y: 259.08124, z: -1.9317492}
-  m_LocalScale: {x: 103.39336, y: 81.26694, z: 75.501915}
+  m_LocalRotation: {x: 0.5000001, y: 0.49999994, z: -0.49999994, w: 0.50000006}
+  m_LocalPosition: {x: 0.17100048, y: 2.4999998, z: -2.461}
+  m_LocalScale: {x: 0.7151488, y: 0.71514904, z: 0.715149}
   m_Children: []
-  m_Father: {fileID: 4375332385386082}
+  m_Father: {fileID: 4803317097384582}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: 0}
 --- !u!4 &4803317097384582
@@ -164,6 +163,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4062714611665804}
+  - {fileID: 4720906193834180}
   - {fileID: 4375332385386082}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -198,6 +198,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23389698046725376
 MeshRenderer:
@@ -230,6 +231,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33560356943475250
 MeshFilter:
@@ -460,8 +462,13 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5fe5caaec14cbb0428d8359c55ee2911, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0

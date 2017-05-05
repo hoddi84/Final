@@ -61,33 +61,47 @@ public class ViveController : MonoBehaviour {
             {
                 if (mazeDoorController != null)
                 {
-                    if (mazeDoorController.canInteract)
+                    /*
+                     * If the door is locked, to nothing.
+                     */
+                    if (mazeDoorController.doorIsLocked)
                     {
-                        mazeDoorController.canInteract = false;
-                        GameObject door = mazeDoorController.doorObject;
-                        GameObject doorHandle = interactedObject.gameObject;
-
-                        float rotation = doorHandle.gameObject.GetComponent<MazeDoorController>().rotateDegrees;
-                        float timeOpen = doorHandle.gameObject.GetComponent<MazeDoorController>().rotateTimeOpen;
-                        float timeClose = doorHandle.gameObject.GetComponent<MazeDoorController>().rotateTimeClose;
-                        bool direction = doorHandle.gameObject.GetComponent<MazeDoorController>().openHandleOutwards;
-
-                        StartCoroutine(MazeUtility.RotateOverSeconds(doorHandleClip, doorCloseClip, mazeDoorController, door, rotation, timeOpen, timeClose, direction));
-
-                        if (direction)
-                        {
-                            mazeDoorController.openHandleOutwards = false;
-                        }
-                        else
-                        {
-                            mazeDoorController.openHandleOutwards = true;
-                        }
-
-                        doorHandle = null;
-                        door = null;
                         interactedObject = null;
                         mazeDoorController = null;
                     }
+                    /*
+                     * If the door is open, open the door.
+                     */
+                    else
+                    {
+                        if (mazeDoorController.canInteract)
+                        {
+                            mazeDoorController.canInteract = false;
+                            GameObject door = mazeDoorController.doorObject;
+                            GameObject doorHandle = interactedObject.gameObject;
+
+                            float rotation = doorHandle.gameObject.GetComponent<MazeDoorController>().rotateDegrees;
+                            float timeOpen = doorHandle.gameObject.GetComponent<MazeDoorController>().rotateTimeOpen;
+                            float timeClose = doorHandle.gameObject.GetComponent<MazeDoorController>().rotateTimeClose;
+                            bool direction = doorHandle.gameObject.GetComponent<MazeDoorController>().openHandleOutwards;
+
+                            StartCoroutine(MazeUtility.RotateOverSeconds(doorHandleClip, doorCloseClip, mazeDoorController, door, rotation, timeOpen, timeClose, direction));
+
+                            if (direction)
+                            {
+                                mazeDoorController.openHandleOutwards = false;
+                            }
+                            else
+                            {
+                                mazeDoorController.openHandleOutwards = true;
+                            }
+
+                            doorHandle = null;
+                            door = null;
+                            interactedObject = null;
+                            mazeDoorController = null;
+                        }
+                    }  
                 }
             }
         }
