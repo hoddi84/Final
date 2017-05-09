@@ -44,6 +44,9 @@ TagManager:
   - Place22
   - DoorLock
   - Toggleable
+  - Place23
+  - Place24
+  - Place25
   layers:
   - Default
   - TransparentFX

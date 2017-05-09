@@ -26,4 +26,7 @@ public class MazeAnnouncer {
     public static string Place20 = "Current Place: \n" + "We are in Place 20";
     public static string Place21 = "Current Place: \n" + "We are in Place 21";
     public static string Place22 = "Current Place: \n" + "We are in Place 22";
+    public static string Place23 = "Current Place: \n" + "We are in Place 23";
+    public static string Place24 = "Current Place: \n" + "We are in Place 24";
+    public static string Place25 = "Current Place: \n" + "We are in Place 25";
 }
