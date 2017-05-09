@@ -7,6 +7,8 @@ public class ViveController : MonoBehaviour {
     private bool canInteract;
     private bool holdingObject;
 
+    private bool testActivated;
+
     private GameObject interactedObject;
 
     private SteamVR_TrackedController controller;
@@ -15,22 +17,49 @@ public class ViveController : MonoBehaviour {
     [Header("Interaction Sounds")]
     public AudioClip doorHandleClip;
     public AudioClip doorCloseClip;
+
+    [Header("Elevator Settings")]
+    public GameObject elevatorFloor;
+    public GameObject elevatorEnd;
+    public GameObject elevatorBegin;
+    public GameObject rig;
+    private float elevatorTime = 15f;
+    private bool firstFloor = true;
  
     void OnEnable()
     {
         controller = GetComponent<SteamVR_TrackedController>();
         controller.TriggerClicked += HandleTriggerClicked;
         controller.TriggerUnclicked += HandleTriggerUnclicked;
+        controller.Gripped += HandleGripped;
+        controller.Ungripped += HandleUngripped;
     }
 
     void OnDisable()
     {
         controller.TriggerClicked -= HandleTriggerClicked;
         controller.TriggerUnclicked -= HandleTriggerUnclicked;
+        controller.Gripped -= HandleGripped;
+        controller.Ungripped -= HandleUngripped;
     }
 
     void Update()
     {
+        /*
+         * Logic whgich we use to test our elevator
+         */
+         if (testActivated && firstFloor)
+        {
+            testActivated = false;
+            firstFloor = false;
+            StartCoroutine(MazeUtility.MoveOverSeconds(elevatorFloor, elevatorEnd.transform.position, elevatorTime, true, rig, true, 1, controller));
+        }
+         else if (testActivated && !firstFloor)
+        {
+            testActivated = false;
+            firstFloor = true;
+            StartCoroutine(MazeUtility.MoveOverSeconds(elevatorFloor, elevatorBegin.transform.position, elevatorTime, true, rig, true, 1, controller));
+        }
 
         /*
          * Logic for picking up pickable objects. 
@@ -105,6 +134,16 @@ public class ViveController : MonoBehaviour {
                 }
             }
         }
+    }
+
+    void HandleGripped(object sender, ClickedEventArgs e)
+    {
+        testActivated = true;
+    }
+
+    void HandleUngripped(object sender, ClickedEventArgs e)
+    {
+        testActivated = false;
     }
 
     void HandleTriggerClicked(object sender, ClickedEventArgs e) 

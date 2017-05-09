@@ -43,17 +43,37 @@ public class MazeUtility : MonoBehaviour {
     /*
      * Move an object to a new position over a specified amount of time.
      */
-    public static IEnumerator MoveOverSeconds(GameObject objectToMove, Vector3 end, float seconds)
+    public static IEnumerator MoveOverSeconds(GameObject objectToMove, Vector3 end, float seconds, bool onElevator, GameObject rig, bool useHaptics, float hapticStrength, SteamVR_TrackedController controller)
     {
+        /*
+         * If we are moving on an elevator, we must move the camera rig as well.
+         */
+        if (onElevator)
+        {
+            rig.transform.parent = objectToMove.transform;
+        }
+
         float elapsedTime = 0;
         Vector3 startingPos = objectToMove.transform.position;
         while (elapsedTime < seconds)
-        {
+        {   
+            /*
+             * If true, haptics will be enabled while the object is moving. 
+             */
+            if (useHaptics)
+            {
+                TriggerContinuousVibration(controller, 1);
+            }
             objectToMove.transform.position = Vector3.Lerp(startingPos, end, (elapsedTime / seconds));
             elapsedTime += Time.deltaTime;
             yield return new WaitForEndOfFrame();
         }
         objectToMove.transform.position = end;
+
+        /*
+         * Once we finish moving we change the parent of rig to previous, which is null.
+         */
+        rig.transform.parent = null;
     }
 
     /*
@@ -142,7 +162,7 @@ public class MazeUtility : MonoBehaviour {
     }
 
     /*
-     * Trigger a continuous haptic pulse.
+     * Trigger a continuous haptic pulse. Strength equal to 1 is the strongest haptic pulse.
      */
     public static void TriggerContinuousVibration(SteamVR_TrackedController controller, float vibrationStrength)
     {

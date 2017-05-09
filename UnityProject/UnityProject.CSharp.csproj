@@ -84,13 +84,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\GenericObjectToggler.cs" />
     <Compile Include="Assets\Head Look Controller\Scripts\CursorHit.cs" />
     <Compile Include="Assets\Head Look Controller\Scripts\HeadLookController.cs" />
     <Compile Include="Assets\Head Look Controller\Scripts\HelpText.cs" />
     <Compile Include="Assets\Head Look Controller\Scripts\OrbitCamera.cs" />
     <Compile Include="Assets\HeadFollow.cs" />
-    <Compile Include="Assets\MazeDoorMechanic.cs" />
     <Compile Include="Assets\ObjectActions.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />
@@ -217,12 +215,15 @@
     <Compile Include="Assets\_ScriptsMain3\ViewController.cs" />
     <Compile Include="Assets\_Scripts_Animations\SceneController.cs" />
     <Compile Include="Assets\_Scripts_Maze\CullMainLight.cs" />
+    <Compile Include="Assets\_Scripts_Maze\GenericObjectToggler.cs" />
     <Compile Include="Assets\_Scripts_Maze\MazeAnnouncer.cs" />
     <Compile Include="Assets\_Scripts_Maze\MazeController.cs" />
     <Compile Include="Assets\_Scripts_Maze\MazeDoorController.cs" />
+    <Compile Include="Assets\_Scripts_Maze\MazeDoorMechanic.cs" />
     <Compile Include="Assets\_Scripts_Maze\MazeTransitions.cs" />
     <Compile Include="Assets\_Scripts_Maze\MazeUtility.cs" />
     <Compile Include="Assets\_Scripts_Maze\ObjectToggler.cs" />
+    <Compile Include="Assets\_Scripts_Maze\VIVEControllerManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
