@@ -12,6 +12,15 @@ public class GenericObjectToggler : MonoBehaviour {
 
     private bool showingDefault = true;
 
+    [Header("Advanced Toggle")]
+    public bool enableMultipleToggle = false;
+    public GameObject defaultState;
+    public GameObject[] activeStates;
+    public Sprite defaultSprite;
+    public Sprite[] activeSprites;
+
+    private int counter = 0;
+
     /*
      * This is done to reset the state, e.g. so that when we
      * come back to a previous state we have reset the settings.
@@ -19,39 +28,73 @@ public class GenericObjectToggler : MonoBehaviour {
     void OnDisable()
     {
         showingDefault = false;
+        counter = activeStates.Length + 1;
         Toggle();
     }
 
 
     public void Toggle()
     {
-        if (showingDefault)
+        if (enableMultipleToggle)
         {
-            if (objectsDefault != null)
+            counter++;
+            if (counter >= (activeStates.Length + 1))
             {
-                objectsDefault.SetActive(false);
-
+                counter = 0;
             }
-            if (objectsActive != null)
+            if (counter == 0)
             {
-                objectsActive.SetActive(true);
+                foreach (GameObject state in activeStates)
+                {
+                    state.SetActive(false);
+                }
+                if (defaultState != null)
+                {
+                    defaultState.SetActive(true);
+                }
+                gameObject.GetComponent<SpriteRenderer>().sprite = defaultSprite;
             }
-            gameObject.GetComponent<SpriteRenderer>().sprite = spriteActive;
-            showingDefault = false;
+            else
+            {
+                foreach (GameObject state in activeStates)
+                {
+                    state.SetActive(false);
+                }
+                activeStates[counter - 1].SetActive(true);
+                gameObject.GetComponent<SpriteRenderer>().sprite = activeSprites[counter - 1];
+            }
         }
         else
         {
-            if (objectsDefault != null)
+            if (showingDefault)
             {
-                objectsDefault.SetActive(true);
+                if (objectsDefault != null)
+                {
+                    objectsDefault.SetActive(false);
 
+                }
+                if (objectsActive != null)
+                {
+                    objectsActive.SetActive(true);
+                }
+                gameObject.GetComponent<SpriteRenderer>().sprite = spriteActive;
+                showingDefault = false;
             }
-            if (objectsActive != null)
+            else
             {
-                objectsActive.SetActive(false);
+                if (objectsDefault != null)
+                {
+                    objectsDefault.SetActive(true);
+
+                }
+                if (objectsActive != null)
+                {
+                    objectsActive.SetActive(false);
+                }
+                gameObject.GetComponent<SpriteRenderer>().sprite = spriteDefault;
+                showingDefault = true;
             }
-            gameObject.GetComponent<SpriteRenderer>().sprite = spriteDefault;
-            showingDefault = true;
         }
+        
     }
 }
