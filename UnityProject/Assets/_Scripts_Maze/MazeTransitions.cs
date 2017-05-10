@@ -6,7 +6,7 @@ public class MazeTransitions : MonoBehaviour {
 
     [Header("Transitions")]
     public GameObject transitionFrom;
-    public GameObject transitionTo;
+    public GameObject[] transitionTo;
 
 	// Use this for initialization
 	void Start () {
@@ -14,7 +14,10 @@ public class MazeTransitions : MonoBehaviour {
         /*
          * Make sure the transition we can move towards is disabled.
          */
-        transitionTo.SetActive(false);
+        foreach (GameObject obj in transitionTo)
+        {
+            obj.SetActive(false);
+        }
 	}
 
     void OnTriggerEnter(Collider other)
@@ -26,7 +29,10 @@ public class MazeTransitions : MonoBehaviour {
              * gameObject and enable the transitionTo gameObject. 
              */
             transitionFrom.SetActive(false);
-            transitionTo.SetActive(true);
+            foreach (GameObject obj in transitionTo)
+            {
+                obj.SetActive(true);
+            }
         }
     }
 }
