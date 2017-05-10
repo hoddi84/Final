@@ -168,5 +168,17 @@ public class MazeUtility : MonoBehaviour {
     {
         SteamVR_Controller.Input((int)controller.controllerIndex).TriggerHapticPulse((ushort)Mathf.Lerp(0, 3999, vibrationStrength));
     }
+
+    /*
+     * Plays an audio clip from the maze door controller.
+     */
+    public static void PlaySound(MazeDoorController controller, AudioClip clip)
+    {
+        AudioSource audio = controller.GetComponent<AudioSource>();
+        audio.Stop();
+        audio.clip = clip;
+        audio.loop = false;
+        audio.Play();
+    }
 }
 

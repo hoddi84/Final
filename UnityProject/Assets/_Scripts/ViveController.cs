@@ -17,6 +17,7 @@ public class ViveController : MonoBehaviour {
     [Header("Interaction Sounds")]
     public AudioClip doorHandleClip;
     public AudioClip doorCloseClip;
+    public AudioClip doorLockedClip;
 
     [Header("Elevator Settings")]
     public GameObject elevatorFloor;
@@ -91,10 +92,12 @@ public class ViveController : MonoBehaviour {
                 if (mazeDoorController != null)
                 {
                     /*
-                     * If the door is locked, to nothing.
+                     * If the door is locked, play the locked sound
+                     * and dereference.
                      */
                     if (mazeDoorController.doorIsLocked)
                     {
+                        MazeUtility.PlaySound(mazeDoorController, doorLockedClip);
                         interactedObject = null;
                         mazeDoorController = null;
                     }

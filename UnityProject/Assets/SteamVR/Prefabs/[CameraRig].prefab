@@ -118,8 +118,8 @@ GameObject:
   - component: {fileID: 413432}
   - component: {fileID: 2082592}
   - component: {fileID: 12409152}
-  - component: {fileID: 114532079806466590}
   - component: {fileID: 114869546821178880}
+  - component: {fileID: 114530263212347006}
   m_Layer: 0
   m_Name: Camera (eye)
   m_TagString: MainCamera
@@ -286,8 +286,6 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
-  m_AllowMSAA: 1
-  m_ForceIntoRT: 0
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
@@ -322,8 +320,6 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
-  m_AllowMSAA: 1
-  m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
@@ -358,7 +354,6 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &3380982
 MeshFilter:
@@ -654,8 +649,6 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
-  m_AllowMSAA: 1
-  m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
@@ -690,7 +683,6 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23682110092073402
 MeshRenderer:
@@ -722,7 +714,6 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33133500166139224
 MeshFilter:
@@ -798,12 +789,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorHandleClip: {fileID: 8300000, guid: 4817466a737ecaa4796542eae742c440, type: 3}
   doorCloseClip: {fileID: 8300000, guid: ba05021a8c74f2346936f114eacc8561, type: 3}
+  doorLockedClip: {fileID: 8300000, guid: be864a96b698ab940a4adbcf5c72eed6, type: 3}
   elevatorFloor: {fileID: 0}
   elevatorEnd: {fileID: 0}
   elevatorBegin: {fileID: 0}
   rig: {fileID: 146900}
-  manager: {fileID: 0}
---- !u!114 &114532079806466590
+--- !u!114 &114530263212347006
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -859,11 +850,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doorHandleClip: {fileID: 8300000, guid: 4817466a737ecaa4796542eae742c440, type: 3}
   doorCloseClip: {fileID: 8300000, guid: ba05021a8c74f2346936f114eacc8561, type: 3}
+  doorLockedClip: {fileID: 8300000, guid: be864a96b698ab940a4adbcf5c72eed6, type: 3}
   elevatorFloor: {fileID: 0}
   elevatorEnd: {fileID: 0}
   elevatorBegin: {fileID: 0}
   rig: {fileID: 146900}
-  manager: {fileID: 0}
 --- !u!114 &114869546821178880
 MonoBehaviour:
   m_ObjectHideFlags: 1

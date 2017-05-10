@@ -9,9 +9,12 @@ public class MazeDoorMechanic : MonoBehaviour {
     public bool doorLocked = false;
     public MazeDoorController doorController;
 
+    private AudioSource lockingSound;
+
 	// Use this for initialization
 	void Start () {
-		
+
+        lockingSound = GetComponentInChildren<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -32,6 +35,7 @@ public class MazeDoorMechanic : MonoBehaviour {
             gameObject.GetComponent<SpriteRenderer>().sprite = spriteLocked;
             doorLocked = true;
             doorController.doorIsLocked = true;
+            lockingSound.Play();
         }
     }
 }
