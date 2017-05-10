@@ -12,29 +12,44 @@ public class GenericObjectToggler : MonoBehaviour {
 
     private bool showingDefault = true;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    /*
+     * This is done to reset the state, e.g. so that when we
+     * come back to a previous state we have reset the settings.
+     */
+    void OnDisable()
+    {
+        showingDefault = false;
+        Toggle();
+    }
+
 
     public void Toggle()
     {
         if (showingDefault)
         {
-            objectsDefault.SetActive(false);
-            objectsActive.SetActive(true);
+            if (objectsDefault != null)
+            {
+                objectsDefault.SetActive(false);
+
+            }
+            if (objectsActive != null)
+            {
+                objectsActive.SetActive(true);
+            }
             gameObject.GetComponent<SpriteRenderer>().sprite = spriteActive;
             showingDefault = false;
         }
         else
         {
-            objectsDefault.SetActive(true);
-            objectsActive.SetActive(false);
+            if (objectsDefault != null)
+            {
+                objectsDefault.SetActive(true);
+
+            }
+            if (objectsActive != null)
+            {
+                objectsActive.SetActive(false);
+            }
             gameObject.GetComponent<SpriteRenderer>().sprite = spriteDefault;
             showingDefault = true;
         }
