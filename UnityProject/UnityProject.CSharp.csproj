@@ -84,6 +84,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\ElevatorMechanics.cs" />
     <Compile Include="Assets\Head Look Controller\Scripts\CursorHit.cs" />
     <Compile Include="Assets\Head Look Controller\Scripts\HeadLookController.cs" />
     <Compile Include="Assets\Head Look Controller\Scripts\HelpText.cs" />

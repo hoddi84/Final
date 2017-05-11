@@ -9,7 +9,7 @@ using System.Collections.Generic;
 public class CullMainLight : MonoBehaviour
 {
 
-    private Light mainLight;
+    public Light mainLight;
 
     void Start()
     {
