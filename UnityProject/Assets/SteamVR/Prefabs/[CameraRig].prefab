@@ -286,8 +286,6 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
-  m_AllowMSAA: 1
-  m_ForceIntoRT: 0
   m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
@@ -322,8 +320,6 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
-  m_AllowMSAA: 1
-  m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
@@ -358,7 +354,6 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &3380982
 MeshFilter:
@@ -654,8 +649,6 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
-  m_AllowMSAA: 1
-  m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
@@ -690,7 +683,6 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!23 &23682110092073402
 MeshRenderer:
@@ -722,7 +714,6 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
-  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &33133500166139224
 MeshFilter:
@@ -799,8 +790,8 @@ MonoBehaviour:
   doorHandleClip: {fileID: 8300000, guid: 4817466a737ecaa4796542eae742c440, type: 3}
   doorCloseClip: {fileID: 8300000, guid: ba05021a8c74f2346936f114eacc8561, type: 3}
   doorLockedClip: {fileID: 8300000, guid: be864a96b698ab940a4adbcf5c72eed6, type: 3}
-  vinylNeedleSound: {fileID: 8300000, guid: 62dd5b6c6e393a74c8dcc68c9bf90423, type: 3}
-  vinylMusicTrack1: {fileID: 8300000, guid: d3301946d5e59f54d96403f4635c61cf, type: 3}
+  vinylNeedleSound: {fileID: 8300000, guid: f0e5718cc1cb2fe488b8e69b7b0eabaa, type: 3}
+  vinylMusicTrack1: {fileID: 8300000, guid: 1bfa6efb428dc324792b32cce71f2397, type: 3}
   elevatorFloor: {fileID: 0}
   elevatorEnd: {fileID: 0}
   elevatorBegin: {fileID: 0}
@@ -862,8 +853,8 @@ MonoBehaviour:
   doorHandleClip: {fileID: 8300000, guid: 4817466a737ecaa4796542eae742c440, type: 3}
   doorCloseClip: {fileID: 8300000, guid: ba05021a8c74f2346936f114eacc8561, type: 3}
   doorLockedClip: {fileID: 8300000, guid: be864a96b698ab940a4adbcf5c72eed6, type: 3}
-  vinylNeedleSound: {fileID: 8300000, guid: 62dd5b6c6e393a74c8dcc68c9bf90423, type: 3}
-  vinylMusicTrack1: {fileID: 8300000, guid: d3301946d5e59f54d96403f4635c61cf, type: 3}
+  vinylNeedleSound: {fileID: 8300000, guid: f0e5718cc1cb2fe488b8e69b7b0eabaa, type: 3}
+  vinylMusicTrack1: {fileID: 8300000, guid: 1bfa6efb428dc324792b32cce71f2397, type: 3}
   elevatorFloor: {fileID: 0}
   elevatorEnd: {fileID: 0}
   elevatorBegin: {fileID: 0}
