@@ -84,7 +84,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\ElevatorMechanics.cs" />
     <Compile Include="Assets\Head Look Controller\Scripts\CursorHit.cs" />
     <Compile Include="Assets\Head Look Controller\Scripts\HeadLookController.cs" />
     <Compile Include="Assets\Head Look Controller\Scripts\HelpText.cs" />
@@ -216,6 +215,7 @@
     <Compile Include="Assets\_ScriptsMain3\ViewController.cs" />
     <Compile Include="Assets\_Scripts_Animations\SceneController.cs" />
     <Compile Include="Assets\_Scripts_Maze\CullMainLight.cs" />
+    <Compile Include="Assets\_Scripts_Maze\ElevatorMechanics.cs" />
     <Compile Include="Assets\_Scripts_Maze\GenericObjectToggler.cs" />
     <Compile Include="Assets\_Scripts_Maze\MazeAnnouncer.cs" />
     <Compile Include="Assets\_Scripts_Maze\MazeController.cs" />

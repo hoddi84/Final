@@ -68,7 +68,7 @@ public class InputManager : MonoBehaviour {
         {
             obj.GetComponent<GenericObjectToggler>().Toggle();
         }
-        else if (obj.tag == "ElevatorTrigger")
+        else if (obj.tag == "ElevatorTrigger" && !obj.GetComponent<ElevatorMechanics>().elevatorIsMoving)
         {
             obj.GetComponent<ElevatorMechanics>().ActivateElevator();
         }

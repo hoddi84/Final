@@ -16,8 +16,16 @@ public class MazeUtility : MonoBehaviour {
     /*
      * Move an object to a new position over a specified amount of time.
      */
-    public static IEnumerator MoveOverSeconds(GameObject objectToMove, Vector3 end, float seconds, bool onElevator, GameObject rig, bool useHaptics, VIVEControllerManager controllerManager)
+    public static IEnumerator MoveOverSeconds(ElevatorMechanics elevatorMechanics, GameObject objectToMove, Vector3 end, float seconds, bool onElevator, GameObject rig, bool useHaptics, VIVEControllerManager controllerManager, bool goingDown)
     {
+        /*
+         * If we are going down, we enable the tunnel.
+         */
+        if (goingDown)
+        {
+            elevatorMechanics.belowFloor.SetActive(true);
+        }
+
         /*
          * If we are moving on an elevator, we must move the camera rig as well.
          */
@@ -47,6 +55,19 @@ public class MazeUtility : MonoBehaviour {
          * Once we finish moving we change the parent of rig to previous, which is null.
          */
         rig.transform.parent = null;
+
+        /*
+         * Now the elevator has stopped.
+         */
+        elevatorMechanics.elevatorIsMoving = false;
+
+        /*
+         * If we were going up, we disable the tunnel when we have arrived up.
+         */
+        if (!goingDown)
+        {
+            elevatorMechanics.belowFloor.SetActive(false);
+        }
     }
 
     /*

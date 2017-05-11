@@ -18,6 +18,8 @@ public class ElevatorMechanics : MonoBehaviour {
 
     private bool elevatorIsUp = true;
 
+    public bool elevatorIsMoving = false;
+
     public VIVEControllerManager controllerManager;
 
     /*
@@ -28,17 +30,17 @@ public class ElevatorMechanics : MonoBehaviour {
     {
         if (elevatorIsUp)
         {
-            StartCoroutine(MazeUtility.MoveOverSeconds(elevatorFloor, elevatorEnd.transform.position, elevatorTime, true, rig, true, controllerManager));
+            elevatorIsMoving = true;
+            StartCoroutine(MazeUtility.MoveOverSeconds(this, elevatorFloor, elevatorEnd.transform.position, elevatorTime, true, rig, true, controllerManager, true));
             elevatorIsUp = false;
             gameObject.GetComponent<SpriteRenderer>().sprite = belowFloorSprite;
-            belowFloor.SetActive(true);
         }
         else if (!elevatorIsUp)
         {
-            StartCoroutine(MazeUtility.MoveOverSeconds(elevatorFloor, elevatorBegin.transform.position, elevatorTime, true, rig, true, controllerManager));
+            elevatorIsMoving = true;
+            StartCoroutine(MazeUtility.MoveOverSeconds(this, elevatorFloor, elevatorBegin.transform.position, elevatorTime, true, rig, true, controllerManager, false));
             elevatorIsUp = true;
             gameObject.GetComponent<SpriteRenderer>().sprite = topFloorSprite;
-            belowFloor.SetActive(false);
         }
     }
 }

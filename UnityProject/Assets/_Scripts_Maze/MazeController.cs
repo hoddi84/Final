@@ -17,6 +17,7 @@ public class MazeController : MonoBehaviour {
     [Header("Static Objects")]
     public GameObject place9_10_23;
     public GameObject place17_18_19;
+    public GameObject place20_21_22_26_27;
 
     [Header("States")]
     public bool place1Active;
@@ -124,6 +125,15 @@ public class MazeController : MonoBehaviour {
         else
         {
             place17_18_19.SetActive(false);
+        }
+
+        if (place20Active || place21Active || place22Active || place26Active || place27Active)
+        {
+            place20_21_22_26_27.SetActive(true);
+        }
+        else
+        {
+            place20_21_22_26_27.SetActive(false);
         }
     }
 
