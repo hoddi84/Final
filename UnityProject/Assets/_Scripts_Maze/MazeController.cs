@@ -8,18 +8,11 @@ public class MazeController : MonoBehaviour {
     [Header("Available Places")]
     public GameObject[] places;
 
-    private GameObject currentPlace = null;
-
     [Header("Manual Triggers")]
+    public GameObject place1Triggers;
     public GameObject place2Triggers;
-
-    [Header("Branching Places")]
-    public GameObject[] place1;
-
-    private GameObject[] currentBranchingPlaces;
-
-    private int branchingCounter = 0;
-    private bool branchingCounterActivated = false;
+    public GameObject place3Triggers;
+    public GameObject place14Triggers;
 
     [Header("States")]
     public bool place1Active;
@@ -55,7 +48,6 @@ public class MazeController : MonoBehaviour {
 
     [Header("Announcers")]
     public Text stateText;
-    public Text branchText;
 
 	// Use this for initialization
 	void Start () {
@@ -76,6 +68,15 @@ public class MazeController : MonoBehaviour {
      */
      void CheckForTriggerArea()
     {
+        if (place1Active)
+        {
+            place1Triggers.SetActive(true);
+        }
+        else
+        {
+            place1Triggers.SetActive(false);
+        }
+
         if (place2Active)
         {
             place2Triggers.SetActive(true);
@@ -84,25 +85,24 @@ public class MazeController : MonoBehaviour {
         {
             place2Triggers.SetActive(false);
         }
-    }
 
-    /*
-     * Displays available branching points depending on the state we are in.
-     */
-    void UpdateBranchingInformation(GameObject[] branchingPlaces, GameObject place)
-    {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (place3Active)
         {
-            branchingCounter++;
+            place3Triggers.SetActive(true);
         }
-        if (branchingPlaces != null)
+        else
         {
-            if (branchingCounter >= branchingPlaces.Length)
-            {
-                branchingCounter = 0;
-            }
+            place3Triggers.SetActive(false);
         }
-        MazeUtility.AnnounceBranch(branchText, place.tag, branchingPlaces, branchingCounter);
+
+        if (place14Active)
+        {
+            place14Triggers.SetActive(true);
+        }
+        else
+        {
+            place14Triggers.SetActive(false);
+        }
     }
 
     /*
@@ -115,8 +115,6 @@ public class MazeController : MonoBehaviour {
         {
             if (obj.tag == "Place1" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = place1;
                 place1Active = true;
                 place2Active = false;
                 place3Active = false;
@@ -148,12 +146,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place1);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place2" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = true;
                 place3Active = false;
@@ -185,12 +180,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place2);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place3" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = true;
@@ -222,12 +214,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place3);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place4" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = false;
@@ -259,12 +248,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place4);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place5" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = false;
@@ -296,12 +282,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place5);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place6" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = false;
@@ -333,12 +316,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place6);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place7" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = false;
@@ -370,12 +350,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place7);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place8" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = false;
@@ -407,12 +384,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place8);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place9" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = false;
@@ -444,12 +418,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place9);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place10" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = false;
@@ -481,12 +452,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place10);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place11" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = false;
@@ -518,12 +486,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place11);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place12" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = false;
@@ -555,12 +520,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place12);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place13" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = false;
@@ -592,12 +554,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place13);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place14" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = false;
@@ -629,12 +588,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place14);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place15" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = false;
@@ -666,12 +622,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place15);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place16" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = false;
@@ -703,12 +656,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place16);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place17" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = false;
@@ -740,12 +690,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place17);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place18" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = false;
@@ -777,12 +724,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place18);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place19" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = false;
@@ -814,12 +758,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place19);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place20" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = false;
@@ -851,12 +792,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place20);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place21" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = false;
@@ -888,12 +826,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place21);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place22" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = false;
@@ -925,12 +860,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place22);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place23" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = false;
@@ -962,12 +894,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place23);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place24" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = false;
@@ -999,12 +928,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place24);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place25" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = false;
@@ -1036,12 +962,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place25);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place26" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = false;
@@ -1073,12 +996,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place26);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place27" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = false;
@@ -1110,12 +1030,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place27);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place28" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = false;
@@ -1147,12 +1064,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place28);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place29" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = false;
@@ -1184,12 +1098,9 @@ public class MazeController : MonoBehaviour {
                 place29Active = true;
                 place30Active = false;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place29);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
             else if (obj.tag == "Place30" && obj.activeInHierarchy)
             {
-                currentPlace = obj;
-                currentBranchingPlaces = null;
                 place1Active = false;
                 place2Active = false;
                 place3Active = false;
@@ -1221,7 +1132,6 @@ public class MazeController : MonoBehaviour {
                 place29Active = false;
                 place30Active = true;
                 MazeUtility.AnnounceState(stateText, MazeAnnouncer.Place30);
-                UpdateBranchingInformation(currentBranchingPlaces, currentPlace);
             }
         }
     }

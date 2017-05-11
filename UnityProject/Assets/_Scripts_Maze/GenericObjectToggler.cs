@@ -22,6 +22,18 @@ public class GenericObjectToggler : MonoBehaviour {
     private int counter = 0;
 
     /*
+     * Make sure to enable the default state, in case it is disabled, that is
+     * if we have indeed specified a default state.
+     */
+    void OnEnable()
+    {
+        if (objectsDefault != null)
+        {
+            objectsDefault.SetActive(true);
+        }
+    }
+
+    /*
      * This is done to reset the state, e.g. so that when we
      * come back to a previous state we have reset the settings.
      */

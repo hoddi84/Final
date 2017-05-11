@@ -14,33 +14,6 @@ public class MazeUtility : MonoBehaviour {
     }
 
     /*
-     * Write possible branches, if any.
-     */
-    public static void AnnounceBranch(Text textArea, string currentState, GameObject[] branches, int branchCounter)
-    {
-        switch (currentState)
-        {
-            case "Place1":
-                textArea.text = "Branch Toggle (E) \n" + branches[branchCounter].name;
-                foreach (GameObject obj in branches)
-                {
-                    if (obj.name == branches[branchCounter].name)
-                    {
-                        obj.SetActive(true);
-                    }
-                    else
-                    {
-                        obj.SetActive(false);
-                    }
-                }
-                break;
-            default:
-                textArea.text = "No branch possible";
-                break;
-        }
-    }
-
-    /*
      * Move an object to a new position over a specified amount of time.
      */
     public static IEnumerator MoveOverSeconds(GameObject objectToMove, Vector3 end, float seconds, bool onElevator, GameObject rig, bool useHaptics, float hapticStrength, SteamVR_TrackedController controller)
@@ -141,6 +114,11 @@ public class MazeUtility : MonoBehaviour {
             audio.Play();
         }
 
+        /*
+         * Here we update the rotation on joined states/places, so
+         * that when you advance in the environment i.e. a open door will
+         * stay open.
+         */
         controller.UpdateDoorRotation(objectToMove);
 
         /*
