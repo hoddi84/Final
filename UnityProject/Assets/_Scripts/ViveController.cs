@@ -18,6 +18,8 @@ public class ViveController : MonoBehaviour {
     public AudioClip doorHandleClip;
     public AudioClip doorCloseClip;
     public AudioClip doorLockedClip;
+    public AudioClip vinylNeedleSound;
+    public AudioClip vinylMusicTrack1;
 
     [Header("Elevator Settings")]
     public GameObject elevatorFloor;
@@ -176,10 +178,19 @@ public class ViveController : MonoBehaviour {
         {
             if (canInteract)
             {
-                StartCoroutine(MazeUtility.TriggerVibration(controller, 1, .1f));
                 canInteract = false;
+                StartCoroutine(MazeUtility.TriggerVibration(controller, 1, .1f));
                 interactedObject = other.gameObject;
                 mazeDoorController = other.GetComponent<MazeDoorController>();
+            }
+        }
+        else if (other.gameObject.tag == "VinylPlayer")
+        {
+            if (canInteract)
+            {
+                canInteract = false;
+                StartCoroutine(MazeUtility.TriggerVibration(controller, 1, 1f));
+                StartCoroutine(MazeUtility.PlayVinyl(vinylNeedleSound, vinylMusicTrack1, other.gameObject));
             }
         }
 

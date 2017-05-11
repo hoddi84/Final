@@ -52,6 +52,7 @@ TagManager:
   - Place28
   - Place29
   - Place30
+  - VinylPlayer
   layers:
   - Default
   - TransparentFX

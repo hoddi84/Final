@@ -158,5 +158,36 @@ public class MazeUtility : MonoBehaviour {
         audio.loop = false;
         audio.Play();
     }
+
+    /*
+     * Plays an audio tune when we interact with the vinyl player.
+     */
+     public static IEnumerator PlayVinyl(AudioClip vinylStartSound, AudioClip vinylTrack, GameObject vinylNeedle)
+    {
+        AudioSource audio = vinylNeedle.GetComponent<AudioSource>();
+
+        /*
+         * Play the vinyl start sound, i.e. needle touching the player.
+         */
+        audio.Stop();
+        audio.loop = false;
+        audio.clip = vinylStartSound;
+        audio.Play();
+
+        yield return new WaitUntil(() => !audio.isPlaying);
+
+        /*
+         * Now we play the vinyl music track.
+         */
+        audio.loop = true;
+        audio.clip = vinylTrack;
+        audio.Play();
+
+        yield return new WaitUntil(() => !audio.isPlaying);
+
+        audio = null;
+
+        yield return null;
+    }
 }
 
