@@ -16,7 +16,7 @@ public class MazeUtility : MonoBehaviour {
     /*
      * Move an object to a new position over a specified amount of time.
      */
-    public static IEnumerator MoveOverSeconds(GameObject objectToMove, Vector3 end, float seconds, bool onElevator, GameObject rig, bool useHaptics, float hapticStrength, SteamVR_TrackedController controller)
+    public static IEnumerator MoveOverSeconds(GameObject objectToMove, Vector3 end, float seconds, bool onElevator, GameObject rig, bool useHaptics, VIVEControllerManager controllerManager)
     {
         /*
          * If we are moving on an elevator, we must move the camera rig as well.
@@ -35,7 +35,7 @@ public class MazeUtility : MonoBehaviour {
              */
             if (useHaptics)
             {
-                TriggerContinuousVibration(controller, 1);
+                controllerManager.TriggerContinuousPulseBoth();
             }
             objectToMove.transform.position = Vector3.Lerp(startingPos, end, (elapsedTime / seconds));
             elapsedTime += Time.deltaTime;
@@ -160,27 +160,33 @@ public class MazeUtility : MonoBehaviour {
     }
 
     /*
-     * Plays an audio tune when we interact with the vinyl player.
+     * Plays an audio tune when we interact with object capable of playing audio, i.e. with
+     * a tag == MusicPlayer.
      */
-     public static IEnumerator PlayVinyl(AudioClip vinylStartSound, AudioClip vinylTrack, GameObject vinylNeedle)
+     public static IEnumerator PlayMusic(AudioClip startSound, AudioClip trackSound, GameObject obj)
     {
-        AudioSource audio = vinylNeedle.GetComponent<AudioSource>();
+        AudioSource audio = obj.GetComponent<AudioSource>();
 
         /*
-         * Play the vinyl start sound, i.e. needle touching the player.
+         * Play the start sound, e.g. needle touching the vinyl.
+         * Stop the music first, if  any playing and wait a bit before
+         * restarting again.
          */
         audio.Stop();
+
+        yield return new WaitForSeconds(.2f);
+
         audio.loop = false;
-        audio.clip = vinylStartSound;
+        audio.clip = startSound;
         audio.Play();
 
         yield return new WaitUntil(() => !audio.isPlaying);
 
         /*
-         * Now we play the vinyl music track.
+         * Now we play the music track.
          */
         audio.loop = true;
-        audio.clip = vinylTrack;
+        audio.clip = trackSound;
         audio.Play();
 
         yield return new WaitUntil(() => !audio.isPlaying);

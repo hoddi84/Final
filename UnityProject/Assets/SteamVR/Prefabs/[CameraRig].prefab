@@ -792,6 +792,8 @@ MonoBehaviour:
   doorLockedClip: {fileID: 8300000, guid: be864a96b698ab940a4adbcf5c72eed6, type: 3}
   vinylNeedleSound: {fileID: 8300000, guid: f0e5718cc1cb2fe488b8e69b7b0eabaa, type: 3}
   vinylMusicTrack1: {fileID: 8300000, guid: 1bfa6efb428dc324792b32cce71f2397, type: 3}
+  musicalBoxStart: {fileID: 8300000, guid: 4e95fecbe606fbc49a02d18cf0cbcd6a, type: 3}
+  musicalBoxTrack: {fileID: 8300000, guid: e36fab1a7171b214cb3d4a43d0dc9c83, type: 3}
   elevatorFloor: {fileID: 0}
   elevatorEnd: {fileID: 0}
   elevatorBegin: {fileID: 0}
@@ -855,6 +857,8 @@ MonoBehaviour:
   doorLockedClip: {fileID: 8300000, guid: be864a96b698ab940a4adbcf5c72eed6, type: 3}
   vinylNeedleSound: {fileID: 8300000, guid: f0e5718cc1cb2fe488b8e69b7b0eabaa, type: 3}
   vinylMusicTrack1: {fileID: 8300000, guid: 1bfa6efb428dc324792b32cce71f2397, type: 3}
+  musicalBoxStart: {fileID: 8300000, guid: 4e95fecbe606fbc49a02d18cf0cbcd6a, type: 3}
+  musicalBoxTrack: {fileID: 8300000, guid: e36fab1a7171b214cb3d4a43d0dc9c83, type: 3}
   elevatorFloor: {fileID: 0}
   elevatorEnd: {fileID: 0}
   elevatorBegin: {fileID: 0}

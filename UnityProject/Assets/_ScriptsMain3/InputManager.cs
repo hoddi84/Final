@@ -68,6 +68,10 @@ public class InputManager : MonoBehaviour {
         {
             obj.GetComponent<GenericObjectToggler>().Toggle();
         }
+        else if (obj.tag == "ElevatorTrigger")
+        {
+            obj.GetComponent<ElevatorMechanics>().ActivateElevator();
+        }
         else if (obj.tag == "ZombieAppearFloor" && characterSpawnEnabled)
         {
             StartCoroutine(Utility.ScaryCharacterSpawn(characterSpawn[characterCounter], new Vector3(ray.origin.x, characterSpawn[characterCounter].transform.localPosition.y, ray.origin.z), objToFace, lightSwitch, lightAmbience));

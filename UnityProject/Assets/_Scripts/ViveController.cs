@@ -20,14 +20,8 @@ public class ViveController : MonoBehaviour {
     public AudioClip doorLockedClip;
     public AudioClip vinylNeedleSound;
     public AudioClip vinylMusicTrack1;
-
-    [Header("Elevator Settings")]
-    public GameObject elevatorFloor;
-    public GameObject elevatorEnd;
-    public GameObject elevatorBegin;
-    public GameObject rig;
-    private float elevatorTime = 15f;
-    private bool firstFloor = true;
+    public AudioClip musicalBoxStart;
+    public AudioClip musicalBoxTrack;
  
     void OnEnable()
     {
@@ -48,22 +42,6 @@ public class ViveController : MonoBehaviour {
 
     void Update()
     {
-        /*
-         * Logic whgich we use to test our elevator
-         */
-         if (testActivated && firstFloor)
-        {
-            testActivated = false;
-            firstFloor = false;
-            StartCoroutine(MazeUtility.MoveOverSeconds(elevatorFloor, elevatorEnd.transform.position, elevatorTime, true, rig, true, 1, controller));
-        }
-         else if (testActivated && !firstFloor)
-        {
-            testActivated = false;
-            firstFloor = true;
-            StartCoroutine(MazeUtility.MoveOverSeconds(elevatorFloor, elevatorBegin.transform.position, elevatorTime, true, rig, true, 1, controller));
-        }
-
         /*
          * Logic for picking up pickable objects. 
          */
@@ -169,6 +147,7 @@ public class ViveController : MonoBehaviour {
             if (canInteract)
             {
                 canInteract = false;
+                StartCoroutine(MazeUtility.TriggerVibration(controller, 1, .1f));
                 interactedObject = other.gameObject;
                 holdingObject = true;
             }
@@ -189,14 +168,47 @@ public class ViveController : MonoBehaviour {
             if (canInteract)
             {
                 canInteract = false;
-                StartCoroutine(MazeUtility.TriggerVibration(controller, 1, 1f));
-                StartCoroutine(MazeUtility.PlayVinyl(vinylNeedleSound, vinylMusicTrack1, other.gameObject));
+                StartCoroutine(MazeUtility.TriggerVibration(controller, 1, .1f));
+                StartCoroutine(MazeUtility.PlayMusic(vinylNeedleSound, vinylMusicTrack1, other.gameObject));
             }
         }
-
+        else if (other.gameObject.tag == "MusicalBox")
+        {
+            if (canInteract)
+            {
+                canInteract = false;
+                StartCoroutine(MazeUtility.TriggerVibration(controller, 1, .1f));
+                StartCoroutine(MazeUtility.PlayMusic(musicalBoxStart, musicalBoxTrack, other.gameObject));
+            }
+        }
         if (other.gameObject.tag == "Wall")
         {
             MazeUtility.TriggerContinuousVibration(controller, .5f);
+        }
+    }
+
+    /*
+     * This mainly serves the purpose of triggering a small vibration when we get in contact with an object
+     * we can interact with.
+     */
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Pickable")
+        {
+            StartCoroutine(MazeUtility.TriggerVibration(controller, .1f, .2f));
+        }
+
+        else if (other.gameObject.tag == "VIVEDoor")
+        {
+            StartCoroutine(MazeUtility.TriggerVibration(controller, .1f, .2f));
+        }
+        else if (other.gameObject.tag == "VinylPlayer")
+        {
+            StartCoroutine(MazeUtility.TriggerVibration(controller, .1f, .2f));
+        }
+        else if (other.gameObject.tag == "MusicalBox")
+        {
+            StartCoroutine(MazeUtility.TriggerVibration(controller, .1f, .2f));
         }
     }
 }

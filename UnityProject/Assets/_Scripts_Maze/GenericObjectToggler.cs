@@ -18,7 +18,6 @@ public class GenericObjectToggler : MonoBehaviour {
     public GameObject[] activeStates;
     public Sprite defaultSprite;
     public Sprite[] activeSprites;
-
     private int counter = 0;
 
     /*

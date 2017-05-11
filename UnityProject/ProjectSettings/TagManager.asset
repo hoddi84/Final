@@ -53,6 +53,8 @@ TagManager:
   - Place29
   - Place30
   - VinylPlayer
+  - MusicalBox
+  - ElevatorTrigger
   layers:
   - Default
   - TransparentFX
