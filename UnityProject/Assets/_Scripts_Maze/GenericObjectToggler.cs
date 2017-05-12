@@ -71,6 +71,10 @@ public class GenericObjectToggler : MonoBehaviour {
                 {
                     state.SetActive(false);
                 }
+                if (defaultState != null)
+                {
+                    defaultState.SetActive(false);
+                }
                 activeStates[counter - 1].SetActive(true);
                 gameObject.GetComponent<SpriteRenderer>().sprite = activeSprites[counter - 1];
             }

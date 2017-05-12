@@ -14,6 +14,21 @@ public class MazeDoorOpener : MonoBehaviour {
     public float rotateTimeOpen = 5f;
     public float rotateTimeClose = 5f;
 
+    /*
+     * If the door is closed, we change the door icon accordingly.
+     */
+    void OnEnable()
+    {
+        if (mazeController.DoorOpen())
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = doorOpen;
+        }
+        else
+        {
+            gameObject.GetComponent<SpriteRenderer>().sprite = doorClosed;
+        }
+    }
+
     public void OpenDoor()
     {
         if (!mazeController.doorIsLocked)
