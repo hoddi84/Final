@@ -50,9 +50,11 @@ public class Utility : MonoBehaviour {
         GameObject[] lightObj = GameObject.FindGameObjectsWithTag("ChangeableLight");
         List<GameObject> lightObjUsed = new List<GameObject>();
 
-        float range = 5f;
-        float flicker = .1f;
-        float firstDelay = 1f;
+        print("Lights: " + lightObj.Length);
+
+        float range = 7f;
+        float flicker = .08f;
+        float firstDelay = .1f;
         float secondDelay = .1f;
 
         /*
@@ -60,7 +62,7 @@ public class Utility : MonoBehaviour {
          */
         foreach (GameObject obj in lightObj)
         {
-            if ((obj.transform.position - characterPos).sqrMagnitude < range)
+            if ((obj.transform.position - cameraRig.transform.position).sqrMagnitude < range)
             {
                 lightObjUsed.Add(obj);
             }
@@ -75,6 +77,7 @@ public class Utility : MonoBehaviour {
              * Only turn off the lights and play a sound if the lights
              * are allready turned on.
              */
+            /*
             if (light.GetComponent<SliderValues>().LightsOn() == 1)
             {
                 light.GetComponentInChildren<Light>().intensity = 0;
@@ -85,17 +88,37 @@ public class Utility : MonoBehaviour {
 
                 yield return new WaitForSeconds(firstDelay);
             }
+            */
+            if (light.GetComponentInChildren<Light>().intensity > 0)
+            {
+                Light[] l = light.GetComponentsInChildren<Light>();
+                foreach (Light x in l)
+                {
+                    x.intensity = 0;
+                }
+                light.GetComponentInChildren<AudioSource>().Stop();
+                light.GetComponentInChildren<AudioSource>().loop = false;
+                light.GetComponentInChildren<AudioSource>().clip = lightOffSound;
+                light.GetComponentInChildren<AudioSource>().Play();
+            }
         }
+
+        yield return new WaitForSeconds(flicker);
+
+        GameObject spawnedCharacter = Instantiate(characterToSpawn, characterPos, Quaternion.LookRotation(directionToFace, Vector3.up));
 
         /*
          * Turn on the lights again, with a character spawned. 
          */
         foreach (GameObject light in lightObjUsed)
         {
-            light.GetComponentInChildren<Light>().intensity = 1;
+            // light.GetComponentInChildren<Light>().intensity = 1;
+            Light[] l = light.GetComponentsInChildren<Light>();
+            foreach (Light x in l)
+            {
+                x.intensity = 1;
+            }
         }
-
-        GameObject spawnedCharacter = Instantiate(characterToSpawn, characterPos, Quaternion.LookRotation(directionToFace,Vector3.up));
 
         yield return new WaitForSeconds(flicker);
 
@@ -104,31 +127,77 @@ public class Utility : MonoBehaviour {
          */
         foreach (GameObject light in lightObjUsed)
         {
-            light.GetComponentInChildren<Light>().intensity = 0;
+            // light.GetComponentInChildren<Light>().intensity = 0;
+            Light[] l = light.GetComponentsInChildren<Light>();
+            foreach (Light x in l)
+            {
+                x.intensity = 0;
+            }
         }
 
-        Destroy(spawnedCharacter);
+        yield return new WaitForSeconds(flicker);
 
-        yield return new WaitForSeconds(secondDelay);
+        /*
+         * Turn on the lights again.
+         */
+        foreach (GameObject light in lightObjUsed)
+        {
+            // light.GetComponentInChildren<Light>().intensity = 1;
+            Light[] l = light.GetComponentsInChildren<Light>();
+            foreach (Light x in l)
+            {
+                x.intensity = 1;
+            }
+        }
+
+        yield return new WaitForSeconds(flicker);
+
+        /*
+         * Turn off the lights again, with character gone.
+         */
+        foreach (GameObject light in lightObjUsed)
+        {
+            // light.GetComponentInChildren<Light>().intensity = 0;
+            Light[] l = light.GetComponentsInChildren<Light>();
+            foreach (Light x in l)
+            {
+                x.intensity = 0;
+            }
+        }
+
+        yield return new WaitForSeconds(flicker);
 
         /*
          * Turn on the lights again and play ambience.
          * Event is now finished, return the lights to their original setting.
          */
+        Destroy(spawnedCharacter);
+
         foreach (GameObject light in lightObjUsed)
         {
             /*
              * Check whether the lights were previously turned on before
              * the event started.
              */
-            if (light.GetComponent<SliderValues>().LightsOn() == 1)
+            /*
+           if (light.GetComponent<SliderValues>().LightsOn() == 1)
+           {
+               light.GetComponentInChildren<Light>().intensity = 1;
+               light.GetComponentInChildren<AudioSource>().Stop();
+               light.GetComponentInChildren<AudioSource>().loop = true;
+               light.GetComponentInChildren<AudioSource>().clip = lightAmbienceSound;
+               light.GetComponentInChildren<AudioSource>().Play();
+           }
+           */
+            Light[] l = light.GetComponentsInChildren<Light>();
+            foreach (Light x in l)
             {
-                light.GetComponentInChildren<Light>().intensity = 1;
-                light.GetComponentInChildren<AudioSource>().Stop();
-                light.GetComponentInChildren<AudioSource>().loop = true;
-                light.GetComponentInChildren<AudioSource>().clip = lightAmbienceSound;
-                light.GetComponentInChildren<AudioSource>().Play();
+                x.intensity = 1;
             }
+            light.GetComponentInChildren<AudioSource>().Stop();
+            light.GetComponentInChildren<AudioSource>().loop = true;
+            light.GetComponentInChildren<AudioSource>().clip = lightAmbienceSound;
+            light.GetComponentInChildren<AudioSource>().Play();
         }
 
         yield return null;
