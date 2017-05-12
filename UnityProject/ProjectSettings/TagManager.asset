@@ -55,6 +55,7 @@ TagManager:
   - VinylPlayer
   - MusicalBox
   - ElevatorTrigger
+  - DoorOpener
   layers:
   - Default
   - TransparentFX

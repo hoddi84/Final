@@ -99,8 +99,11 @@ public class MazeUtility : MonoBehaviour {
          */
         if (!controller.DoorOpen())
         {
-            audio.clip = handle;
-            audio.Play();
+            if (handle != null)
+            {
+                audio.clip = handle;
+                audio.Play();
+            }
         }
 
         /*

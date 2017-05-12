@@ -11,6 +11,22 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1776909115750424}
   m_IsPrefabParent: 1
+--- !u!1 &1176116310515072
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4744974436640226}
+  - component: {fileID: 82553497103017382}
+  m_Layer: 0
+  m_Name: Sound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1181421198928474
 GameObject:
   m_ObjectHideFlags: 1
@@ -26,6 +42,24 @@ GameObject:
   m_Layer: 0
   m_Name: Handle
   m_TagString: VIVEDoor
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1198024307449690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4146168902414300}
+  - component: {fileID: 212600103484813512}
+  - component: {fileID: 65911524022294444}
+  - component: {fileID: 114669227732440182}
+  m_Layer: 0
+  m_Name: DoorOpener
+  m_TagString: DoorOpener
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -128,6 +162,20 @@ Transform:
   m_Father: {fileID: 4803317097384582}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
+--- !u!4 &4146168902414300
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1198024307449690}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: 0.153, y: 2.5, z: -2.625}
+  m_LocalScale: {x: 0.07912419, y: 0.07912418, z: 0.07912418}
+  m_Children:
+  - {fileID: 4744974436640226}
+  m_Father: {fileID: 4803317097384582}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 90, y: 180, z: 90}
 --- !u!4 &4362222756710446
 Transform:
   m_ObjectHideFlags: 1
@@ -153,7 +201,7 @@ Transform:
   m_Children:
   - {fileID: 4362222756710446}
   m_Father: {fileID: 4803317097384582}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
 --- !u!4 &4497439866271896
 Transform:
@@ -175,13 +223,26 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1325618436830188}
   m_LocalRotation: {x: 0.5000001, y: 0.49999994, z: -0.49999994, w: 0.50000006}
-  m_LocalPosition: {x: 0.17100048, y: 2.4999998, z: -2.461}
+  m_LocalPosition: {x: 0.171, y: 2.4999998, z: -2.298}
   m_LocalScale: {x: 0.7151488, y: 0.71514904, z: 0.715149}
   m_Children:
   - {fileID: 4497439866271896}
   m_Father: {fileID: 4803317097384582}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90.00001, y: 0, z: 0}
+--- !u!4 &4744974436640226
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1176116310515072}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: 20.47}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4146168902414300}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4803317097384582
 Transform:
   m_ObjectHideFlags: 1
@@ -193,6 +254,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4062714611665804}
+  - {fileID: 4146168902414300}
   - {fileID: 4720906193834180}
   - {fileID: 4375332385386082}
   m_Father: {fileID: 0}
@@ -328,6 +390,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.35, y: 0.35, z: 0.02}
   m_Center: {x: -0.00000021606684, y: 0, z: 0.00000047683716}
+--- !u!65 &65911524022294444
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1198024307449690}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.51, y: 1.89, z: 0.2}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &82240927428640800
 AudioSource:
   m_ObjectHideFlags: 1
@@ -349,6 +423,86 @@ AudioSource:
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 5
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!82 &82553497103017382
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1176116310515072}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 6f124e35b5227ca44a870b0d3fb87a5e, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 2
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -512,6 +666,7 @@ MonoBehaviour:
   connectedDoors:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
 --- !u!114 &114456264771803274
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -527,6 +682,25 @@ MonoBehaviour:
   spriteUnlocked: {fileID: 21300000, guid: 5fe5caaec14cbb0428d8359c55ee2911, type: 3}
   doorLocked: 0
   doorController: {fileID: 114239734198245780}
+--- !u!114 &114669227732440182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1198024307449690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf86d808b2b76254ea01114458302234, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doorClosed: {fileID: 21300000, guid: 008430340001716499e8c9541bc401e8, type: 3}
+  doorOpen: {fileID: 21300000, guid: 99ef765ee3065dc4891eec53991a9a7c, type: 3}
+  mazeController: {fileID: 114239734198245780}
+  doorCreek: {fileID: 0}
+  doorSlam: {fileID: 8300000, guid: 7a0e5159070e9a941b0458b171623d54, type: 3}
+  rotateDegrees: 95
+  rotateTimeOpen: 5
+  rotateTimeClose: 0.2
 --- !u!136 &136968675207088686
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -540,6 +714,41 @@ CapsuleCollider:
   m_Height: 25.650204
   m_Direction: 2
   m_Center: {x: 54.75, y: -1.35, z: 123.74}
+--- !u!212 &212600103484813512
+SpriteRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1198024307449690}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 008430340001716499e8c9541bc401e8, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
 --- !u!212 &212959235230686550
 SpriteRenderer:
   m_ObjectHideFlags: 1

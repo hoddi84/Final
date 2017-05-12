@@ -60,7 +60,6 @@ public class MazeDoorController : MonoBehaviour {
         {
             door.transform.localEulerAngles = new Vector3(0, rotation, 0);
             door.GetComponentInChildren<MazeDoorController>().openHandleOutwards = direction;
-
         }
     }
 

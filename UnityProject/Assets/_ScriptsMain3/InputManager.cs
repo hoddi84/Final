@@ -64,6 +64,10 @@ public class InputManager : MonoBehaviour {
         {
             obj.GetComponent<MazeDoorMechanic>().ToggleMechanicState();
         }
+        else if (obj.tag == "DoorOpener") 
+        {
+            obj.GetComponent<MazeDoorOpener>().OpenDoor();
+        }
         else if (obj.tag == "Toggleable")
         {
             obj.GetComponent<GenericObjectToggler>().Toggle();
