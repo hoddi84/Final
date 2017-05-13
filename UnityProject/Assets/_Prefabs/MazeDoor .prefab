@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 23389698046725376}
   - component: {fileID: 65112058328923876}
   m_Layer: 0
-  m_Name: DoorPlace1
+  m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 23289542476224486}
   - component: {fileID: 64073200081891822}
   m_Layer: 0
-  m_Name: doubledoor_frame01
+  m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -663,10 +663,6 @@ MonoBehaviour:
   doorIsLocked: 0
   handle: {fileID: 8300000, guid: 4817466a737ecaa4796542eae742c440, type: 3}
   close: {fileID: 8300000, guid: ba05021a8c74f2346936f114eacc8561, type: 3}
-  connectedDoors:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &114456264771803274
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -696,7 +692,6 @@ MonoBehaviour:
   doorClosed: {fileID: 21300000, guid: 008430340001716499e8c9541bc401e8, type: 3}
   doorOpen: {fileID: 21300000, guid: 99ef765ee3065dc4891eec53991a9a7c, type: 3}
   mazeController: {fileID: 114239734198245780}
-  doorCreek: {fileID: 0}
   doorSlam: {fileID: 8300000, guid: 7a0e5159070e9a941b0458b171623d54, type: 3}
   rotateDegrees: 95
   rotateTimeOpen: 5

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * This class holds information about the door state.
+ */
 public class MazeDoorController : MonoBehaviour {
 
     [Header("Door Settings")]
@@ -19,49 +22,6 @@ public class MazeDoorController : MonoBehaviour {
      * tell if the door is open or closed.
      */
     private float angleDiff;
-
-    [Header("Sounds")]
-    public AudioClip handle;
-    public AudioClip close;
-
-    [Header("Connected Doors")]
-    public GameObject[] connectedDoors;
-	
-	// Update is called once per frame
-	void Update () {
-
-        if (!doorIsLocked)
-        {
-            if (Input.GetKeyDown(KeyCode.R) && canInteract)
-            {
-                canInteract = false;
-                StartCoroutine(MazeUtility.RotateOverSeconds(handle, close, this, doorObject, rotateDegrees, rotateTimeOpen, rotateTimeClose, openHandleOutwards));
-                if (openHandleOutwards)
-                {
-                    openHandleOutwards = false;
-                }
-                else
-                {
-                    openHandleOutwards = true;
-                }
-            }
-        }   
-	}
-
-    /*
-     * Update the connecting doors, such that their rotation and their 
-     * direction will be the same, as the previous door has changed.
-     */
-    public void UpdateDoorRotation(GameObject changedDoor)
-    {
-        float rotation = changedDoor.transform.localEulerAngles.y;
-        bool direction = changedDoor.GetComponentInChildren<MazeDoorController>().openHandleOutwards;
-        foreach (GameObject door in connectedDoors)
-        {
-            door.transform.localEulerAngles = new Vector3(0, rotation, 0);
-            door.GetComponentInChildren<MazeDoorController>().openHandleOutwards = direction;
-        }
-    }
 
     /*
      * Return true if the door is open, e.g. if the y-angle difference

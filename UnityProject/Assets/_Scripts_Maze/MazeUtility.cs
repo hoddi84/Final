@@ -139,13 +139,6 @@ public class MazeUtility : MonoBehaviour {
         }
 
         /*
-         * Here we update the rotation on joined states/places, so
-         * that when you advance in the environment i.e. a open door will
-         * stay open.
-         */
-        controller.UpdateDoorRotation(objectToMove);
-
-        /*
          * Enable the door to be interacted with again. 
          */
         controller.canInteract = true;
