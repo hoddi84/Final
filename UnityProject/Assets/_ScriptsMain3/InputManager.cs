@@ -68,6 +68,10 @@ public class InputManager : MonoBehaviour {
         {
             obj.GetComponent<MazeDoorOpener>().OpenDoor();
         }
+        else if (obj.tag == "TriggerLights")
+        {
+            obj.GetComponentInParent<MazeLightController>().ToggleLights();
+        }
         else if (obj.tag == "Toggleable")
         {
             obj.GetComponent<GenericObjectToggler>().Toggle();
