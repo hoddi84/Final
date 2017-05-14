@@ -19,6 +19,8 @@ public class MazeController : MonoBehaviour {
     public GameObject place17_18_19;
     public GameObject place20_21_22_26_27;
     public GameObject place1_11_12_13_17;
+    public GameObject place21_22_26_27_roomToilet1;
+    public GameObject place22_26_27_roomToilet1;
 
     [Header("Static Lights")]
     public GameObject place4_5_6_light;
@@ -104,7 +106,74 @@ public class MazeController : MonoBehaviour {
         CheckForDoors();
 
         CheckForLights();
+
+        CheckForStaticObjects();
 	}
+
+    /*
+     * Special check for which static objects to display, e.g. the furnitures 
+     * in an area.
+     */
+    void CheckForStaticObjects()
+    {
+        /*
+         * Room: Toilet. 
+         * Spans two place locations.
+         * Place21-22-26-27 and Place22-26-27.
+         */
+        if (place21Active || place22Active || place26Active || place27Active)
+        {
+            place21_22_26_27_roomToilet1.SetActive(true);
+        }
+        else
+        {
+            place21_22_26_27_roomToilet1.SetActive(false);
+        }
+        if (place22Active || place26Active || place27Active)
+        {
+            place22_26_27_roomToilet1.SetActive(true);
+        }
+        else
+        {
+            place22_26_27_roomToilet1.SetActive(false);
+        }
+
+        if (place1Active || place11Active || place12Active || place13Active || place17Active)
+        {
+            place1_11_12_13_17.SetActive(true);
+        }
+        else
+        {
+            place1_11_12_13_17.SetActive(false);
+        }
+
+        if (place20Active || place21Active || place22Active || place26Active || place27Active)
+        {
+            place20_21_22_26_27.SetActive(true);
+        }
+        else
+        {
+            place20_21_22_26_27.SetActive(false);
+        }
+
+        if (place9Active || place10Active || place23Active)
+        {
+            place9_10_23.SetActive(true);
+        }
+        else
+        {
+            place9_10_23.SetActive(false);
+        }
+
+        if (place17Active || place18Active || place19Active)
+        {
+            place17_18_19.SetActive(true);
+        }
+        else
+        {
+            place17_18_19.SetActive(false);
+        }
+    }
 
     /*
      * Special check for which lights to display.
@@ -353,42 +422,6 @@ public class MazeController : MonoBehaviour {
         else
         {
             place14Triggers.SetActive(false);
-        }
-
-        if (place9Active || place10Active || place23Active)
-        {
-            place9_10_23.SetActive(true);
-        }
-        else
-        {
-            place9_10_23.SetActive(false);
-        }
-
-        if (place17Active || place18Active || place19Active)
-        {
-            place17_18_19.SetActive(true);
-        }
-        else
-        {
-            place17_18_19.SetActive(false);
-        }
-
-        if (place20Active || place21Active || place22Active || place26Active || place27Active)
-        {
-            place20_21_22_26_27.SetActive(true);
-        }
-        else
-        {
-            place20_21_22_26_27.SetActive(false);
-        }
-
-        if (place1Active || place11Active || place12Active || place13Active || place17Active)
-        {
-            place1_11_12_13_17.SetActive(true);
-        }
-        else
-        {
-            place1_11_12_13_17.SetActive(false);
         }
     }
 
