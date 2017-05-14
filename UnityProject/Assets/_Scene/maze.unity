@@ -13,7 +13,7 @@ OcclusionCullingSettings:
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 7
+  serializedVersion: 8
   m_Fog: 0
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
@@ -25,6 +25,7 @@ RenderSettings:
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 3
+  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
@@ -41,7 +42,7 @@ RenderSettings:
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 7
+  serializedVersion: 9
   m_GIWorkflowMode: 0
   m_GISettings:
     serializedVersion: 2
@@ -53,7 +54,7 @@ LightmapSettings:
     m_EnableBakedLightmaps: 1
     m_EnableRealtimeLightmaps: 1
   m_LightmapEditorSettings:
-    serializedVersion: 4
+    serializedVersion: 8
     m_Resolution: 2
     m_BakeResolution: 40
     m_TextureWidth: 1024
@@ -66,13 +67,27 @@ LightmapSettings:
     m_LightmapParameters: {fileID: 0}
     m_LightmapsBakeMode: 1
     m_TextureCompression: 1
-    m_DirectLightInLightProbes: 1
     m_FinalGather: 0
     m_FinalGatherFiltering: 1
     m_FinalGatherRayCount: 256
     m_ReflectionCompression: 2
+    m_MixedBakeMode: 1
+    m_BakeBackend: 0
+    m_PVRSampling: 1
+    m_PVRDirectSampleCount: 32
+    m_PVRSampleCount: 500
+    m_PVRBounces: 2
+    m_PVRFiltering: 0
+    m_PVRFilteringMode: 1
+    m_PVRCulling: 1
+    m_PVRFilteringGaussRadiusDirect: 1
+    m_PVRFilteringGaussRadiusIndirect: 5
+    m_PVRFilteringGaussRadiusAO: 2
+    m_PVRFilteringAtrousColorSigma: 1
+    m_PVRFilteringAtrousNormalSigma: 1
+    m_PVRFilteringAtrousPositionSigma: 1
   m_LightingDataAsset: {fileID: 0}
-  m_RuntimeCPUUsage: 25
+  m_ShadowMaskMode: 2
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -89,6 +104,8 @@ NavMeshSettings:
     minRegionArea: 2
     manualCellSize: 0
     cellSize: 0.16666667
+    manualTileSize: 0
+    tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
 --- !u!1 &2076827
@@ -665,6 +682,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &12869936
 MeshCollider:
@@ -822,6 +840,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &20774825
 MeshCollider:
@@ -947,6 +966,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &26672478
 MeshCollider:
@@ -1198,7 +1218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &37612964
 Transform:
   m_ObjectHideFlags: 0
@@ -1287,6 +1307,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &38363408
 MeshCollider:
@@ -1400,6 +1421,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &39184363
 MeshCollider:
@@ -1907,6 +1929,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &53801425
 MeshCollider:
@@ -2202,7 +2225,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1812321490587732, guid: 12dc030717b84a64586b8662292f0616, type: 2}
       propertyPath: m_Name
-      value: MazeLight (2)
+      value: MazeLight10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12dc030717b84a64586b8662292f0616, type: 2}
@@ -2545,11 +2568,16 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ba43ab77378c77c4da20e3808faf26b7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
 --- !u!1 &73204608
 GameObject:
   m_ObjectHideFlags: 0
@@ -4131,6 +4159,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &121150422
 MeshCollider:
@@ -4569,6 +4598,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &131587961
 MeshCollider:
@@ -4820,6 +4850,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &137358677
 MeshCollider:
@@ -5162,6 +5193,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &146207917
 MeshCollider:
@@ -6274,6 +6306,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &158751779
 MeshFilter:
@@ -6344,6 +6377,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &159286280
 MeshCollider:
@@ -7131,6 +7165,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &184428374
 MeshCollider:
@@ -7350,11 +7385,16 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ba43ab77378c77c4da20e3808faf26b7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
 --- !u!4 &187891425 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: ec89eaad22bce364eabcdae8f401ca41, type: 3}
@@ -7420,6 +7460,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &188721728
 MeshCollider:
@@ -8002,6 +8043,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &200672612
 MeshCollider:
@@ -8441,6 +8483,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &210967873
 MeshCollider:
@@ -8626,6 +8669,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &217297975
 MeshCollider:
@@ -8755,6 +8799,61 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1001 &222994098
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1929876942}
+    m_Modifications:
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.351
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 8.839748
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -17.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.70710707
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.70710653
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114858603610862718, guid: ca6b1d453483baa4b8bd2cbabded1a46,
+        type: 2}
+      propertyPath: lightController
+      value: 
+      objectReference: {fileID: 1036177221}
+    - target: {fileID: 1661685700763784, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_Name
+      value: MazeLightFlicker4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90.00001
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &223935817 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4803317097384582, guid: 5bc0c96a98d8bb744930bb5b0851dfe4,
@@ -8821,6 +8920,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &225103921
 MeshCollider:
@@ -9475,7 +9575,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1812321490587732, guid: 12dc030717b84a64586b8662292f0616, type: 2}
       propertyPath: m_Name
-      value: MazeLight (3)
+      value: MazeLight4
       objectReference: {fileID: 0}
     - target: {fileID: 4985165986750798, guid: 12dc030717b84a64586b8662292f0616, type: 2}
       propertyPath: m_LocalScale.x
@@ -10911,6 +11011,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &260125967
 MeshCollider:
@@ -10994,6 +11095,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &261897669
 MeshCollider:
@@ -11287,6 +11389,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &266753452
 MeshCollider:
@@ -11896,6 +11999,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &274609099
 MeshCollider:
@@ -12399,6 +12503,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &285191068
 MeshCollider:
@@ -12808,6 +12913,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &290473275
 MeshCollider:
@@ -14232,11 +14338,16 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1467c51a016305841baa6328235cbfd7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
 --- !u!1001 &345148557
 Prefab:
   m_ObjectHideFlags: 0
@@ -14405,6 +14516,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &346014316
 MeshCollider:
@@ -14770,6 +14882,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!65 &350827575
 BoxCollider:
@@ -15446,6 +15559,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &360697446
 MeshCollider:
@@ -15563,11 +15677,16 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1c36fb2d30892474aae20f84324312fd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
 --- !u!1001 &364340751
 Prefab:
   m_ObjectHideFlags: 0
@@ -15890,6 +16009,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &365369429
 MeshCollider:
@@ -16004,6 +16124,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &368896825
 MeshCollider:
@@ -17260,6 +17381,74 @@ Transform:
   m_Father: {fileID: 1734136831}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &394726491
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 831141370}
+    m_Modifications:
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2.119
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 8.839748
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -17.919
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.70710695
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: -0.7071067
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114858603610862718, guid: ca6b1d453483baa4b8bd2cbabded1a46,
+        type: 2}
+      propertyPath: lightController
+      value: 
+      objectReference: {fileID: 1295076638}
+    - target: {fileID: 1661685700763784, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_Name
+      value: MazeLightFlicker11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -270
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &394726492 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46,
+    type: 2}
+  m_PrefabInternal: {fileID: 394726491}
 --- !u!1 &396791977
 GameObject:
   m_ObjectHideFlags: 0
@@ -17321,6 +17510,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &396791980
 MeshCollider:
@@ -17548,6 +17738,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &398419404
 MeshCollider:
@@ -19761,6 +19952,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &453638341
 MeshCollider:
@@ -20432,7 +20624,7 @@ Light:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 471162345}
   m_Enabled: 1
-  serializedVersion: 7
+  serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
@@ -20457,6 +20649,8 @@ Light:
   m_Lightmapping: 4
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
 --- !u!4 &471162347
@@ -20533,6 +20727,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &471324375
 MeshCollider:
@@ -20826,6 +21021,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &473107842
 MeshCollider:
@@ -21039,6 +21235,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &484491083
 MeshCollider:
@@ -21232,7 +21429,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &492884385
 Transform:
   m_ObjectHideFlags: 0
@@ -21454,6 +21651,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &495898120
 MeshCollider:
@@ -22019,6 +22217,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &511390312
 MeshCollider:
@@ -22897,6 +23096,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &528851177
 MeshCollider:
@@ -23319,11 +23519,16 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ba43ab77378c77c4da20e3808faf26b7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
 --- !u!1001 &545228035
 Prefab:
   m_ObjectHideFlags: 0
@@ -23991,6 +24196,62 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1001 &558062815
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1209843548}
+    m_Modifications:
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.26166603
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 8.839748
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -17.389
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114858603610862718, guid: ca6b1d453483baa4b8bd2cbabded1a46,
+        type: 2}
+      propertyPath: lightController
+      value: 
+      objectReference: {fileID: 587172514}
+    - target: {fileID: 1661685700763784, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_Name
+      value: MazeLightFlicker5
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &558062816 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46,
+    type: 2}
+  m_PrefabInternal: {fileID: 558062815}
 --- !u!1 &560683543
 GameObject:
   m_ObjectHideFlags: 0
@@ -24055,6 +24316,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!65 &560683546
 BoxCollider:
@@ -24184,6 +24446,12 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: ec89eaad22bce364eabcdae8f401ca41, type: 3}
+--- !u!114 &562839999 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114169919709814560, guid: 12dc030717b84a64586b8662292f0616,
+    type: 2}
+  m_PrefabInternal: {fileID: 1000497670}
+  m_Script: {fileID: 11500000, guid: fdb4a7ea6587b3e41b7455c2e9492152, type: 3}
 --- !u!1001 &562985733
 Prefab:
   m_ObjectHideFlags: 0
@@ -24356,6 +24624,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &565525651
 MeshCollider:
@@ -24966,6 +25235,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &578296174
 MeshCollider:
@@ -25524,6 +25794,12 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: ec89eaad22bce364eabcdae8f401ca41, type: 3}
+--- !u!114 &587172514 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114169919709814560, guid: 12dc030717b84a64586b8662292f0616,
+    type: 2}
+  m_PrefabInternal: {fileID: 894020177}
+  m_Script: {fileID: 11500000, guid: fdb4a7ea6587b3e41b7455c2e9492152, type: 3}
 --- !u!1 &591959294
 GameObject:
   m_ObjectHideFlags: 0
@@ -25926,7 +26202,6 @@ Transform:
   - {fileID: 1021113108}
   - {fileID: 1677676436}
   - {fileID: 1929876942}
-  - {fileID: 1604671300}
   - {fileID: 1209843548}
   - {fileID: 1790075037}
   - {fileID: 775440884}
@@ -26334,6 +26609,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &606423602
 MeshCollider:
@@ -27137,6 +27413,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &619349542
 MeshCollider:
@@ -27220,6 +27497,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &620012566
 MeshFilter:
@@ -27298,6 +27576,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &623873922
 MeshCollider:
@@ -27483,6 +27762,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &625827924
 MeshCollider:
@@ -27603,6 +27883,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &629342841
 MeshCollider:
@@ -27686,6 +27967,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &629720617
 MeshCollider:
@@ -28558,6 +28840,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &647032850
 MeshCollider:
@@ -28644,6 +28927,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!65 &649124878
 BoxCollider:
@@ -28857,6 +29141,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &657336554
 MeshCollider:
@@ -29617,6 +29902,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!65 &668097215
 BoxCollider:
@@ -29700,6 +29986,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &671144868
 MeshCollider:
@@ -29894,6 +30181,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &673729909
 MeshCollider:
@@ -30084,6 +30372,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &680415143
 MeshCollider:
@@ -30341,7 +30630,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1812321490587732, guid: 12dc030717b84a64586b8662292f0616, type: 2}
       propertyPath: m_Name
-      value: MazeLight (1)
+      value: MazeLight11
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12dc030717b84a64586b8662292f0616, type: 2}
@@ -31619,6 +31908,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &731846343
 MeshCollider:
@@ -31936,6 +32226,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &739418591
 MeshCollider:
@@ -32365,6 +32656,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!65 &750377208
 BoxCollider:
@@ -32649,11 +32941,16 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d791ccb689780b94dab900a00041e663, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
 --- !u!1001 &770233544
 Prefab:
   m_ObjectHideFlags: 0
@@ -32894,8 +33191,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1573483322}
+  - {fileID: 1414821022}
   m_Father: {fileID: 597062073}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &775742699
 Prefab:
@@ -33804,11 +34102,16 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1467c51a016305841baa6328235cbfd7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
 --- !u!1 &793734843
 GameObject:
   m_ObjectHideFlags: 0
@@ -33870,6 +34173,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &793734846
 MeshCollider:
@@ -34991,8 +35295,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 695971704}
+  - {fileID: 394726492}
   m_Father: {fileID: 597062073}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &831685320
 Prefab:
@@ -35963,6 +36268,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &858440104
 MeshCollider:
@@ -36452,6 +36758,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1812321490587732, guid: 12dc030717b84a64586b8662292f0616, type: 2}
+      propertyPath: m_Name
+      value: MazeLight1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12dc030717b84a64586b8662292f0616, type: 2}
   m_IsPrefabParent: 0
@@ -36660,6 +36970,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &865641659
 MeshCollider:
@@ -37319,6 +37630,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &880372556
 MeshCollider:
@@ -37489,6 +37801,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!65 &882966896
 BoxCollider:
@@ -37798,6 +38111,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &888944812
 MeshCollider:
@@ -38173,6 +38487,10 @@ Prefab:
     - target: {fileID: 4985165986750798, guid: 12dc030717b84a64586b8662292f0616, type: 2}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1812321490587732, guid: 12dc030717b84a64586b8662292f0616, type: 2}
+      propertyPath: m_Name
+      value: MazeLight5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12dc030717b84a64586b8662292f0616, type: 2}
@@ -39025,6 +39343,11 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: 40b8fd596870e5e4cb4ccb145b409d1e, type: 3}
+--- !u!4 &929711028 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46,
+    type: 2}
+  m_PrefabInternal: {fileID: 1206431169}
 --- !u!1 &929827964
 GameObject:
   m_ObjectHideFlags: 0
@@ -39198,6 +39521,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &939397056
 MeshCollider:
@@ -39330,6 +39654,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &942475237
 MeshCollider:
@@ -39897,6 +40222,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &947663760
 MeshCollider:
@@ -39980,6 +40306,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &948796695
 MeshCollider:
@@ -40170,11 +40497,16 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ba43ab77378c77c4da20e3808faf26b7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
 --- !u!1001 &960091408
 Prefab:
   m_ObjectHideFlags: 0
@@ -41300,11 +41632,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4985165986750798, guid: 12dc030717b84a64586b8662292f0616, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1812321490587732, guid: 12dc030717b84a64586b8662292f0616, type: 2}
       propertyPath: m_Name
-      value: MazeLight (3)
+      value: MazeLight7
       objectReference: {fileID: 0}
     - target: {fileID: 4985165986750798, guid: 12dc030717b84a64586b8662292f0616, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -41390,6 +41722,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!65 &997048411
 BoxCollider:
@@ -41496,7 +41829,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1812321490587732, guid: 12dc030717b84a64586b8662292f0616, type: 2}
       propertyPath: m_Name
-      value: MazeLight (2)
+      value: MazeLight2
       objectReference: {fileID: 0}
     - target: {fileID: 4985165986750798, guid: 12dc030717b84a64586b8662292f0616, type: 2}
       propertyPath: m_LocalScale.x
@@ -42097,6 +42430,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1013238927
 MeshCollider:
@@ -42180,6 +42514,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1015959140
 MeshCollider:
@@ -42475,6 +42810,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1000497671}
+  - {fileID: 929711028}
   m_Father: {fileID: 597062073}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -42716,6 +43052,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!65 &1028056239
 BoxCollider:
@@ -43156,6 +43493,12 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: ec89eaad22bce364eabcdae8f401ca41, type: 3}
+--- !u!114 &1036177221 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114169919709814560, guid: 12dc030717b84a64586b8662292f0616,
+    type: 2}
+  m_PrefabInternal: {fileID: 237949262}
+  m_Script: {fileID: 11500000, guid: fdb4a7ea6587b3e41b7455c2e9492152, type: 3}
 --- !u!1001 &1039944518
 Prefab:
   m_ObjectHideFlags: 0
@@ -44090,6 +44433,12 @@ Transform:
   m_Father: {fileID: 2045725947}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1063377320 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114169919709814560, guid: 12dc030717b84a64586b8662292f0616,
+    type: 2}
+  m_PrefabInternal: {fileID: 63678973}
+  m_Script: {fileID: 11500000, guid: fdb4a7ea6587b3e41b7455c2e9492152, type: 3}
 --- !u!1 &1064094655
 GameObject:
   m_ObjectHideFlags: 0
@@ -44298,6 +44647,11 @@ Transform:
   m_Father: {fileID: 1206026275}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1069226610 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46,
+    type: 2}
+  m_PrefabInternal: {fileID: 1586507772}
 --- !u!1 &1069324273
 GameObject:
   m_ObjectHideFlags: 0
@@ -45009,6 +45363,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1083251727
 MeshCollider:
@@ -45242,6 +45597,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1092709542
 MeshCollider:
@@ -45496,6 +45852,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1102886955
 MeshCollider:
@@ -45796,6 +46153,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!65 &1117149764
 BoxCollider:
@@ -46155,6 +46513,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1123960125
 MeshCollider:
@@ -47479,6 +47838,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1153179342
 MeshCollider:
@@ -47669,6 +48029,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1160967551
 MeshCollider:
@@ -47717,8 +48078,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 63678974}
+  - {fileID: 1525166169}
   m_Father: {fileID: 597062073}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1162753760
 Prefab:
@@ -48034,6 +48396,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1171983480
 MeshCollider:
@@ -48117,6 +48480,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1172377119
 MeshCollider:
@@ -48926,6 +49290,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &1188352125
 MeshFilter:
@@ -49443,6 +49808,61 @@ Transform:
   m_Father: {fileID: 44550161}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1206431169
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1021113108}
+    m_Modifications:
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.526
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 8.839748
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -17.919
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.70710707
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.70710653
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114858603610862718, guid: ca6b1d453483baa4b8bd2cbabded1a46,
+        type: 2}
+      propertyPath: lightController
+      value: 
+      objectReference: {fileID: 562839999}
+    - target: {fileID: 1661685700763784, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_Name
+      value: MazeLightFlicker2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90.00001
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1207287449
 Prefab:
   m_ObjectHideFlags: 0
@@ -49724,8 +50144,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 894020178}
+  - {fileID: 558062816}
   m_Father: {fileID: 597062073}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1210792612
 GameObject:
@@ -49821,11 +50242,16 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ba43ab77378c77c4da20e3808faf26b7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
 --- !u!1001 &1212101610
 Prefab:
   m_ObjectHideFlags: 0
@@ -49994,6 +50420,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1213516441
 MeshCollider:
@@ -50124,6 +50551,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1812321490587732, guid: 12dc030717b84a64586b8662292f0616, type: 2}
+      propertyPath: m_Name
+      value: MazeLight6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12dc030717b84a64586b8662292f0616, type: 2}
   m_IsPrefabParent: 0
@@ -50196,6 +50627,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!65 &1224717433
 BoxCollider:
@@ -50766,6 +51198,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1227876625
 MeshCollider:
@@ -50849,6 +51282,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1228283483
 MeshCollider:
@@ -51035,6 +51469,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1232125762
 MeshCollider:
@@ -51973,6 +52408,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1258547134
 MeshCollider:
@@ -52056,6 +52492,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1259310204
 MeshCollider:
@@ -52309,7 +52746,7 @@ Canvas:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1262280097}
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 1447921291}
   m_PlaneDistance: 0.5
@@ -52318,6 +52755,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -53184,65 +53622,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1001 &1284284710
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1604671300}
-    m_Modifications:
-    - target: {fileID: 4985165986750798, guid: 12dc030717b84a64586b8662292f0616, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -0.034333974
-      objectReference: {fileID: 0}
-    - target: {fileID: 4985165986750798, guid: 12dc030717b84a64586b8662292f0616, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 11.182749
-      objectReference: {fileID: 0}
-    - target: {fileID: 4985165986750798, guid: 12dc030717b84a64586b8662292f0616, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -17.798632
-      objectReference: {fileID: 0}
-    - target: {fileID: 4985165986750798, guid: 12dc030717b84a64586b8662292f0616, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4985165986750798, guid: 12dc030717b84a64586b8662292f0616, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0.70710725
-      objectReference: {fileID: 0}
-    - target: {fileID: 4985165986750798, guid: 12dc030717b84a64586b8662292f0616, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4985165986750798, guid: 12dc030717b84a64586b8662292f0616, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: -0.7071064
-      objectReference: {fileID: 0}
-    - target: {fileID: 4985165986750798, guid: 12dc030717b84a64586b8662292f0616, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4985165986750798, guid: 12dc030717b84a64586b8662292f0616, type: 2}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 270
-      objectReference: {fileID: 0}
-    - target: {fileID: 4985165986750798, guid: 12dc030717b84a64586b8662292f0616, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4985165986750798, guid: 12dc030717b84a64586b8662292f0616, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 12dc030717b84a64586b8662292f0616, type: 2}
-  m_IsPrefabParent: 0
---- !u!4 &1284284711 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4985165986750798, guid: 12dc030717b84a64586b8662292f0616,
-    type: 2}
-  m_PrefabInternal: {fileID: 1284284710}
 --- !u!1 &1284443705 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: ec89eaad22bce364eabcdae8f401ca41, type: 3}
@@ -53865,6 +54244,12 @@ MonoBehaviour:
   transitionFrom: {fileID: 740034832}
   transitionTo:
   - {fileID: 1189464275}
+--- !u!114 &1295076638 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114169919709814560, guid: 12dc030717b84a64586b8662292f0616,
+    type: 2}
+  m_PrefabInternal: {fileID: 695971703}
+  m_Script: {fileID: 11500000, guid: fdb4a7ea6587b3e41b7455c2e9492152, type: 3}
 --- !u!1001 &1295156031
 Prefab:
   m_ObjectHideFlags: 0
@@ -54140,6 +54525,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1304429143
 MeshCollider:
@@ -54848,6 +55234,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1316873805
 MeshCollider:
@@ -54935,6 +55322,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1319942054
 MeshCollider:
@@ -55379,11 +55767,16 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ba43ab77378c77c4da20e3808faf26b7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
 --- !u!1001 &1327127667
 Prefab:
   m_ObjectHideFlags: 0
@@ -55653,7 +56046,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1336183933
 Transform:
   m_ObjectHideFlags: 0
@@ -55949,6 +56342,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1340981470
 MeshCollider:
@@ -56428,6 +56822,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1349988350
 MeshCollider:
@@ -56885,6 +57280,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1373697777 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114169919709814560, guid: 12dc030717b84a64586b8662292f0616,
+    type: 2}
+  m_PrefabInternal: {fileID: 1787803841}
+  m_Script: {fileID: 11500000, guid: fdb4a7ea6587b3e41b7455c2e9492152, type: 3}
 --- !u!1001 &1373790994
 Prefab:
   m_ObjectHideFlags: 0
@@ -57053,6 +57454,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1375021741
 MeshCollider:
@@ -57140,6 +57542,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1375721872
 MeshCollider:
@@ -57544,6 +57947,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1382291423
 MeshCollider:
@@ -58055,6 +58459,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!65 &1392905526
 BoxCollider:
@@ -58243,6 +58648,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1396180329
 MeshCollider:
@@ -58496,6 +58902,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!65 &1407284664
 BoxCollider:
@@ -58909,6 +59316,66 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1001 &1414821021
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 775440884}
+    m_Modifications:
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 1.097
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 8.839748
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -17.917
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071065
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071072
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114858603610862718, guid: ca6b1d453483baa4b8bd2cbabded1a46,
+        type: 2}
+      propertyPath: lightController
+      value: 
+      objectReference: {fileID: 1523729355}
+    - target: {fileID: 1661685700763784, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_Name
+      value: MazeLightFlicker8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90.00001
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1414821022 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46,
+    type: 2}
+  m_PrefabInternal: {fileID: 1414821021}
 --- !u!1001 &1420982269
 Prefab:
   m_ObjectHideFlags: 0
@@ -59221,6 +59688,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1425920302
 MeshCollider:
@@ -59533,6 +60001,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1431956327
 MeshCollider:
@@ -59819,6 +60288,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1439675492
 MeshCollider:
@@ -59998,6 +60468,8 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 0
   m_HDR: 0
+  m_AllowMSAA: 1
+  m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
@@ -60503,11 +60975,16 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ba5f0b7a4877b2a4595b9760b76929e0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
 --- !u!1 &1464135797
 GameObject:
   m_ObjectHideFlags: 0
@@ -60534,6 +61011,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 863261288}
+  - {fileID: 1830254617}
   m_Father: {fileID: 597062073}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -61289,6 +61767,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1483602341
 MeshCollider:
@@ -61973,6 +62452,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1502467321
 MeshCollider:
@@ -61995,6 +62475,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1502467318}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1504161199 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46,
+    type: 2}
+  m_PrefabInternal: {fileID: 222994098}
 --- !u!4 &1504834422 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: ec89eaad22bce364eabcdae8f401ca41, type: 3}
@@ -62765,6 +63250,78 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1521474544 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114169919709814560, guid: 12dc030717b84a64586b8662292f0616,
+    type: 2}
+  m_PrefabInternal: {fileID: 2137237297}
+  m_Script: {fileID: 11500000, guid: fdb4a7ea6587b3e41b7455c2e9492152, type: 3}
+--- !u!114 &1523729355 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114169919709814560, guid: 12dc030717b84a64586b8662292f0616,
+    type: 2}
+  m_PrefabInternal: {fileID: 1573483321}
+  m_Script: {fileID: 11500000, guid: fdb4a7ea6587b3e41b7455c2e9492152, type: 3}
+--- !u!1001 &1525166168
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1161953590}
+    m_Modifications:
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -0.412
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 8.839748
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -17.429
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071071
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071065
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114858603610862718, guid: ca6b1d453483baa4b8bd2cbabded1a46,
+        type: 2}
+      propertyPath: lightController
+      value: 
+      objectReference: {fileID: 1063377320}
+    - target: {fileID: 1661685700763784, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_Name
+      value: MazeLightFlicker10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90.00001
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1525166169 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46,
+    type: 2}
+  m_PrefabInternal: {fileID: 1525166168}
 --- !u!1001 &1526446688
 Prefab:
   m_ObjectHideFlags: 0
@@ -63482,6 +64039,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1540346434
 MeshCollider:
@@ -63565,6 +64123,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1540847855
 MeshCollider:
@@ -63755,6 +64314,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1545375845
 MeshCollider:
@@ -64588,6 +65148,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1567675264
 MeshCollider:
@@ -64943,7 +65504,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1812321490587732, guid: 12dc030717b84a64586b8662292f0616, type: 2}
       propertyPath: m_Name
-      value: MazeLight (1)
+      value: MazeLight8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12dc030717b84a64586b8662292f0616, type: 2}
@@ -65047,11 +65608,16 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ba43ab77378c77c4da20e3808faf26b7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
 --- !u!1001 &1574942469
 Prefab:
   m_ObjectHideFlags: 0
@@ -65404,6 +65970,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!65 &1578753336
 BoxCollider:
@@ -65781,6 +66348,61 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.64, y: 2.31, z: 0.07}
   m_Center: {x: -1.28, y: 1.22, z: 0.12}
+--- !u!1001 &1586507772
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1677676436}
+    m_Modifications:
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.264
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 8.839748
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -18.778
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.000000104308114
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114858603610862718, guid: ca6b1d453483baa4b8bd2cbabded1a46,
+        type: 2}
+      propertyPath: lightController
+      value: 
+      objectReference: {fileID: 1373697777}
+    - target: {fileID: 1661685700763784, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_Name
+      value: MazeLightFlicker3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -180.00002
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &1587098214 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 40b8fd596870e5e4cb4ccb145b409d1e, type: 3}
@@ -65846,6 +66468,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1588031955
 MeshCollider:
@@ -66074,35 +66697,6 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: ec89eaad22bce364eabcdae8f401ca41, type: 3}
---- !u!1 &1604671299
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1604671300}
-  m_Layer: 0
-  m_Name: Place3
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1604671300
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1604671299}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1284284711}
-  m_Father: {fileID: 597062073}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1606628612
 Prefab:
   m_ObjectHideFlags: 0
@@ -66750,6 +67344,62 @@ Transform:
   m_Father: {fileID: 504120084}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1626327635
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1790075037}
+    m_Modifications:
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.26166603
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 8.839748
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -16.611
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114858603610862718, guid: ca6b1d453483baa4b8bd2cbabded1a46,
+        type: 2}
+      propertyPath: lightController
+      value: 
+      objectReference: {fileID: 1988205197}
+    - target: {fileID: 1661685700763784, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_Name
+      value: MazeLightFlicker6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &1626327636 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46,
+    type: 2}
+  m_PrefabInternal: {fileID: 1626327635}
 --- !u!1 &1626342423 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: ec89eaad22bce364eabcdae8f401ca41, type: 3}
@@ -66881,6 +67531,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1628513939
 MeshCollider:
@@ -67120,6 +67771,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1633730169
 MeshCollider:
@@ -67203,6 +67855,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1635409316
 MeshCollider:
@@ -67287,6 +67940,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!33 &1637021095
 MeshFilter:
@@ -68005,6 +68659,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1674372295
 MeshCollider:
@@ -68088,6 +68743,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1674564039
 MeshCollider:
@@ -68165,6 +68821,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1787803842}
+  - {fileID: 1069226610}
   m_Father: {fileID: 597062073}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -68880,6 +69537,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1699439356
 MeshCollider:
@@ -69142,6 +69800,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1705438215
 MeshCollider:
@@ -70034,6 +70693,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1726854973
 MeshCollider:
@@ -70364,11 +71024,16 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1467c51a016305841baa6328235cbfd7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
 --- !u!1001 &1734498937
 Prefab:
   m_ObjectHideFlags: 0
@@ -70537,6 +71202,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1735342487
 MeshCollider:
@@ -71293,8 +71959,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2137237298}
+  - {fileID: 2002175847}
   m_Father: {fileID: 597062073}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1745845752
 GameObject:
@@ -71890,6 +72557,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1761652644
 MeshCollider:
@@ -72006,11 +72674,16 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: ba43ab77378c77c4da20e3808faf26b7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
 --- !u!1001 &1763934019
 Prefab:
   m_ObjectHideFlags: 0
@@ -72191,6 +72864,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1766248745
 MeshCollider:
@@ -72274,6 +72948,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1771372922
 MeshCollider:
@@ -72595,25 +73270,34 @@ Material:
   m_Shader: {fileID: 10753, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
+  disabledShaderPasses: []
   m_SavedProperties:
-    serializedVersion: 2
+    serializedVersion: 3
     m_TexEnvs:
-    - first:
-        name: <noninit>
-      second:
+    - <noninit>:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - first:
-        name: <noninit>
-      second: 0
+    - <noninit>: 0
+    - PixelSnap: 0
+    - _EnableExternalAlpha: 0
     m_Colors:
-    - first:
-        name: <noninit>
-      second: {r: 0, g: 8.7143357e-13, b: 0, a: 8.714301e-13}
+    - <noninit>: {r: 0, g: 8.7143357e-13, b: 0, a: 8.714301e-13}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &1781999839
 Prefab:
   m_ObjectHideFlags: 0
@@ -73169,7 +73853,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1812321490587732, guid: 12dc030717b84a64586b8662292f0616, type: 2}
       propertyPath: m_Name
-      value: MazeLight (1)
+      value: MazeLight3
       objectReference: {fileID: 0}
     - target: {fileID: 4985165986750798, guid: 12dc030717b84a64586b8662292f0616, type: 2}
       propertyPath: m_LocalScale.x
@@ -73213,9 +73897,11 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1222619606}
+  - {fileID: 1626327636}
   - {fileID: 992992234}
+  - {fileID: 2065584025}
   m_Father: {fileID: 597062073}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1790567125
 Prefab:
@@ -73771,6 +74457,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!65 &1798011891
 BoxCollider:
@@ -74604,6 +75291,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 40b8fd596870e5e4cb4ccb145b409d1e, type: 3}
   m_IsPrefabParent: 0
+--- !u!4 &1830254617 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46,
+    type: 2}
+  m_PrefabInternal: {fileID: 1916822456}
 --- !u!1 &1835454801
 GameObject:
   m_ObjectHideFlags: 0
@@ -74618,7 +75310,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1835454804
 Transform:
   m_ObjectHideFlags: 0
@@ -74876,6 +75568,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1836978266
 MeshCollider:
@@ -75527,6 +76220,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1840756354
 MeshCollider:
@@ -75656,6 +76350,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1841563606 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114169919709814560, guid: 12dc030717b84a64586b8662292f0616,
+    type: 2}
+  m_PrefabInternal: {fileID: 863261287}
+  m_Script: {fileID: 11500000, guid: fdb4a7ea6587b3e41b7455c2e9492152, type: 3}
 --- !u!1001 &1845014826
 Prefab:
   m_ObjectHideFlags: 0
@@ -76040,6 +76740,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1861103116
 MeshCollider:
@@ -76503,6 +77204,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1868802005
 MeshCollider:
@@ -76689,6 +77391,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1869362376
 MeshCollider:
@@ -77016,7 +77719,6 @@ MonoBehaviour:
   place17_18_19: {fileID: 259318629}
   place20_21_22_26_27: {fileID: 1077678927}
   place1_11_12_13_17: {fileID: 1061277169}
-  place3_light: {fileID: 1604671299}
   place4_5_6_light: {fileID: 1209843547}
   place6_7_8_light: {fileID: 775440883}
   place7_8_9_light: {fileID: 1744804757}
@@ -77464,6 +78166,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1882654111
 MeshCollider:
@@ -78042,6 +78745,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!65 &1888463856
 BoxCollider:
@@ -78779,6 +79483,57 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1001 &1916822456
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1464135798}
+    m_Modifications:
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.26166603
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 8.839748
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -17.668633
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114858603610862718, guid: ca6b1d453483baa4b8bd2cbabded1a46,
+        type: 2}
+      propertyPath: lightController
+      value: 
+      objectReference: {fileID: 1841563606}
+    - target: {fileID: 1661685700763784, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_Name
+      value: MazeLightFlicker1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1919273463
 Prefab:
   m_ObjectHideFlags: 0
@@ -79689,6 +80444,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 237949263}
+  - {fileID: 1504161199}
   m_Father: {fileID: 597062073}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -80818,6 +81574,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1951575816
 MeshCollider:
@@ -81596,11 +82353,16 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1467c51a016305841baa6328235cbfd7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
 --- !u!1 &1977649257
 GameObject:
   m_ObjectHideFlags: 0
@@ -81691,6 +82453,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &1982135064
 MeshCollider:
@@ -82059,6 +82822,12 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: ec89eaad22bce364eabcdae8f401ca41, type: 3}
+--- !u!114 &1988205197 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114169919709814560, guid: 12dc030717b84a64586b8662292f0616,
+    type: 2}
+  m_PrefabInternal: {fileID: 1222619605}
+  m_Script: {fileID: 11500000, guid: fdb4a7ea6587b3e41b7455c2e9492152, type: 3}
 --- !u!1001 &1988630847
 Prefab:
   m_ObjectHideFlags: 0
@@ -82680,6 +83449,66 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1001 &2002175846
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1744804758}
+    m_Modifications:
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -1.767
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 8.839748
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -17.4308
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.70710707
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.70710653
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114858603610862718, guid: ca6b1d453483baa4b8bd2cbabded1a46,
+        type: 2}
+      propertyPath: lightController
+      value: 
+      objectReference: {fileID: 1521474544}
+    - target: {fileID: 1661685700763784, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_Name
+      value: MazeLightFlicker9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90.00001
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &2002175847 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46,
+    type: 2}
+  m_PrefabInternal: {fileID: 2002175846}
 --- !u!1 &2002758108
 GameObject:
   m_ObjectHideFlags: 0
@@ -82992,6 +83821,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &2013527140
 MeshCollider:
@@ -83168,6 +83998,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &2017670859
 MeshCollider:
@@ -83841,6 +84672,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &2028413701
 MeshCollider:
@@ -84797,6 +85629,12 @@ MeshCollider:
   m_InflateMesh: 0
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: ec89eaad22bce364eabcdae8f401ca41, type: 3}
+--- !u!114 &2052715456 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114169919709814560, guid: 12dc030717b84a64586b8662292f0616,
+    type: 2}
+  m_PrefabInternal: {fileID: 992992233}
+  m_Script: {fileID: 11500000, guid: fdb4a7ea6587b3e41b7455c2e9492152, type: 3}
 --- !u!1001 &2053082881
 Prefab:
   m_ObjectHideFlags: 0
@@ -85294,6 +86132,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &2059066800
 MeshCollider:
@@ -85460,6 +86299,66 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1001 &2065584024
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1790075037}
+    m_Modifications:
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.053
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 8.839748
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -17.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071069
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114858603610862718, guid: ca6b1d453483baa4b8bd2cbabded1a46,
+        type: 2}
+      propertyPath: lightController
+      value: 
+      objectReference: {fileID: 2052715456}
+    - target: {fileID: 1661685700763784, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_Name
+      value: MazeLightFlicker7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -90.00001
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ca6b1d453483baa4b8bd2cbabded1a46, type: 2}
+  m_IsPrefabParent: 0
+--- !u!4 &2065584025 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4579056048387484, guid: ca6b1d453483baa4b8bd2cbabded1a46,
+    type: 2}
+  m_PrefabInternal: {fileID: 2065584024}
 --- !u!1001 &2067428548
 Prefab:
   m_ObjectHideFlags: 0
@@ -86081,11 +86980,16 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1467c51a016305841baa6328235cbfd7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
 --- !u!1001 &2080000263
 Prefab:
   m_ObjectHideFlags: 0
@@ -86287,11 +87191,16 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 1467c51a016305841baa6328235cbfd7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
 --- !u!1001 &2093119853
 Prefab:
   m_ObjectHideFlags: 0
@@ -86488,6 +87397,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &2096092688
 MeshCollider:
@@ -86859,6 +87769,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &2108129656
 MeshCollider:
@@ -87638,6 +88549,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &2124654211
 MeshCollider:
@@ -87897,6 +88809,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1812321490587732, guid: 12dc030717b84a64586b8662292f0616, type: 2}
+      propertyPath: m_Name
+      value: MazeLight9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 12dc030717b84a64586b8662292f0616, type: 2}
   m_IsPrefabParent: 0
@@ -87998,6 +88914,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &2140789298
 MeshCollider:
@@ -88081,6 +88998,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &2141277791
 MeshCollider:
@@ -88317,6 +89235,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
 --- !u!64 &2142961522
 MeshCollider:

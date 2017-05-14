@@ -89,7 +89,8 @@
     <Compile Include="Assets\Head Look Controller\Scripts\HelpText.cs" />
     <Compile Include="Assets\Head Look Controller\Scripts\OrbitCamera.cs" />
     <Compile Include="Assets\HeadFollow.cs" />
-    <Compile Include="Assets\MazeDoorOpener.cs" />
+    <Compile Include="Assets\MazeLightController.cs" />
+    <Compile Include="Assets\MazeLightFlickerController.cs" />
     <Compile Include="Assets\ObjectActions.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_GazeTracker.cs" />
     <Compile Include="Assets\SteamVR\Extras\SteamVR_LaserPointer.cs" />
@@ -221,7 +222,8 @@
     <Compile Include="Assets\_Scripts_Maze\MazeAnnouncer.cs" />
     <Compile Include="Assets\_Scripts_Maze\MazeController.cs" />
     <Compile Include="Assets\_Scripts_Maze\MazeDoorController.cs" />
-    <Compile Include="Assets\_Scripts_Maze\MazeDoorMechanic.cs" />
+    <Compile Include="Assets\_Scripts_Maze\MazeDoorLock.cs" />
+    <Compile Include="Assets\_Scripts_Maze\MazeDoorOpener.cs" />
     <Compile Include="Assets\_Scripts_Maze\MazeTransitions.cs" />
     <Compile Include="Assets\_Scripts_Maze\MazeUtility.cs" />
     <Compile Include="Assets\_Scripts_Maze\ObjectToggler.cs" />

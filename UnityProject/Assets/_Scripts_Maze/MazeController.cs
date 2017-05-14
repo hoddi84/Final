@@ -21,7 +21,6 @@ public class MazeController : MonoBehaviour {
     public GameObject place1_11_12_13_17;
 
     [Header("Static Lights")]
-    public GameObject place3_light;
     public GameObject place4_5_6_light;
     public GameObject place6_7_8_light;
     public GameObject place7_8_9_light;
@@ -121,7 +120,10 @@ public class MazeController : MonoBehaviour {
             place1_2_11_12_13_14_15_16_23_24_25_light.SetActive(false);
         }
 
-        if (!place6Active || !place7Active || !place8Active || !place9Active || !place10Active || !place14Active || !place23Active || !place24Active)
+        /*
+         * These lights are active when we are not in these places.
+         */
+        if (!place6Active && !place7Active && !place8Active && !place9Active && !place10Active && !place14Active && !place23Active && !place24Active)
         {
             NOTplace6_7_8_9_10_14_23_24_light.SetActive(true);
         }
@@ -130,7 +132,10 @@ public class MazeController : MonoBehaviour {
             NOTplace6_7_8_9_10_14_23_24_light.SetActive(false);
         }
 
-        if (!place4Active || !place5Active || !place6Active || !place7Active || !place8Active || !place9Active || !place10Active || !place23Active || !place24Active || !place25Active)
+        /*
+         * These lights are active when we are not in these places.
+         */
+        if (!place4Active && !place5Active && !place6Active && !place7Active && !place8Active && !place9Active && !place10Active && !place23Active && !place24Active && !place25Active)
         {
             NOTplace4_5_6_7_8_9_10_23_24_25_light.SetActive(true);
         }
@@ -146,15 +151,6 @@ public class MazeController : MonoBehaviour {
         else
         {
             place1_2_3_11_12_13_14_15_16_light.SetActive(false);
-        }
-
-        if (place3Active)
-        {
-            place3_light.SetActive(true);
-        }
-        else
-        {
-            place3_light.SetActive(false);
         }
 
         if (place4Active || place5Active || place6Active)

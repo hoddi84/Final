@@ -104,12 +104,14 @@ public class MazeLightController : MonoBehaviour {
 
         audio.clip = lightSwitchSound;
         audio.loop = false;
+        audio.volume = 0.4f;
         audio.Play();
 
         yield return new WaitUntil(() => !audio.isPlaying);
 
         audio.clip = lightAmbienceSound;
         audio.loop = true;
+        audio.volume = 0.2f;
         audio.Play();
 
         yield return null;
@@ -128,6 +130,7 @@ public class MazeLightController : MonoBehaviour {
         }
         audio.clip = lightSwitchSound;
         audio.loop = false;
+        audio.volume = 0.4f;
         audio.Play();
     }
 }

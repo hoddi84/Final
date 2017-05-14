@@ -57,6 +57,7 @@ TagManager:
   - ElevatorTrigger
   - DoorOpener
   - TriggerLights
+  - FlickerSwitch
   layers:
   - Default
   - TransparentFX

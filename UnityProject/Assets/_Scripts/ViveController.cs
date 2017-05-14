@@ -181,6 +181,14 @@ public class ViveController : MonoBehaviour {
                 StartCoroutine(MazeUtility.PlayMusic(musicalBoxStart, musicalBoxTrack, other.gameObject));
             }
         }
+        else if (other.gameObject.tag == "FlickerSwitch")
+        {
+            if (canInteract)
+            {
+                canInteract = false;
+                other.gameObject.GetComponentInParent<MazeLightFlickerController>().FlickerSwitchToggle();
+            }
+        }
         if (other.gameObject.tag == "Wall")
         {
             MazeUtility.TriggerContinuousVibration(controller, .5f);
