@@ -144,6 +144,7 @@
     <None Include="Assets\_Characters\amanda\shaders\AmandaShader.shader" />
     <None Include="Assets\_Characters\amanda\shaders\gunsShader.shader" />
     <None Include="Assets\_Characters\amanda\shaders\specillum.shader" />
+    <None Include="Assets\test.shader" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
