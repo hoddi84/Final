@@ -10,23 +10,43 @@ Material:
   m_Shader: {fileID: 4, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
-  disabledShaderPasses: []
   m_SavedProperties:
-    serializedVersion: 3
+    serializedVersion: 2
     m_TexEnvs:
-    - _BumpMap:
+    - first:
+        name: <noninit>
+      second:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - first:
+        name: _BumpMap
+      second:
         m_Texture: {fileID: 2800000, guid: 3443250a8e63de94384b5e567d3bcf04, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _MainTex:
+    - first:
+        name: _MainTex
+      second:
         m_Texture: {fileID: 2800000, guid: 73bf3656088fdeb4a857976034967795, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Shininess: 0.67633206
+    - first:
+        name: <noninit>
+      second: 0
+    - first:
+        name: _Shininess
+      second: 1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _SpecColor: {r: 0.25, g: 0.5, b: 0.3951049, a: 1}
+    - first:
+        name: <noninit>
+      second: {r: 3.202858e-39, g: 6.7265196e-32, b: 1.4719158e-33, a: 1.3052007e-32}
+    - first:
+        name: _Color
+      second: {r: 1, g: 1, b: 1, a: 1}
+    - first:
+        name: _SpecColor
+      second: {r: 0.5, g: 0.5, b: 0.5, a: 1}
