@@ -11,6 +11,7 @@ public class PlayerScript : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         OnEnterCollider(other.gameObject);
+
     }
 
     public void OnEnterCollider(GameObject obj)
