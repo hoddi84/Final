@@ -8,13 +8,11 @@ public class ProTypeManager : MonoBehaviour {
     public GameObject[] unitTypeA;
     public GameObject[] unitTypeB;
 
-    private GameObject currentUnit;
+    private GameObject currentUnit = null;
 
     private List<GameObject> listOfInstantiated = new List<GameObject>();
 
-    private const string isType0 = "isType0";
-    private const string isTypeA = "isTypeA";
-    private const string isTypeB = "isTypeB";
+    private const int startOfTypeIndex = 6;
 
     private void Start()
     {
@@ -24,6 +22,8 @@ public class ProTypeManager : MonoBehaviour {
         AddSenders(currentUnit);
 
         AddToInstantiatedList(currentUnit);
+
+        currentUnit = null;
     }
 
     private void InstantiateConnectedUnit(GameObject obj, UnitType isType, UnitType toType)
@@ -33,10 +33,42 @@ public class ProTypeManager : MonoBehaviour {
         switch(toType)
         {
             case UnitType.TypeA:
+
+                // TODO: Make this more generic.
+                if (currentUnit != null)
+                {
+                    List<char> types = GetUnitTypes(currentUnit);
+                    foreach (char c in types)
+                    {
+                        if (c != 'A')
+                        {
+                            listOfInstantiated.Remove(currentUnit);
+                            Destroy(currentUnit);
+                            break;
+                        }
+                    }
+                }
+
                 rndIndex = Random.Range(0, unitTypeA.Length);
                 currentUnit = Instantiate(unitTypeA[rndIndex]);
                 break;
             case UnitType.TypeB:
+
+                //TODO: Make this more generic.
+                if (currentUnit != null)
+                {
+                    List<char> types = GetUnitTypes(currentUnit);
+                    foreach (char c in types)
+                    {
+                        if (c != 'B')
+                        {
+                            listOfInstantiated.Remove(currentUnit);
+                            Destroy(currentUnit);
+                            break;
+                        }
+                    }
+                }
+
                 rndIndex = Random.Range(0, unitTypeB.Length);
                 currentUnit = Instantiate(unitTypeB[rndIndex]);
                 break;
@@ -48,25 +80,50 @@ public class ProTypeManager : MonoBehaviour {
      * Adds instantiated gameobjects to a list, which we can use
      * to remove an existing unit type when we instantiate a unit.
      */
-    void AddToInstantiatedList(GameObject newInstantiated)
+    void AddToInstantiatedList(GameObject newInstantiateUnit)
     {
-        string[] name = newInstantiated.name.Split('_');
-        string newType = name[0];
+        listOfInstantiated.RemoveAll(existingUnit => CheckForDuplicateUnit(existingUnit, newInstantiateUnit));
 
-        foreach (GameObject x in listOfInstantiated)
+        listOfInstantiated.Add(newInstantiateUnit);
+    }
+
+    bool CheckForDuplicateUnit(GameObject existingUnit, GameObject newInstantiatedUnit)
+    {
+        List<char> newTypes = GetUnitTypes(newInstantiatedUnit);
+        List<char> existingTypes = GetUnitTypes(existingUnit);
+
+        foreach (char newType in newTypes)
         {
-            string[] existingName = x.name.Split('_');
-            string existingType = existingName[0];
-
-            if (existingType == newType)
+            foreach (char existingType in existingTypes)
             {
-                listOfInstantiated.Remove(x);
-                Destroy(x);
-                break;
+                if (newType == existingType)
+                {
+                    Destroy(existingUnit);
+                    return true;
+                }
             }
         }
+        return false;
+    }
 
-        listOfInstantiated.Add(newInstantiated);
+    /*
+     * Returns the unit types from a unit object.
+     * Stores them as chars in a list.
+     * Units must follow a naming convention such as "isTypeABC",
+     * where the unit types from this unit are A, B and C.
+     */
+    private List<char> GetUnitTypes(GameObject obj)
+    {
+        List<char> types = new List<char>();
+
+        string[] name = obj.name.Split('_');
+        string type = name[0];
+
+        for (int i = startOfTypeIndex; i < type.Length; i++)
+        {
+            types.Add(type[i]);
+        }
+        return types;
     }
 
     void AddSenders(GameObject sender)
