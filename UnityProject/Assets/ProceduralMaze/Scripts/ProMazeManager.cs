@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ProMazeManager : MonoBehaviour {
 
+    public GameObject[] unitType0;
     public GameObject[] unitTypeA;
     public GameObject[] unitTypeB;
 
@@ -12,19 +13,14 @@ public class ProMazeManager : MonoBehaviour {
 
     private void Start()
     {
-        int rndIndex = Random.Range(0, unitTypeA.Length);
-        currentUnit = Instantiate(unitTypeA[rndIndex].gameObject);
-        currentUnit.GetComponent<ProType>().onTriggerEntered = SpawnNextUnit;
+        int rndIndex = Random.Range(0, unitType0.Length);
+        currentUnit = Instantiate(unitType0[rndIndex].gameObject);
+        currentUnit.GetComponent<ProType>().onTriggerEntered += SpawnNextUnit;
     }
 
-    void SpawnNextUnit(GameObject nextUnit)
+    void SpawnNextUnit(GameObject nextUnit, UnitType unitType, UnitType unitTypeConnecter)
     {
         ProType nextType = nextUnit.GetComponent<ProType>();
-
-        if (previousUnit != null)
-        {
-            Destroy(previousUnit);
-        }
 
         previousUnit = currentUnit;
         previousUnit.GetComponent<ProType>().onTriggerEntered = null;

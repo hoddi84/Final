@@ -5,18 +5,16 @@ using UnityEngine;
 
 public enum UnitType
 {
+    Type0,
     TypeA,
     TypeB,
-    TypeC,
-    TypeD,
-    TypeF
 }
 
 public class ProType : MonoBehaviour {
 
     private const string PLAYER = "Player";
 
-    public Action<GameObject> onTriggerEntered = null;
+    public Action<GameObject, UnitType, UnitType> onTriggerEntered = null;
 
     public UnitType unitType;
     public UnitType unitTypeConnecter;
@@ -27,7 +25,7 @@ public class ProType : MonoBehaviour {
         {
             if (onTriggerEntered != null)
             {
-                onTriggerEntered(gameObject);
+                onTriggerEntered(gameObject, unitType, unitTypeConnecter);
             }
         }
     }
