@@ -26,6 +26,26 @@ public class ProTypeManager : MonoBehaviour {
         currentUnit = null;
     }
 
+    /*
+     * When instantiating a new unit, if the instantiated unit is of a different
+     * type than the current unit, then we destroy the current unit.
+     * Such that we can always remove units behind us.
+     */
+    private void DestroyPreviousUnit(UnitType type, GameObject currentUnit)
+    {
+        //TODO destroy if there is not match
+        List<char> types = GetUnitTypes(currentUnit);
+        foreach (char c in types)
+        {
+            if (c != type.ToString()[4])
+            {
+                listOfInstantiated.Remove(currentUnit);
+                Destroy(currentUnit);
+                break;
+            }
+        }
+    }
+
     private void InstantiateConnectedUnit(GameObject obj, UnitType isType, UnitType toType)
     {
         int rndIndex = 0;
@@ -34,19 +54,9 @@ public class ProTypeManager : MonoBehaviour {
         {
             case UnitType.TypeA:
 
-                // TODO: Make this more generic.
                 if (currentUnit != null)
                 {
-                    List<char> types = GetUnitTypes(currentUnit);
-                    foreach (char c in types)
-                    {
-                        if (c != 'A')
-                        {
-                            listOfInstantiated.Remove(currentUnit);
-                            Destroy(currentUnit);
-                            break;
-                        }
-                    }
+                    DestroyPreviousUnit(UnitType.TypeA, currentUnit);
                 }
 
                 rndIndex = Random.Range(0, unitTypeA.Length);
@@ -54,19 +64,9 @@ public class ProTypeManager : MonoBehaviour {
                 break;
             case UnitType.TypeB:
 
-                //TODO: Make this more generic.
                 if (currentUnit != null)
                 {
-                    List<char> types = GetUnitTypes(currentUnit);
-                    foreach (char c in types)
-                    {
-                        if (c != 'B')
-                        {
-                            listOfInstantiated.Remove(currentUnit);
-                            Destroy(currentUnit);
-                            break;
-                        }
-                    }
+                    DestroyPreviousUnit(UnitType.TypeB, currentUnit);
                 }
 
                 rndIndex = Random.Range(0, unitTypeB.Length);
@@ -78,7 +78,8 @@ public class ProTypeManager : MonoBehaviour {
 
     /*
      * Adds instantiated gameobjects to a list, which we can use
-     * to remove an existing unit type when we instantiate a unit.
+     * to remove an existing unit of the same type as the unit being
+     * instantiated.
      */
     void AddToInstantiatedList(GameObject newInstantiateUnit)
     {
