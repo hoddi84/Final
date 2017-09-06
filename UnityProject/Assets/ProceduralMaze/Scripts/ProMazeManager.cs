@@ -29,13 +29,13 @@ public class ProMazeManager : MonoBehaviour {
 
         switch (nextType.unitTypeConnecter)
         {
-            case UnitType.TypeA:
+            case UnitType.Type_A:
 
                 rndIndex = Random.Range(0, unitTypeA.Length);
                 currentUnit = Instantiate(unitTypeA[rndIndex].gameObject);
                 break;
 
-            case UnitType.TypeB:
+            case UnitType.Type_B:
 
                 rndIndex = Random.Range(0, unitTypeB.Length);
                 currentUnit = Instantiate(unitTypeB[rndIndex].gameObject);

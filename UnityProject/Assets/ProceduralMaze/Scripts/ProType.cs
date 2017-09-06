@@ -5,9 +5,10 @@ using UnityEngine;
 
 public enum UnitType
 {
-    Type0,
-    TypeA,
-    TypeB,
+    Type_0,
+    Type_A,
+    Type_B,
+    Type_ABCD,
 }
 
 public class ProType : MonoBehaviour {
