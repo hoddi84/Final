@@ -735,12 +735,12 @@ MonoBehaviour:
   - {fileID: 1071621019088130, guid: 1e0a62a15cdc92f4f8642abb8e5a1529, type: 2}
   - {fileID: 1975440702046178, guid: dede6e001671cf548b3491279c3290e1, type: 2}
   - {fileID: 1037914608330322, guid: cf0a228e0bf74a74099e767333526de1, type: 2}
-  - {fileID: 1410821742809174, guid: 7063dfde5d6ccab4da99f377d3734173, type: 2}
+  - {fileID: 1220911415234422, guid: c7ff0d9741d35b44a9ec3a020d0cb8c6, type: 2}
   unitTypeB:
   - {fileID: 1476559145194920, guid: 0a76645c63e73314c9455a4b7088bd7d, type: 2}
   - {fileID: 1492238138177020, guid: 531783c66fddfbd43b9bf2fe153fc7ad, type: 2}
   - {fileID: 1752903941919996, guid: 3b39d12fb99da3f459ee067bec1231d0, type: 2}
-  - {fileID: 1410821742809174, guid: 7063dfde5d6ccab4da99f377d3734173, type: 2}
+  unittest: {fileID: 1220911415234422, guid: c7ff0d9741d35b44a9ec3a020d0cb8c6, type: 2}
 --- !u!1 &2123690724
 GameObject:
   m_ObjectHideFlags: 0

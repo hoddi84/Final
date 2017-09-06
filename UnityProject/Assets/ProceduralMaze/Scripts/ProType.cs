@@ -8,7 +8,7 @@ public enum UnitType
     Type_0,
     Type_A,
     Type_B,
-    Type_ABCD,
+    Type_C
 }
 
 public class ProType : MonoBehaviour {

@@ -14,6 +14,8 @@ public class ProTypeManager : MonoBehaviour {
 
     private const int startOfTypeIndex = 6;
 
+    public GameObject unittest;
+
     private void Start()
     {
         int rndIndex = Random.Range(0, unitType0.Length);
@@ -24,6 +26,53 @@ public class ProTypeManager : MonoBehaviour {
         AddToInstantiatedList(currentUnit);
 
         currentUnit = null;
+    }
+
+    /*
+     * This here makes sure that we do not destroy a previous unit when that unit
+     * is being connected to a unit that is also connected to this unit.
+     */
+    private bool DoesCurrentInstantiateSimilar(GameObject currentUnit, UnitType unitType)
+    {
+        List<char> typeList = new List<char>();
+        bool match = false;
+
+        if (currentUnit.GetComponentsInChildren<ProType>() != null)
+        {
+            ProType[] types = currentUnit.GetComponentsInChildren<ProType>();
+
+            foreach (ProType type in types)
+            {
+                List<char> t = GetUnitTypes(type.unitTypeConnecter);
+                foreach (char x in t)
+                {
+                    typeList.Add(x);
+                }
+            }
+        }
+
+        List<char> unitTypeList = GetUnitTypes(unitType);
+
+        foreach (char currType in typeList)
+        {
+            foreach (char uType in unitTypeList)
+            {
+                if (currType == uType)
+                {
+                    match = true;
+                    goto end;
+                }
+            }
+        }
+        end:
+        if (match)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     private void InstantiateConnectedUnit(GameObject obj, UnitType isType, UnitType toType)
@@ -52,8 +101,19 @@ public class ProTypeManager : MonoBehaviour {
                 rndIndex = Random.Range(0, unitTypeB.Length);
                 currentUnit = Instantiate(unitTypeB[rndIndex]);
                 break;
+            case UnitType.Type_0:
+
+                if (currentUnit != null)
+                {
+                    DestroyPreviousDifferentUnit(UnitType.Type_0, currentUnit);
+                }
+
+                rndIndex = Random.Range(0, unitType0.Length);
+                currentUnit = Instantiate(unitType0[rndIndex]);
+                break;
         }
         AddToInstantiatedList(currentUnit);
+        AddSenders(currentUnit);
     }
 
     /*
@@ -167,11 +227,14 @@ public class ProTypeManager : MonoBehaviour {
 
     void AddSenders(GameObject sender)
     {
-        ProType[] types = sender.GetComponentsInChildren<ProType>();
-
-        foreach (ProType type in types)
+        if (sender.GetComponentsInChildren<ProType>() != null)
         {
-            type.onTriggerEntered += InstantiateConnectedUnit;
+            ProType[] types = sender.GetComponentsInChildren<ProType>();
+
+            foreach (ProType type in types)
+            {
+                type.onTriggerEntered += InstantiateConnectedUnit;
+            }
         }
     }
 }
