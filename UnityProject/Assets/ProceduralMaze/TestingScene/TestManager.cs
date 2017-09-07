@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class TestManager : MonoBehaviour {
 
-    public GameObject unitA;
-    public GameObject unitB;
-    public GameObject unitD;
+    public GameObject[] unitA;
+    public GameObject[] unitB;
+    public GameObject[] unitC;
+    public GameObject[] unitD;
+    public GameObject[] unitE;
+    public GameObject[] unitE1;
 
     Dictionary<TestUnit, GameObject> pathDict = new Dictionary<TestUnit, GameObject>();
 
@@ -19,85 +22,58 @@ public class TestManager : MonoBehaviour {
 
     private void Start()
     {
-        GameObject tmp = Instantiate(unitA);
-        TestTrigger trigger = tmp.GetComponentInChildren<TestTrigger>();
-
-        RegisterListeners(tmp);
-
-        if (onInstantiate != null)
-        {
-            onInstantiate(trigger.isType, tmp);
-        }
+        Initialize(unitA);
     }
 
     private void InstantiateUnit(TestTrigger trigger)
     {
-        GameObject tmp = null;
 
         switch (trigger.toType)
         {
             case TestUnit.TypeA:
 
-                if (!pathDict.ContainsKey(TestUnit.TypeA))
-                {
-                    tmp = Instantiate(unitA);
-                }
-                else
-                {
-                    GameObject t;
-                    pathDict.TryGetValue(TestUnit.TypeA, out t);
-                    if (!t.activeInHierarchy)
-                    {
-                        t.SetActive(true);
-                    }
-                    else
-                    {
-                        t.SetActive(false);
-                    }
-                }
+                CheckInstantiatedUnit(trigger, TestUnit.TypeA, unitA);
                 break;
 
             case TestUnit.TypeB:
 
-                if (!pathDict.ContainsKey(TestUnit.TypeB))
-                {
-                    tmp = Instantiate(unitB);
-                }
-                else
-                {
-                    GameObject t;
-                    pathDict.TryGetValue(TestUnit.TypeB, out t);
-                    if (!t.activeInHierarchy)
-                    {
-                        t.SetActive(true);
-                    }
-                    else
-                    {
-                        t.SetActive(false);
-                    }
-                }
+                CheckInstantiatedUnit(trigger, TestUnit.TypeB, unitB);
+                break;
+
+            case TestUnit.TypeC:
+
+                CheckInstantiatedUnit(trigger, TestUnit.TypeC, unitC);
                 break;
 
             case TestUnit.TypeD:
 
-                if (!pathDict.ContainsKey(TestUnit.TypeD))
-                {
-                    tmp = Instantiate(unitD);
-                }
-                else
-                {
-                    GameObject t;
-                    pathDict.TryGetValue(TestUnit.TypeD, out t);
-                    if (!t.activeInHierarchy)
-                    {
-                        t.SetActive(true);
-                    }
-                    else
-                    {
-                        t.SetActive(false);
-                    }
-                }
-                break;             
+                CheckInstantiatedUnit(trigger, TestUnit.TypeD, unitD);
+                break;
+
+            case TestUnit.TypeE:
+
+                CheckInstantiatedUnit(trigger, TestUnit.TypeE, unitE);
+                break;
+
+            case TestUnit.TypeE1:
+
+                CheckInstantiatedUnit(trigger, TestUnit.TypeE1, unitE1);
+                break;
+        }
+    }
+
+    private void CheckInstantiatedUnit(TestTrigger trigger, TestUnit type, GameObject[] unit)
+    {
+        GameObject tmp = null;
+
+        if (!pathDict.ContainsKey(type))
+        {
+            int rndIndex = UnityEngine.Random.Range(0, unit.Length);
+            tmp = Instantiate(unit[rndIndex]);
+        }
+        else
+        {
+            InstantiateExistingUnit(type);
         }
 
         if (tmp != null)
@@ -111,6 +87,23 @@ public class TestManager : MonoBehaviour {
         }
     }
 
+    private void InstantiateExistingUnit(TestUnit type)
+    {
+        GameObject t;
+        pathDict.TryGetValue(type, out t);
+
+        if (!t.activeInHierarchy)
+        {
+            t.SetActive(true);
+            RegisterListeners(t);
+        }
+        else
+        {
+            DeregisterListeners(t);
+            t.SetActive(false);
+        }
+    }
+
     private void UpdatePathDictionary(TestUnit unitType, GameObject obj)
     {
         if (!pathDict.ContainsKey(unitType))
@@ -119,6 +112,30 @@ public class TestManager : MonoBehaviour {
         }
     }
 
+    /// <summary>
+    /// Initialize a random starting point Unit from 
+    /// the chosen unit type.
+    /// </summary>
+    /// <param name="unit"></param>
+    private void Initialize(GameObject[] unit)
+    {
+        int rndIndex = UnityEngine.Random.Range(0, unit.Length);
+        GameObject tmp = Instantiate(unit[rndIndex]);
+        TestTrigger trigger = tmp.GetComponentInChildren<TestTrigger>();
+
+        RegisterListeners(tmp);
+
+        if (onInstantiate != null)
+        {
+            onInstantiate(trigger.isType, tmp);
+        }
+    }
+
+    /// <summary>
+    /// Register to "onTriggerEntered" events from a gameObject Unit,
+    /// that contains a TestTrigger.
+    /// </summary>
+    /// <param name="unit"></param>
     private void RegisterListeners(GameObject unit)
     {
         if (unit.GetComponentsInChildren<TestTrigger>() != null)
@@ -128,6 +145,24 @@ public class TestManager : MonoBehaviour {
             foreach (TestTrigger trigger in triggers)
             {
                 trigger.onTriggerEntered += InstantiateUnit;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Deregister to "onTriggeredEntered" events from a gameObject Unit,
+    /// that contains a TestTrigger.
+    /// </summary>
+    /// <param name="unit"></param>
+    private void DeregisterListeners(GameObject unit)
+    {
+        if (unit.GetComponentsInChildren<TestTrigger>() != null)
+        {
+            TestTrigger[] triggers = unit.GetComponentsInChildren<TestTrigger>();
+            
+            foreach (TestTrigger trigger in triggers)
+            {
+                trigger.onTriggerEntered -= InstantiateUnit;
             }
         }
     }

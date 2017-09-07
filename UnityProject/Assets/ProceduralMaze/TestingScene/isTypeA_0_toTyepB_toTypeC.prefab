@@ -90,7 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4753303590859438}
   m_Layer: 0
-  m_Name: isTypeA_0
+  m_Name: isTypeA_0_toTyepB_toTypeC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
